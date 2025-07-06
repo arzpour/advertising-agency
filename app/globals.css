@@ -5,3 +5,16 @@
   --color-foreground: var(--foreground);
   --font-Vazirmatn: var(--font-Vazirmatn);
 }
+
+@keyframes brandScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brandScroll {
+  animation: brandScroll 20s linear infinite;
+}

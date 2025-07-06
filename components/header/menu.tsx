@@ -23,7 +23,7 @@ const Menu = () => {
       }
       `}
     >
-      <ul className="flex justify-center gap-10 py-4 items-center" dir="rtl">
+      <ul className="flex justify-center gap-14 py-4 items-center" dir="rtl">
         <li>
           <Link href="#" className="hover:text-red-500 font-medium">
             صفحه اصلی
