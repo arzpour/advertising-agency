@@ -10,6 +10,11 @@ module.exports = {
       fontFamily: {
         vazir: ["var(--font-Vazirmatn)"],
       },
+      colors: {
+        gray: {
+          1: "var(--color-gray-1)",
+        },
+      },
     },
   },
   plugins: [],

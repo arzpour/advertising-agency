@@ -40,7 +40,7 @@ const Services = () => {
       className="flex flex-col my-10 mt-16 max-w-[90rem] mx-auto px-10"
       dir="rtl"
     >
-      <h2 className="text-lg font-medium my-2">خدمات</h2>
+      <h2 className="text-xl font-medium my-2 text-gray-900">خدمات</h2>
 
       <div className="flex gap-7">
         {servicesData.map((el) => (

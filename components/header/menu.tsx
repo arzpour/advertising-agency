@@ -39,29 +39,33 @@ const Menu = () => {
           </Link>
 
           {isServicesOpen && (
-            <ul className="absolute bottom-6 w-96 right-0 bg-white py-5 px-6 shadow-md z-50 rounded space-y-3.5">
+            <ul
+              className={`absolute ${
+                isSticky ? "top-7" : "bottom-6"
+              } w-96 right-0 bg-white py-5 px-6 shadow-md z-50 rounded space-y-3.5`}
+            >
               <li>
-                <Link href="#" className="text-gray-800">
+                <Link href="#" className="text-gray-800 hover:text-red-500">
                   برندینگ و استراتژی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800">
+                <Link href="#" className="text-gray-800 hover:text-red-500">
                   تولید محتوا تصویری
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800">
+                <Link href="#" className="text-gray-800 hover:text-red-500">
                   تولید محتوا گرافیکی و متنی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800">
+                <Link href="#" className="text-gray-800 hover:text-red-500">
                   مدیریت شبکه های اجتماعی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800">
+                <Link href="#" className="text-gray-800 hover:text-red-500">
                   طراحی سایت و سئو
                 </Link>
               </li>
