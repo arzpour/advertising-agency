@@ -1,11 +1,13 @@
 // import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 interface IPortfolioCard {
   showCard: string;
   category: string;
   ImageHref: string;
-  title: string;
+  text: string;
   buttonHref: string;
 }
 
@@ -13,42 +15,61 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({
   showCard,
   category,
   ImageHref,
-  title,
+  text,
   buttonHref,
 }) => {
+  let categoryFa;
+
+  if (category === "branding") {
+    categoryFa = "برندینگ";
+  } else if (category === "Content production") {
+    categoryFa = "تولید محتوا";
+  } else if (category === "marketing") {
+    categoryFa = "مارکتینگ";
+  } else if (category === "development") {
+    categoryFa = "توسعه";
+  } else if (category === "design") {
+    categoryFa = "گرافیک";
+  }
+
   return (
     <div
-      className={`px-4 ${
+      className={`rounded-lg bg-white shadow-secondary-1 w-72 ${
         showCard === "all" || showCard === category.toLowerCase()
           ? "block"
           : "hidden"
       }`}
     >
-      <div className="relative mb-12">
-        <div className="overflow-hidden rounded-xl">
-          {/* <Image
-            src={ImageHref}
-            alt="portfolio"
-            className="w-full"
-            width={200}
-            height={200}
-          /> */}
-          <img src={ImageHref} alt="portfolio" className="w-full" />
-        </div>
-        <div className="relative z-10 mx-7 -mt-20 rounded-lg bg-white dark:bg-dark-2 py-[34px] px-3 text-center shadow-portfolio dark:shadow-box-dark">
-          <span className="text-primary mb-2 block text-sm font-medium">
-            {category}
-          </span>
-          <h3 className="text-dark dark:text-white mb-5 text-xl font-bold">
-            {title}
-          </h3>
-          <a
-            href={buttonHref}
-            className="text-body-color dark:text-dark-6 hover:border-primary hover:bg-primary inline-block rounded-md border border-stroke dark:border-dark-3 py-[10px] px-7 text-sm font-medium transition hover:text-white"
-          >
-            مشاهده بیشتر
-          </a>
-        </div>
+      <div
+        className="relative overflow-hidden bg-cover bg-no-repeat"
+        data-twe-ripple-init
+        data-twe-ripple-color="light"
+      >
+        {/* <Image
+          src={ImageHref}
+          alt="portfolio"
+          className="w-full"
+          width={200}
+          height={200}
+        /> */}
+        <img src={ImageHref} alt="portfolio" className="rounded-t-lg" />
+
+        <Link href={buttonHref}>
+          <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </Link>
+      </div>
+      <div className="px-6 py-5 text-surface dark:text-white">
+        <h5 className="mb-2 text-sm text-gray-800 font-medium leading-tight truncate line-clamp-1">
+          {text}
+        </h5>
+        <p className="mb-0.5 text-xs text-gray-600">{categoryFa}</p>
+        <Link
+          href={buttonHref}
+          className="flex gap-2 items-center rounded bg-primary justify-end pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-500 shadow-primary-3 transition duration-150 ease-in-out"
+        >
+          مشاهده بیشتر
+          <FaArrowLeftLong />
+        </Link>
       </div>
     </div>
   );

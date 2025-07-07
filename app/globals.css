@@ -19,3 +19,12 @@
 .brandScroll {
   animation: brandScroll 20s linear infinite;
 }
+
+.scrollWebkit::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
