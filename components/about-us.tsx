@@ -3,8 +3,8 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <section className="max-w-6xl mx-auto my-6 mt-40" dir="rtl">
-      <div className="flex gap-5 items-center justify-center mr-20">
+    <section className="max-w-6xl mx-auto my-6 mt-28" dir="rtl">
+      <div className="flex gap-5 items-center justify-center mr-16">
         <div className="w-1/2">
           <div className="flex gap-3 items-center">
             <div className="flex gap-1.5 items-center relative bottom-1">
@@ -24,7 +24,7 @@ const AboutUs = () => {
               آژانس تبلیغاتی <span className="text-red-500">هانس</span>
             </h3>
           </div>
-          <p className="pl-16 text-gray-700 text-sm">
+          <p className="pl-10 text-gray-700 text-sm">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است لورم ایپسوم متن ساختگی با تولید سادگی
@@ -45,23 +45,21 @@ const AboutUs = () => {
             روزنامه و مجله در ستون و سطرآنچنان که لازم است
           </p>
         </div>
-        <div className="relative bottom-8 h-52 w-1/2">
-          <div className="bg-white shadow-md rounded whitespace-nowrap overflow-hidden p-1 w-52 h-fit absolute bottom-0 right-52">
-            <Image
-              src="/worktable-with-paper-crayons.jpg"
-              alt="advertising-agency-1"
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className="bg-white shadow-md rounded p-1 w-52 h-fit absolute top-2/4 right-2/4">
-            <Image
-              src="/-9223372036854775808_-210019.jpg"
-              alt="advertising-agency-2"
-              width={200}
-              height={200}
-            />
-          </div>
+        <div className="relative bottom-20 h-52 w-1/3 mr-44">
+          <Image
+            src="/FireShot Capture 092 - Colleagues working together - Premium Photo - [www.freepik.com].png"
+            alt="advertising-agency-1"
+            width={200}
+            height={200}
+            className="w-[24rem] relative right-14 rounded-xl"
+          />
+          <Image
+            src="/gettyimages-2149038061-612x612.jpg"
+            alt="advertising-agency-1"
+            width={200}
+            height={200}
+            className="w-[17rem] absolute -bottom-40 -right-24 rounded-xl"
+          />
         </div>
       </div>
     </section>
