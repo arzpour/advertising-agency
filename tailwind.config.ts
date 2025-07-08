@@ -13,6 +13,10 @@ module.exports = {
       colors: {
         gray: {
           1: "var(--color-gray-1)",
+          2: "var(--color-gray-2)",
+        },
+        dark: {
+          1: "var(--color-dark-1)",
         },
       },
     },

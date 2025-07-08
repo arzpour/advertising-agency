@@ -5,6 +5,8 @@
   --color-foreground: var(--foreground);
   --font-Vazirmatn: var(--font-Vazirmatn);
   --color-gray-1: #ededed;
+  --color-gray-2: #f0f0ee;
+  --color-dark-1: #1c1c1a;
 }
 
 @keyframes brandScroll {

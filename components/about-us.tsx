@@ -47,11 +47,11 @@ const AboutUs = () => {
         </div>
         <div className="relative bottom-20 h-52 w-1/3 mr-44">
           <Image
-            src="/FireShot Capture 092 - Colleagues working together - Premium Photo - [www.freepik.com].png"
+            src="/istockphoto-1385970223-1024x1024.jpg"
             alt="advertising-agency-1"
             width={200}
             height={200}
-            className="w-[24rem] relative right-14 rounded-xl"
+            className="w-[29rem] h-[16rem] relative right-14 rounded-xl"
           />
           <Image
             src="/gettyimages-2149038061-612x612.jpg"
