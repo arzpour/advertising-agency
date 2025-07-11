@@ -4,16 +4,18 @@ import ContactUs from "@/components/contact-us/contact-us";
 import Header from "@/components/header/header";
 import Portfolio from "@/containers/portfolio";
 import Services from "@/containers/services";
+import Blogs from "@/containers/blogs";
 
 export default function Home() {
   return (
     <div className="mb-90">
       <Header />
       <Services />
-      <Brands />
       <Portfolio />
       <AboutUs />
       <ContactUs />
+      <Blogs />
+      <Brands />
     </div>
   );
 }

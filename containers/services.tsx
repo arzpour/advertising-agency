@@ -37,7 +37,7 @@ const servicesData = [
 const Services = () => {
   return (
     <section
-      className="flex flex-col my-10 mt-16 max-w-[90rem] mx-auto px-10"
+      className="flex flex-col my-16 mb-20 max-w-[90rem] mx-auto px-10"
       dir="rtl"
     >
       <h2 className="text-xl font-medium my-2 text-gray-900">خدمات</h2>
