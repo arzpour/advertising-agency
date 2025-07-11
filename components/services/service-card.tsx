@@ -17,7 +17,7 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, image, title }) => {
         width={200}
         height={200}
       />
-      <h3 className="text-gray-800">{title}</h3>
+      <h3 className="text-gray-800 truncate line-clamp-1">{title}</h3>
       <p className="text-sm text-gray-500 text-center">{description}</p>
     </div>
   );

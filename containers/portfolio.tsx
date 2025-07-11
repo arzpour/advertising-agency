@@ -67,15 +67,18 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="relative w-full bg-gray-100 py-20 mt-10" dir="rtl">
+    <section
+      className="relative w-full bg-gray-100 py-16 md:py-20 mt-10"
+      dir="rtl"
+    >
       <div className="container mx-auto max-w-[78rem]">
-        <div className="flex flex-wrap -mx-4">
+        <div className="flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-14 max-w-md text-center">
-              <h2 className="text-gray-700 mb-3 text-3xl leading-[1.208] font-bold">
+              <h2 className="text-gray-700 mb-3 text-xl md:text-3xl leading-[1.208] font-bold">
                 نمونه کارها
               </h2>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm px-5 sm:px-0">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است
@@ -84,13 +87,13 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-wrap justify-center -mx-4">
-          <div className="w-full px-4">
-            <ul className="flex gap-4 flex-wrap justify-center mb-12 space-x-1">
+        <div className="w-full flex flex-wrap justify-center">
+          <div className="w-full md:px-4">
+            <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-12 space-x-1">
               <li className="mb-1">
                 <button
                   onClick={() => handleProject("all")}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     showCard === "all"
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"
@@ -102,7 +105,7 @@ const Portfolio = () => {
               <li className="mb-1">
                 <button
                   onClick={() => handleProject("branding")}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     showCard === "branding"
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"
@@ -114,7 +117,7 @@ const Portfolio = () => {
               <li className="mb-1">
                 <button
                   onClick={() => handleProject("Content production")}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     showCard === "Content production"
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"
@@ -126,7 +129,7 @@ const Portfolio = () => {
               <li className="mb-1">
                 <button
                   onClick={() => handleProject("marketing")}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     showCard === "marketing"
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"
@@ -138,7 +141,7 @@ const Portfolio = () => {
               <li className="mb-1">
                 <button
                   onClick={() => handleProject("development")}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     showCard === "development"
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"
@@ -153,14 +156,14 @@ const Portfolio = () => {
         <div className="relative">
           <button
             onClick={() => scroll("left")}
-            className="absolute -left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+            className="absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
           >
             <FaArrowLeft />
           </button>
 
           <button
             onClick={() => scroll("right")}
-            className="absolute -right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+            className="absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
           >
             <FaArrowRight />
           </button>

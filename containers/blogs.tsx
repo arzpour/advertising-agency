@@ -31,15 +31,15 @@ const blogsData = [
 
 const Blogs = () => {
   return (
-    <section className="max-w-6xl mx-auto space-y-7 mt-28">
-      <div className="flex gap-7">
-        <BlogCard {...blogsData[0]} width="w-1/3" />
-        <BlogCard {...blogsData[1]} width="w-2/3" />
+    <section className="max-w-6xl mx-auto space-y-5 md:space-y-7 xl:mt-14 px-5 md:px-10 xl:px-0">
+      <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7">
+        <BlogCard {...blogsData[0]} width="w-full sm:w-1/3" />
+        <BlogCard {...blogsData[1]} width="w-full sm:w-2/3" />
       </div>
 
-      <div className="flex gap-7">
-        <BlogCard {...blogsData[2]} width="w-2/3" />
-        <BlogCard {...blogsData[3]} width="w-1/3" />
+      <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7">
+        <BlogCard {...blogsData[2]} width="w-full sm:w-2/3" />
+        <BlogCard {...blogsData[3]} width="w-full sm:w-1/3" />
       </div>
     </section>
   );

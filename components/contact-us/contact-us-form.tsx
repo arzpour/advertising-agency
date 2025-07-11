@@ -16,7 +16,7 @@ const ContactUsForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex gap-6 items-center text-white mt-5"
+      className="flex flex-wrap sm:flex-nowrap gap-3 md:gap-6 items-center text-white mt-5"
     >
       <div>
         <input
@@ -58,7 +58,7 @@ const ContactUsForm = () => {
 
       <button
         type="submit"
-        className="text-red-500 underline cursor-pointer outline-none mr-7"
+        className="text-red-500 underline cursor-pointer outline-none md:mr-7 text-sm md:text-base"
       >
         ارسال
       </button>

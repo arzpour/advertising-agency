@@ -13,7 +13,7 @@ const brands = [
 
 const Brands = () => {
   return (
-    <section className="overflow-hidden relative w-full bg-white py-6 mt-28">
+    <section className="overflow-hidden relative w-full bg-white py-6 mt-16 xl:mt-28">
       <div className="whitespace-nowrap brandScroll flex gap-10 items-center justify-center min-w-full">
         {[...brands, ...brands, ...brands].map((el, index) => (
           <Image

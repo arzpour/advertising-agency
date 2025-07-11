@@ -23,9 +23,15 @@ const Menu = () => {
       }
       `}
     >
-      <ul className="flex justify-center gap-14 py-4 items-center" dir="rtl">
+      <ul
+        className="flex justify-center gap-4 sm:gap-11 md:gap-14 py-4 items-center"
+        dir="rtl"
+      >
         <li>
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             صفحه اصلی
           </Link>
         </li>
@@ -34,7 +40,10 @@ const Menu = () => {
           onMouseEnter={() => setIsServicesOpen(true)}
           onMouseLeave={() => setIsServicesOpen(false)}
         >
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             خدمات
           </Link>
 
@@ -45,27 +54,42 @@ const Menu = () => {
               } w-96 right-0 bg-white py-5 px-6 shadow-md z-50 rounded space-y-3.5`}
             >
               <li>
-                <Link href="#" className="text-gray-800 hover:text-red-500">
+                <Link
+                  href="#"
+                  className="text-gray-800 hover:text-red-500 text-xs sm:text-sm md:text-base"
+                >
                   برندینگ و استراتژی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800 hover:text-red-500">
+                <Link
+                  href="#"
+                  className="text-gray-800 hover:text-red-500 text-xs sm:text-sm md:text-base"
+                >
                   تولید محتوا تصویری
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800 hover:text-red-500">
+                <Link
+                  href="#"
+                  className="text-gray-800 hover:text-red-500 text-xs sm:text-sm md:text-base"
+                >
                   تولید محتوا گرافیکی و متنی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800 hover:text-red-500">
+                <Link
+                  href="#"
+                  className="text-gray-800 hover:text-red-500 text-xs sm:text-sm md:text-base"
+                >
                   مدیریت شبکه های اجتماعی
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-800 hover:text-red-500">
+                <Link
+                  href="#"
+                  className="text-gray-800 hover:text-red-500 text-xs sm:text-sm md:text-base"
+                >
                   طراحی سایت و سئو
                 </Link>
               </li>
@@ -73,22 +97,34 @@ const Menu = () => {
           )}
         </li>
         <li>
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             نمونه کار
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             وبلاگ
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             درباره ما
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-red-500 font-medium">
+          <Link
+            href="#"
+            className="hover:text-red-500 font-medium text-xs sm:text-sm md:text-base"
+          >
             ارتباط با ما
           </Link>
         </li>

@@ -53,7 +53,7 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({
           height={200}
         /> */}
         <img src={ImageHref} alt="portfolio" className="rounded-t-lg" />
-        <div className="absolute h-full overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-40 hover:opacity-20 transition ease-in-out z-20"></div>
+        <div className="absolute h-full overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 ease-in-out z-20"></div>
 
         <Link href={buttonHref}>
           <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
