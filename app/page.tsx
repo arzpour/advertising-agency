@@ -1,14 +1,15 @@
 import AboutUs from "@/components/about-us";
-import Brands from "@/components/brands";
 import ContactUs from "@/components/contact-us/contact-us";
-import Header from "@/components/header/header";
+import Header from "@/components/header-footer/header";
 import Portfolio from "@/containers/portfolio";
 import Services from "@/containers/services";
 import Blogs from "@/containers/blogs";
+import Brands from "@/components/brands";
+import Footer from "@/components/header-footer/footer";
 
 export default function Home() {
   return (
-    <div className="mb-90">
+    <div>
       <Header />
       <Services />
       <Portfolio />
@@ -16,6 +17,7 @@ export default function Home() {
       <ContactUs />
       <Blogs />
       <Brands />
+      <Footer />
     </div>
   );
 }

@@ -41,7 +41,7 @@ const Menu = () => {
           {isServicesOpen && (
             <ul
               className={`absolute ${
-                isSticky ? "top-7" : "bottom-6"
+                isSticky ? "top-6" : "bottom-6"
               } w-96 right-0 bg-white py-5 px-6 shadow-md z-50 rounded space-y-3.5`}
             >
               <li>
