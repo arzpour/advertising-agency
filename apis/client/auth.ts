@@ -8,3 +8,9 @@ export const getToken: getTokenType = async (refreshToken) => {
   });
   return response.data.token.accessToken;
 };
+
+type loginType = (_: ILoginReqDto) => Promise<IAuthResDto>;
+export const login: loginType = async (body) => {
+  const response = await axiosInstance.post(urls.auth.login, body);
+  return response.data;
+};
