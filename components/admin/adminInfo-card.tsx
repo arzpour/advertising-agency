@@ -7,10 +7,12 @@ const AdminInfoCard = () => {
   const { adminInfo } = useAppSelector((state) => state.admin);
 
   return (
-    <div className="flex gap-4 items-center">
-      <div className="">
-        <h4>{adminInfo.name ?? "موجود نیست"}</h4>
-        <span className="text-gray-700">{adminInfo.email ?? "موجود نیست"}</span>
+    <div className="flex gap-6 items-center mx-8 mr-5">
+      <div>
+        <h4>{adminInfo.name === "" ? "موجود نیست" : adminInfo.name}</h4>
+        <span className="text-gray-500 text-xs">
+          {adminInfo.email === "" ? "موجود نیست" : adminInfo.email}
+        </span>
       </div>
       <Image
         src={"/premium_photo-1684711741208-315dcfa993b9.avif"}

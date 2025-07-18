@@ -4,4 +4,8 @@ export const urls = {
     login: "/auth/login",
     logout: "/auth/logout",
   },
+  project: {
+    list: "/projects",
+    ById: (id: string) => `/projects/${id}`,
+  },
 };

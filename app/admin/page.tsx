@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import PanelSideBar from "@/components/admin/panel-sidebar";
-import Projects from "@/components/admin/projects";
 import AdminHead from "@/components/admin/admin-head";
+import Projects from "@/containers/projects";
 
 const AdminPanel = () => {
   return (
