@@ -1,4 +1,3 @@
-
 interface ILoginReqDto {
   username: string;
   password: string;
@@ -18,7 +17,6 @@ interface IUserData {
   __v: number;
   refreshToken: string;
 }
-
 
 interface IAuthResDto {
   status: string;
