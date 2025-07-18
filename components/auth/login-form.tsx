@@ -16,12 +16,15 @@ import {
   setRole,
   setUserId,
 } from "@/utils/session";
+import { useAppDispatch } from "@/redux/hooks";
+import { adminPanelActions } from "@/redux/features/admin.slice";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
   const login = useLogin();
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -49,6 +52,13 @@ const LoginForm = () => {
         setAccessToken(token.accessToken);
         setRefreshToken(token.refreshToken);
       }
+
+      dispatch(
+        adminPanelActions.setAdminInfo({
+          name: `${response.data.user.firstname} ${response.data.user.lastname}`,
+          email: response.data.user.phoneNumber,
+        })
+      );
 
       if (response.data.user.role === "ADMIN") {
         router.push("/admin");

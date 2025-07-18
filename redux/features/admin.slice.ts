@@ -2,12 +2,22 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type adminPanelTabType = "tickets" | "projects" | "blogs" | "adminInfo" | "";
 
+interface IAdminInfo {
+  name: string;
+  email: string;
+}
+
 interface AdminPanelState {
   adminPanelTab: adminPanelTabType;
+  adminInfo: IAdminInfo;
 }
 
 const initialState: AdminPanelState = {
   adminPanelTab: "projects",
+  adminInfo: {
+    name: "",
+    email: "",
+  },
 };
 
 export const adminPanelSlice = createSlice({
@@ -16,6 +26,9 @@ export const adminPanelSlice = createSlice({
   reducers: {
     setadminPanelTab: (state, action: PayloadAction<adminPanelTabType>) => {
       state.adminPanelTab = action.payload;
+    },
+    setAdminInfo: (state, action: PayloadAction<IAdminInfo>) => {
+      state.adminInfo = action.payload;
     },
   },
 });

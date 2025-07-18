@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import PanelSideBar from "@/components/admin/panel-sidebar";
+import Projects from "@/components/admin/projects";
+import AdminHead from "@/components/admin/admin-head";
 
 const AdminPanel = () => {
   return (
@@ -16,7 +18,10 @@ const AdminPanel = () => {
           />
           <PanelSideBar />
         </div>
-        <div className="mx-5 sm:mx-10 w-11/12"></div>
+        <div className="mx-5 sm:mx-10 w-11/12 mt-6">
+          <AdminHead />
+          <Projects />
+        </div>
       </div>
     </div>
   );
