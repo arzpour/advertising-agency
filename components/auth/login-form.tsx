@@ -80,7 +80,7 @@ const LoginForm = () => {
             required
             autoComplete="username"
             placeholder="نام کاربری یا تلفن همراه خود را وارد کنید"
-            className="block w-full rounded-md border-b border-gray-600 px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            className="block w-full rounded-md border-b border-gray-700 px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6 outline-none"
           />
         </div>
         {errors.username && (
@@ -99,7 +99,7 @@ const LoginForm = () => {
             required
             autoComplete="current-password"
             placeholder="رمز عبور را وارد کنید"
-            className="block w-full rounded-md border-b border-gray-600 px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            className="block w-full rounded-md border-b border-gray-600 px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6 outline-none"
           />
           {showPassword ? (
             <FaEye
@@ -144,7 +144,7 @@ const LoginForm = () => {
         {login.isPending && !login.isError ? (
           <button
             type="submit"
-            className="flex gap-2 items-center w-full mb-3 justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex gap-2 items-center w-full cursor-pointer mb-3 justify-center rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <span>در حال ورود</span>
             <CgSpinner className="w-5 h-5 animate-spin" />
@@ -152,7 +152,7 @@ const LoginForm = () => {
         ) : (
           <button
             type="submit"
-            className="flex w-full mb-3 justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full mb-3 justify-center cursor-pointer rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             ورود
           </button>

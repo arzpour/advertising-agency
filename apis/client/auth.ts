@@ -14,3 +14,9 @@ export const login: loginType = async (body) => {
   const response = await axiosInstance.post(urls.auth.login, body);
   return response.data;
 };
+
+type logoutType = () => Promise<void>;
+export const logout: logoutType = async () => {
+  const response = await axiosInstance.get(urls.auth.logout);
+  return response.data;
+};

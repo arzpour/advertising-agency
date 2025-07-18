@@ -2,28 +2,28 @@ import Cookies from "js-cookie";
 
 // Access Token
 export const getAccessToken = () => {
-  return Cookies.get(process.env.NEXT_PUBLIC_ACCSESS_TOKEN_NAME as string);
+  return Cookies.get(process.env.NEXT_PUBLIC_ACCSESS_TOKEN as string);
 };
 
 export const setAccessToken = (token: string) => {
-  Cookies.set(process.env.NEXT_PUBLIC_ACCSESS_TOKEN_NAME as string, token);
+  Cookies.set(process.env.NEXT_PUBLIC_ACCSESS_TOKEN as string, token);
 };
 
 export const deleteAccessToken = () => {
-  Cookies.remove(process.env.NEXT_PUBLIC_ACCSESS_TOKEN_NAME as string);
+  Cookies.remove(process.env.NEXT_PUBLIC_ACCSESS_TOKEN as string);
 };
 
 // Refresh Token
 export const getRefreshToken = () => {
-  return Cookies.get(process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME as string);
+  return Cookies.get(process.env.NEXT_PUBLIC_REFRESH_TOKEN as string);
 };
 
 export const setRefreshToken = (token: string) => {
-  Cookies.set(process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME as string, token);
+  Cookies.set(process.env.NEXT_PUBLIC_REFRESH_TOKEN as string, token);
 };
 
 export const deleteRefreshToken = () => {
-  Cookies.remove(process.env.NEXT_PUBLIC_REFRESH_TOKEN_NAME as string);
+  Cookies.remove(process.env.NEXT_PUBLIC_REFRESH_TOKEN as string);
 };
 
 // User Role
