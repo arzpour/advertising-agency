@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import PanelSideBar from "@/components/admin/panel-sidebar";
 import AdminHead from "@/components/admin/admin-head";
-import Projects from "@/containers/projects";
+import AdminPanelContent from "@/containers/adminPanelContent";
 
 const AdminPanel = () => {
   return (
@@ -20,7 +20,7 @@ const AdminPanel = () => {
         </div>
         <div className="mx-5 sm:mx-10 w-11/12 mt-6">
           <AdminHead />
-          <Projects />
+          <AdminPanelContent />
         </div>
       </div>
     </div>

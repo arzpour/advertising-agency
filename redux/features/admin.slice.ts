@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type adminPanelTabType = "tickets" | "projects" | "blogs" | "adminInfo" | "";
+export type adminPanelTabType =
+  | "tickets"
+  | "projects"
+  | "blogs"
+  | "adminInfo"
+  | "categories";
 
 interface IAdminInfo {
   name: string;

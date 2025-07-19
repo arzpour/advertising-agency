@@ -7,8 +7,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { GrProjects, GrArticle } from "react-icons/gr";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa6";
+import { TbCategoryPlus } from "react-icons/tb";
 import useLogout from "@/hooks/useLogout";
-
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { adminPanelActions } from "@/redux/features/admin.slice";
 
@@ -36,7 +36,7 @@ const PanelSideBar = () => {
       >
         <FaRegUser className="w-5 h-5" />
         <Link
-          href="/profile"
+          href="/admin"
           className={`hidden md:block ${
             adminPanelTab === "adminInfo" ? "font-medium" : ""
           }`}
@@ -52,7 +52,7 @@ const PanelSideBar = () => {
       >
         <GrProjects className="w-5 h-5" />
         <Link
-          href="/profile"
+          href="/admin"
           className={`hidden md:block ${
             adminPanelTab === "projects" ? "font-medium" : ""
           }`}
@@ -68,12 +68,32 @@ const PanelSideBar = () => {
       >
         <GrArticle className="w-5 h-5" />
         <Link
-          href="/profile"
+          href="/admin"
           className={`hidden md:block ${
             adminPanelTab === "blogs" ? "font-medium" : ""
           }`}
         >
           بلاگ ها
+        </Link>
+      </button>
+      <button
+        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+          adminPanelTab === "categories"
+            ? "bg-gray-100 w-full text-red-600"
+            : ""
+        }`}
+        onClick={() =>
+          dispatch(adminPanelActions.setadminPanelTab("categories"))
+        }
+      >
+        <TbCategoryPlus className="w-5 h-5" />
+        <Link
+          href="/admin"
+          className={`hidden md:block ${
+            adminPanelTab === "categories" ? "font-medium" : ""
+          }`}
+        >
+          خدمات
         </Link>
       </button>
       <button
@@ -84,7 +104,7 @@ const PanelSideBar = () => {
       >
         <BiMessageSquareDetail className="w-5 h-5" />
         <Link
-          href="/profile"
+          href="/admin"
           className={`hidden md:block ${
             adminPanelTab === "tickets" ? "font-medium" : ""
           }`}
@@ -94,7 +114,7 @@ const PanelSideBar = () => {
       </button>
       <li className="flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
         <FaRegHeart className="w-5 h-5" />
-        <Link href="/profile" className="hidden md:block">
+        <Link href="/admin" className="hidden md:block">
           علاقه مندی ها
         </Link>
       </li>

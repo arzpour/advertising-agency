@@ -3,7 +3,12 @@ import { perPageLimit } from "@/utils/config";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-const useCategoryList = (limitCus?: number) => {
+interface IUseCategoryList {
+  enabled: boolean;
+  limitCus?: number;
+}
+
+const useCategoryList = ({ enabled, limitCus }: IUseCategoryList) => {
   const [page, setPage] = React.useState<number>(1);
 
   const limit = limitCus ?? perPageLimit;
@@ -19,6 +24,7 @@ const useCategoryList = (limitCus?: number) => {
     },
     refetchOnWindowFocus: false,
     retry: 1,
+    enabled,
   });
 
   React.useEffect(() => {
