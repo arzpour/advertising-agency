@@ -8,4 +8,7 @@ export const urls = {
     list: "/projects",
     ById: (id: string) => `/projects/${id}`,
   },
+  category: {
+    list: "/categories",
+  },
 };

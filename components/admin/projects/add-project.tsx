@@ -1,30 +1,3 @@
-// "use client";
-// import React from "react";
-// import AddModal from "../modals/add-modal";
-
-// const AddProjectBtn = () => {
-//   const [showAddProjectModal, setShowAddProjectModal] =
-//     React.useState<boolean>(false);
-
-//   return (
-//     <>
-//       <button
-//         onClick={() => setShowAddProjectModal(true)}
-//         className="bg-red-500 text-white px-5 py-1.5 rounded-full cursor-pointer"
-//       >
-//         افزودن پروژه
-//       </button>
-//       {showAddProjectModal && (
-//         <AddModal setShowAddModal={setShowAddProjectModal} status="project" />
-//       )}
-//     </>
-//   );
-// };
-
-// export default AddProjectBtn;
-
-// "use client";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
