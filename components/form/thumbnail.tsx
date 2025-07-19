@@ -1,0 +1,115 @@
+"use client";
+
+import { projectSchemaType } from "@/validations/project";
+import Image from "next/image";
+import React from "react";
+import { Control, useController } from "react-hook-form";
+
+interface IThumbnail {
+  name: keyof projectSchemaType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<any>;
+  defaultValue?: string;
+  status?: string;
+  thumbnailStatus?: "product" | "blog";
+}
+
+export const Thumbnail: React.FC<IThumbnail> = ({
+  name,
+  control,
+  defaultValue,
+  status,
+  thumbnailStatus,
+}) => {
+  const [url, setUrl] = React.useState<string | undefined>(undefined);
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ name, control });
+
+  React.useEffect(() => {
+    const thumbnailUrl =
+      thumbnailStatus === "blog"
+        ? process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL
+        : process.env.NEXT_PUBLIC_THUMBNAIL_URL;
+    if (status === "edit" && defaultValue) {
+      setUrl(`${thumbnailUrl}/${defaultValue}`);
+    }
+  }, [defaultValue, status, thumbnailStatus]);
+
+  const onClick = () => {
+    inputRef.current?.click();
+  };
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const file = event.target.files?.[0];
+    field.onChange(file);
+
+    if (!file) return;
+
+    const newUrl = URL.createObjectURL(file);
+    setUrl(newUrl);
+  };
+
+  const deleteImage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setUrl(undefined);
+    field.onChange(undefined);
+  };
+
+  return (
+    <div className="w-full">
+      <div
+        onClick={onClick}
+        className={`
+          relative my-4 border rounded-md flex
+          items-center justify-center h-36 hover:bg-gray-50 cursor-pointer
+          ${!!error ? "border-red-400" : "border-gray-300"}
+        `}
+      >
+        {!!url && (
+          <>
+            <Image
+              src={url}
+              alt="thumbnail"
+              width={500}
+              height={500}
+              className="w-full h-full object-cover object-center rounded-md"
+            />
+            <button
+              onClick={deleteImage}
+              className="absolute top-1 right-1 bg-gray-900 opacity-70 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs"
+            >
+              ×
+            </button>
+          </>
+        )}
+        {!url && (
+          <p
+            className={`
+              text-xs font-medium
+              ${error ? "text-red-400" : "text-gray-500"}
+            `}
+          >
+            عکس اصلی را وارد کنید
+          </p>
+        )}
+        <input
+          onChange={onChange}
+          ref={inputRef}
+          type="file"
+          className="hidden"
+        />
+      </div>
+      {!!error && (
+        <p className="text-red-400 text-xs capitalize font-semibold">
+          {error.message}
+        </p>
+      )}
+    </div>
+  );
+};
+
+

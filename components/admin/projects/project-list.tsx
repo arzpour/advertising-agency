@@ -17,7 +17,7 @@ const ProjectList = () => {
         </div>
       ))}
 
-      {isSuccess && !isExist && <p>پروژه ای موجود نیست</p>}
+      {isSuccess && !isExist && <p className="mt-4">پروژه ای موجود نیست</p>}
     </>
   );
 };

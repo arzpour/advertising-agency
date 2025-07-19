@@ -12,14 +12,16 @@ const AddProjectBtn = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6">
+        <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
           افزودن پروژه
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="max-w-6xl">
         <DialogHeader>
-          <DialogTitle className="text-right">افزودن پروژه جدید</DialogTitle>
+          <DialogTitle className="text-right mt-6">
+            افزودن پروژه جدید
+          </DialogTitle>
         </DialogHeader>
         <AddProjectForm />
       </DialogContent>

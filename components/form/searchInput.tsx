@@ -22,7 +22,7 @@ const SearchInput: React.FC<ISearchInput> = ({ className }) => {
   }, [debounceValue]);
 
   return (
-    <div className={`relative w-1/2 shadow-sm ${className}`}>
+    <div className={`relative w-1/2 ${className}`}>
       <div className="absolute inset-y-0 start-1 flex items-center ps-3 pointer-events-none">
         <IoSearchOutline className="w-4 h-4 relative bottom-0.5" />
       </div>
@@ -30,7 +30,7 @@ const SearchInput: React.FC<ISearchInput> = ({ className }) => {
         type="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="block w-full placeholder:text-xs text-xs bg-white py-2 md:placeholder:text-base outline-none rounded-full px-8 md:py-2.5 pr-12 ps-10 border-none dark:placeholder-gray-400 dark:text-white"
+        className="block w-full placeholder:text-xs text-xs shadow-sm bg-white py-2.5 outline-none rounded-full px-8 md:py-2.5 pr-12 ps-10 border-none dark:placeholder-gray-400 dark:text-white"
         placeholder="اینجا سرچ کنید..."
       />
     </div>
