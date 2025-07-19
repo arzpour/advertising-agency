@@ -22,7 +22,7 @@ const SearchInput: React.FC<ISearchInput> = ({ className }) => {
   }, [debounceValue]);
 
   return (
-    <div className={`relative w-1/2 ${className}`}>
+    <div className={`relative w-1/2 shadow-sm ${className}`}>
       <div className="absolute inset-y-0 start-1 flex items-center ps-3 pointer-events-none">
         <IoSearchOutline className="w-4 h-4 relative bottom-0.5" />
       </div>

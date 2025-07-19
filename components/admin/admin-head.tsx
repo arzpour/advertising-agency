@@ -1,5 +1,5 @@
 import React from "react";
-import SearchInput from "../search/searchInput";
+import SearchInput from "../form/searchInput";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import AdminInfoCard from "./adminInfo-card";

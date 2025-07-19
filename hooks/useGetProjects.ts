@@ -9,7 +9,7 @@ const useGetProjects = (limitCus?: number) => {
   const limit = limitCus ?? perPageLimit;
 
   const { data, isSuccess, isLoading, isError, error } = useQuery({
-    queryKey: ["get-blogs", limit, page],
+    queryKey: ["get-projects", limit, page],
     queryFn: async () => {
       return await getProjects({
         limit: limit,

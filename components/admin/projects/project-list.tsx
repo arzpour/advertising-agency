@@ -1,17 +1,24 @@
 "use client";
 import React from "react";
-import ProjectCard from "./project-card";
+// import ProjectCard from "./project-card";
 import useGetProjects from "@/hooks/useGetProjects";
 
 const ProjectList = () => {
-  const { data: projectList } = useGetProjects();
-  console.log("🚀 ~ Projects ~ projectList:", projectList);
+  const { data: projectList, isSuccess } = useGetProjects();
+
+  const isExist =
+    projectList?.data.projects.length && projectList?.data.projects.length > 0;
 
   return (
-    <div>
-      {/* {projectList.ma} */}
-      <ProjectCard />
-    </div>
+    <>
+      {projectList?.data.projects.map((el) => (
+        <div key={el} className={`${!!isSuccess && !!isExist ? "" : "hidden"}`}>
+          {/* <ProjectCard /> */}
+        </div>
+      ))}
+
+      {isSuccess && !isExist && <p>پروژه ای موجود نیست</p>}
+    </>
   );
 };
 

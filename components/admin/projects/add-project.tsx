@@ -1,0 +1,57 @@
+// "use client";
+// import React from "react";
+// import AddModal from "../modals/add-modal";
+
+// const AddProjectBtn = () => {
+//   const [showAddProjectModal, setShowAddProjectModal] =
+//     React.useState<boolean>(false);
+
+//   return (
+//     <>
+//       <button
+//         onClick={() => setShowAddProjectModal(true)}
+//         className="bg-red-500 text-white px-5 py-1.5 rounded-full cursor-pointer"
+//       >
+//         افزودن پروژه
+//       </button>
+//       {showAddProjectModal && (
+//         <AddModal setShowAddModal={setShowAddProjectModal} status="project" />
+//       )}
+//     </>
+//   );
+// };
+
+// export default AddProjectBtn;
+
+// "use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import AddProjectForm from "../projects/project-form";
+
+const AddProjectBtn = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6">
+          افزودن پروژه
+        </Button>
+      </DialogTrigger>
+
+      <DialogContent className="max-w-3xl">
+        <DialogHeader>
+          <DialogTitle className="text-right">افزودن پروژه جدید</DialogTitle>
+        </DialogHeader>
+        <AddProjectForm />
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default AddProjectBtn;
