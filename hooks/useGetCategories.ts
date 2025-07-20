@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 interface IUseCategoryList {
-  enabled: boolean;
+  enabled?: boolean;
   limitCus?: number;
 }
 

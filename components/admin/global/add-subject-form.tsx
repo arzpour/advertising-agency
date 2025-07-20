@@ -17,7 +17,7 @@ interface IAddForm {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   setSelectedCategory?: (value: string) => void;
-  useCategoryData?: { data?: { categories: ICategory[] } };
+  categoryData?: { data?: { categories: ICategory[] } };
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
 
@@ -26,7 +26,7 @@ const AddForm: React.FC<IAddForm> = ({
   control,
   handleSubmit,
   setSelectedCategory,
-  useCategoryData,
+  categoryData,
 }) => {
   return (
     <form
@@ -69,7 +69,7 @@ const AddForm: React.FC<IAddForm> = ({
                 <SelectValue placeholder="دسته‌بندی را انتخاب کنید" />
               </SelectTrigger>
               <SelectContent>
-                {(useCategoryData?.data?.categories || []).map((item) => (
+                {(categoryData?.data?.categories || []).map((item) => (
                   <SelectItem key={item._id} value={item.name as string}>
                     {item.name}
                   </SelectItem>

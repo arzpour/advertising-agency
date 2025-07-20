@@ -10,7 +10,11 @@ import { projectSchema, projectSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
 
-const AddProjectForm = () => {
+interface IAddProjectForm {
+  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddProjectForm: React.FC<IAddProjectForm> = ({ setDialogOpen }) => {
   const [selectedCategory, setSelectedCategory] = React.useState("");
 
   const { adminPanelTab } = useAppSelector((state) => state.admin);
@@ -21,21 +25,17 @@ const AddProjectForm = () => {
   });
 
   const addProject = useAddProject();
-  const { data: useCategoryData } = useCategoryList({
-    enabled: adminPanelTab === "categories",
+  const { data: categoryData } = useCategoryList({
+    enabled: adminPanelTab !== "categories",
     limitCus: Infinity,
   });
 
   const categoryId =
-    useCategoryData?.data?.categories.find(
+    categoryData?.data?.categories.find(
       (category: ICategory) => category.name === selectedCategory
     )?._id || "";
 
   const onSubmit: SubmitHandler<projectSchemaType> = async (data) => {
-    console.log(
-      "🚀 ~ constonSubmit:SubmitHandler<projectSchemaType>= ~ data:",
-      data
-    );
     const formData = new FormData();
 
     formData.append("name", data.name || "");
@@ -61,17 +61,17 @@ const AddProjectForm = () => {
         icon: "✅",
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
+      setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-projects"] });
     } catch (error) {
-      console.log(
-        "🚀 ~ constonSubmit:SubmitHandler<blogSchemaType>= ~ error:",
-        error
-      );
+      console.log("🚀 ~ error:", error);
+      setDialogOpen(false);
+
       toast("اطلاعات وارد شده صحیح نیست", {
         className: "!bg-red-100 !text-red-800 !shadow-md !h-[60px]",
       });
-
-      // errorHandler(error as AxiosError<IError>);
+    } finally {
+      setDialogOpen(false);
     }
   };
 
@@ -80,7 +80,7 @@ const AddProjectForm = () => {
       control={control}
       status="projects"
       setSelectedCategory={setSelectedCategory}
-      useCategoryData={useCategoryData}
+      categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
     />
   );

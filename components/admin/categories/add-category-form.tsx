@@ -8,7 +8,11 @@ import AddForm from "../global/add-subject-form";
 import { categorySchema, categorySchemaType } from "@/validations/category";
 import { useAddCategory } from "@/apis/mutations/category";
 
-const AddCategoryForm = () => {
+interface IAddCategoryForm {
+  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
   const { handleSubmit, control } = useForm<categorySchemaType>({
     mode: "all",
     resolver: zodResolver(categorySchema),
@@ -33,14 +37,18 @@ const AddCategoryForm = () => {
         icon: "✅",
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
+      setDialogOpen(false);
+
       queryClient.invalidateQueries({ queryKey: ["get-categories"] });
     } catch (error) {
       console.log("🚀 ~ error:", error);
+      setDialogOpen(false);
+
       toast("اطلاعات وارد شده صحیح نیست", {
         className: "!bg-red-100 !text-red-800 !shadow-md !h-[60px]",
       });
-
-      // errorHandler(error as AxiosError<IError>);
+    } finally {
+      setDialogOpen(false);
     }
   };
 

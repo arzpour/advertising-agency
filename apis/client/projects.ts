@@ -15,7 +15,7 @@ export const getProjectById: getProjectByIdType = async (id) => {
   return response.data;
 };
 
-type addProjectType = (data: FormData) => Promise<IProjectRes>;
+type addProjectType = (data: FormData) => Promise<IAddProjectResDto>;
 export const addProject: addProjectType = async (data) => {
   const response = await axiosInstance.post(urls.project.list, data, {
     headers: {

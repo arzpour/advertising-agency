@@ -10,11 +10,12 @@ const AdminPanel = () => {
       <div className="flex flex-col sm:flex-row">
         <div className="hidden sm:block w-20 md:w-72 bg-white shadow-lg h-svh">
           <Image
-            src={"/IMG_20250717_163940_569.png"}
+            src="/IMG_20250717_163940_569.png"
             alt="logo panel"
             width={200}
-            height={200}
-            className="mr-5 mt-3"
+            height={0}
+            sizes="100vw"
+            className="h-auto w-4/5 mr-3 mt-3"
           />
           <PanelSideBar />
         </div>
@@ -26,5 +27,7 @@ const AdminPanel = () => {
     </div>
   );
 };
+
+// لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.
 
 export default AdminPanel;
