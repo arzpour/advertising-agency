@@ -11,3 +11,13 @@ export const getAllCategories: getAllCategoriesType = async ({
   });
   return response.data;
 };
+
+type addCategoryType = (data: FormData) => Promise<IAddCategoryResDto>;
+export const addCategory: addCategoryType = async (data) => {
+  const response = await axiosInstance.post(urls.category.list, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Input } from "@/components/form/input";
 import { Images } from "@/components/form/images";
@@ -17,7 +16,7 @@ interface IAddForm {
   status: "projects" | "blogs" | "categories";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
-  setSelectedCategory: (value: string) => void;
+  setSelectedCategory?: (value: string) => void;
   useCategoryData?: { data?: { categories: ICategory[] } };
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
@@ -57,7 +56,9 @@ const AddForm: React.FC<IAddForm> = ({
               value={field.value}
               onValueChange={(value: string) => {
                 field.onChange(value);
-                setSelectedCategory(value);
+                if (setSelectedCategory) {
+                  setSelectedCategory(value);
+                }
               }}
             >
               <SelectTrigger

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import React from "react";
 import AddProjectForm from "../projects/add-project-form";
+import AddCategoryForm from "../categories/add-category-form";
 
 interface IAddDialog {
   status: "projects" | "categories" | "blogs";
@@ -43,7 +44,7 @@ const AddDialog: React.FC<IAddDialog> = ({ status }) => {
             جدید
           </DialogTitle>
         </DialogHeader>
-        {status === "projects" && <AddProjectForm />}
+        {status === "projects" ? <AddProjectForm /> : status === "categories" ? <AddCategoryForm/> : null}
       </DialogContent>
     </Dialog>
   );

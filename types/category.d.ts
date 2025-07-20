@@ -18,3 +18,10 @@ interface ICategoryResDto {
     categories: ICategory[];
   };
 }
+
+interface IAddCategoryResDto {
+  status?: string;
+  data?: {
+    category: ICategory;
+  };
+}

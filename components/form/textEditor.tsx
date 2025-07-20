@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useCallback, useState, useMemo } from "react";
-import JoditEditor from "jodit-react";
-import "jodit-react/build/jodit-react.js";
+import dynamic from "next/dynamic";
+
+const JoditEditor = dynamic(() => import("jodit-react"), {
+  ssr: false,
+});
 
 interface ITextEditor {
   defaultValue?: string;
