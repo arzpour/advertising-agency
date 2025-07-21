@@ -1,7 +1,7 @@
 interface ICategory {
-  name?: string;
+  name: string;
   icon?: string;
-  _id?: string;
+  _id: string;
   createdAt?: string;
   updatedAt?: string;
   slugname?: string;

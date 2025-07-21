@@ -6,9 +6,9 @@ import AdminPanelContent from "@/containers/adminPanelContent";
 
 const AdminPanel = () => {
   return (
-    <div dir="rtl" className="bg-gray-100 max-w-1770 mx-auto h-screen">
+    <div dir="rtl" className="bg-gray-100 max-w-1770 mx-auto">
       <div className="flex flex-col sm:flex-row">
-        <div className="hidden sm:block w-20 md:w-72 bg-white shadow-lg h-svh">
+        <div className="hidden sm:block w-20 md:w-72 sticky top-0 h-screen overflow-y-auto bg-white shadow-lg">
           <Image
             src="/IMG_20250717_163940_569.png"
             alt="logo panel"
@@ -19,7 +19,7 @@ const AdminPanel = () => {
           />
           <PanelSideBar />
         </div>
-        <div className="mx-5 sm:mx-10 w-11/12 mt-6">
+        <div className="mx-5 flex-1 overflow-y-auto sm:mx-10 w-11/12 mt-6">
           <AdminHead />
           <AdminPanelContent />
         </div>
@@ -27,7 +27,5 @@ const AdminPanel = () => {
     </div>
   );
 };
-
-// لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.
 
 export default AdminPanel;

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
-// import ProjectList from "@/components/admin/projects/project-list";
+import ProjectList from "@/components/admin/projects/project-list";
 import AddProjectForm from "@/components/admin/projects/add-project-form";
 import AddCategoryForm from "@/components/admin/categories/add-category-form";
 import { Button } from "@/components/ui/button";
@@ -46,6 +46,13 @@ const AdminPanelContent = () => {
     return null;
   };
 
+  const renderLists = () => {
+    if (adminPanelTab === "projects") return <ProjectList />;
+    if (adminPanelTab === "categories") return null;
+    if (adminPanelTab === "blogs") return null;
+    return null;
+  };
+
   return (
     <>
       {shouldShowAddDialog && (
@@ -71,7 +78,7 @@ const AdminPanelContent = () => {
         </div>
       )}
 
-      {/* <ProjectList /> */}
+      {renderLists()}
     </>
   );
 };
