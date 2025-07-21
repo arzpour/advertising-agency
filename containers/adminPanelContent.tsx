@@ -13,6 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import AddBlogForm from "@/components/admin/blogs/add-blog-form";
+import BlogList from "@/components/admin/blogs/blog-list";
 
 const AdminPanelContent = () => {
   const { adminPanelTab } = useAppSelector((state) => state.admin);
@@ -49,7 +50,7 @@ const AdminPanelContent = () => {
   const renderLists = () => {
     if (adminPanelTab === "projects") return <ProjectList />;
     if (adminPanelTab === "categories") return null;
-    if (adminPanelTab === "blogs") return null;
+    if (adminPanelTab === "blogs") return <BlogList />;
     return null;
   };
 

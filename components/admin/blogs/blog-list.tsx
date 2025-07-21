@@ -1,18 +1,18 @@
 "use client";
 import React from "react";
-import useGetProjects from "@/hooks/useGetProjects";
-import ProjectCard from "./project-card";
+import useGetBlogs from "@/hooks/useGetBlogs";
+import BlogCard from "./blog-card";
 import { useGetCategoryName } from "@/hooks/getCategoryName";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
-const ProjectList = () => {
+const BlogList = () => {
   const {
-    allProjects,
+    allblogs,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     isLoading,
-  } = useGetProjects();
+  } = useGetBlogs();
 
   const { categoryMap } = useGetCategoryName();
 
@@ -25,12 +25,8 @@ const ProjectList = () => {
   return (
     <>
       <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
-        {allProjects.map((el) => (
-          <ProjectCard
-            key={el._id}
-            {...el}
-            category={categoryMap[el.category]}
-          />
+        {allblogs.map((el) => (
+          <BlogCard key={el._id} {...el} category={categoryMap[el.category]} />
         ))}
       </div>
 
@@ -43,11 +39,11 @@ const ProjectList = () => {
         </div>
       )}
 
-      {!hasNextPage && !isLoading && allProjects.length === 0 && (
+      {!hasNextPage && !isLoading && allblogs.length === 0 && (
         <p className="text-center mt-6 text-gray-500">پروژه‌ای موجود نیست.</p>
       )}
     </>
   );
 };
 
-export default ProjectList;
+export default BlogList;

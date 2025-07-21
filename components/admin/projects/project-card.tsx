@@ -1,5 +1,7 @@
+import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
+import { GoTrash } from "react-icons/go";
 
 interface IProjectCard {
   name: string;
@@ -34,9 +36,14 @@ const ProjectCard: React.FC<IProjectCard> = ({
           </h3>
           <p className="text-gray-600 text-xs">{category}</p>
         </div>
-        <p className="text-sm font-bold text-gray-700 my-3 line-clamp-2">
-          {description}
-        </p>
+        <p
+          className="text-sm font-medium text-gray-700 my-3 line-clamp-2"
+          dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
+        ></p>
+        <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
+          <span className="text-gray-700 text-sm underline">ویرایش</span>
+          <GoTrash className="w-4 h-4 text-red-500" />
+        </div>
       </div>
     </div>
   );

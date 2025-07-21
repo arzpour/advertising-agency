@@ -1,8 +1,8 @@
-import { getProjects } from "@/apis/client/projects";
+import { getBlogs } from "@/apis/client/blogs";
 import { perPageLimit } from "@/utils/config";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const useGetProjects = (limitCus?: number) => {
+const useGetBlogs = (limitCus?: number) => {
   const limit = limitCus ?? perPageLimit;
 
   const {
@@ -14,11 +14,11 @@ const useGetProjects = (limitCus?: number) => {
     isError,
     error,
   } = useInfiniteQuery({
-    queryKey: ["get-projects"],
+    queryKey: ["get-blogs"],
     queryFn: async ({ pageParam = 1 }) =>
-      await getProjects({ limit: limit, page: pageParam }),
+      await getBlogs({ limit: limit, page: pageParam }),
     getNextPageParam: (lastPage, allPages) => {
-      const hasMore = lastPage.data.projects.length === limit;
+      const hasMore = lastPage.data?.blogs.length === limit;
       return hasMore ? allPages.length + 1 : undefined;
     },
     initialPageParam: 1,
@@ -26,10 +26,10 @@ const useGetProjects = (limitCus?: number) => {
     retry: 1,
   });
 
-  const allProjects = data?.pages.flatMap((page) => page.data.projects) || [];
+  const allblogs = data?.pages.flatMap((page) => page.data.blogs) || [];
 
   return {
-    allProjects,
+    allblogs,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -39,4 +39,4 @@ const useGetProjects = (limitCus?: number) => {
   };
 };
 
-export default useGetProjects;
+export default useGetBlogs;
