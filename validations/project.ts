@@ -4,12 +4,12 @@ const validThumbnailTypes = ["image/png", "image/jpeg", "image/jpg"];
 const validSize = 2; // MB
 
 export const projectSchema = z.object({
-  category: z.string({ message: "دسته بندی الزامی است" }).optional(),
   name: z
     .string({ message: "نام پروژه الزامی است" })
     .min(2, { message: "نام پروژه باید بیشتر از ۲ حرف باشد" }),
 
   description: z.string({ message: "توضیحات الزامی است" }),
+  category: z.string({ message: "دسته بندی الزامی است" }).optional(),
   thumbnail: z
     .any()
     .optional()

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
-import ProjectList from "@/components/admin/projects/project-list";
+// import ProjectList from "@/components/admin/projects/project-list";
 import AddProjectForm from "@/components/admin/projects/add-project-form";
 import AddCategoryForm from "@/components/admin/categories/add-category-form";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import AddBlogForm from "@/components/admin/blogs/add-blog-form";
 
 const AdminPanelContent = () => {
   const { adminPanelTab } = useAppSelector((state) => state.admin);
@@ -40,6 +41,8 @@ const AdminPanelContent = () => {
       return <AddProjectForm setDialogOpen={setDialogOpen} />;
     if (adminPanelTab === "categories")
       return <AddCategoryForm setDialogOpen={setDialogOpen} />;
+    if (adminPanelTab === "blogs")
+      return <AddBlogForm setDialogOpen={setDialogOpen} />;
     return null;
   };
 
@@ -68,7 +71,7 @@ const AdminPanelContent = () => {
         </div>
       )}
 
-      <ProjectList />
+      {/* <ProjectList /> */}
     </>
   );
 };

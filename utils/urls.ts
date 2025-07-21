@@ -11,4 +11,7 @@ export const urls = {
   category: {
     list: "/categories",
   },
+  blog: {
+    list: "/blogs",
+  },
 };
