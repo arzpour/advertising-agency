@@ -13,6 +13,7 @@ const useGetBlogs = (limitCus?: number) => {
     isLoading,
     isError,
     error,
+    isSuccess,
   } = useInfiniteQuery({
     queryKey: ["get-blogs"],
     queryFn: async ({ pageParam = 1 }) =>
@@ -36,6 +37,7 @@ const useGetBlogs = (limitCus?: number) => {
     isLoading,
     isError,
     error,
+    isSuccess,
   };
 };
 

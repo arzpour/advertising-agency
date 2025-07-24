@@ -32,12 +32,11 @@ axiosInstance.interceptors.response.use(
         req.url !== "/auth/signup"
       ) {
         try {
-          const refreshToken = await getRefreshToken();
-          const refreshTokenValue = refreshToken?.value;
+          const refreshToken = getRefreshToken();
 
-          if (!refreshTokenValue) throw new Error("No refresh token");
+          if (!refreshToken) throw new Error("No refresh token");
 
-          const newAccessToken = await getToken(refreshTokenValue as string);
+          const newAccessToken = await getToken(refreshToken as string);
 
           req.headers["Authorization"] = `Bearer ${newAccessToken}`;
 

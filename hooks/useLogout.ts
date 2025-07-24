@@ -2,7 +2,6 @@ import {
   deleteAccessToken,
   deleteRefreshToken,
   deleteRole,
-  deleteUserId,
 } from "@/utils/session";
 import React from "react";
 import { logout } from "@/apis/client/auth";
@@ -25,7 +24,6 @@ const useLogout = () => {
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setIsOpen(false);
-      deleteUserId();
       router.push("/");
     } catch (error) {
       toast("مشکلی پیش آمده", {

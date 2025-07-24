@@ -1,9 +1,8 @@
-"use client";
+"use client"
 import { useDebounce } from "@/hooks/useDebounce";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { IoSearchOutline } from "react-icons/io5";
-
+import { Search } from "lucide-react";
 interface ISearchInput {
   className?: string;
 }
@@ -24,7 +23,7 @@ const SearchInput: React.FC<ISearchInput> = ({ className }) => {
   return (
     <div className={`relative w-1/2 ${className}`}>
       <div className="absolute inset-y-0 start-1 flex items-center ps-3 pointer-events-none">
-        <IoSearchOutline className="w-4 h-4 relative bottom-0.5" />
+        <Search className="w-4 h-4 relative bottom-0.5" />
       </div>
       <input
         type="search"

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Image from "next/image";
 import PanelSideBar from "@/components/admin/panel-sidebar";
-import AdminHead from "@/components/admin/admin-head";
-import AdminPanelContent from "@/containers/adminPanelContent";
+
+const AdminHead = lazy(() => import("@/components/admin/admin-head"));
+const AdminPanelContent = lazy(() => import("@/containers/adminPanelContent"));
 
 const AdminPanel = () => {
   return (
@@ -20,8 +21,10 @@ const AdminPanel = () => {
           <PanelSideBar />
         </div>
         <div className="mx-5 flex-1 overflow-y-auto sm:mx-10 w-11/12 mt-6">
-          <AdminHead />
-          <AdminPanelContent />
+          <Suspense>
+            <AdminHead />
+            <AdminPanelContent />
+          </Suspense>
         </div>
       </div>
     </div>

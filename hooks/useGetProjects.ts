@@ -13,6 +13,7 @@ const useGetProjects = (limitCus?: number) => {
     isLoading,
     isError,
     error,
+    isSuccess,
   } = useInfiniteQuery({
     queryKey: ["get-projects"],
     queryFn: async ({ pageParam = 1 }) =>
@@ -36,6 +37,7 @@ const useGetProjects = (limitCus?: number) => {
     isLoading,
     isError,
     error,
+    isSuccess,
   };
 };
 

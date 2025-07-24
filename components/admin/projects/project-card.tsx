@@ -1,7 +1,7 @@
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
-import { GoTrash } from "react-icons/go";
+import { Trash, Edit } from "lucide-react";
 
 interface IProjectCard {
   name: string;
@@ -41,8 +41,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></p>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
-          <span className="text-gray-700 text-sm underline">ویرایش</span>
-          <GoTrash className="w-4 h-4 text-red-500" />
+          <Edit className="w-4 h-4 text-red-500" />
+          <Trash className="w-4 h-4 text-red-500" />
         </div>
       </div>
     </div>

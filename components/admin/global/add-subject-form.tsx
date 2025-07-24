@@ -28,6 +28,8 @@ const AddForm: React.FC<IAddForm> = ({
   setSelectedCategory,
   categoryData,
 }) => {
+  const isCategory = status === "categories";
+
   return (
     <form
       dir="rtl"
@@ -47,7 +49,7 @@ const AddForm: React.FC<IAddForm> = ({
         )}
       />
 
-      {status !== "categories" && (
+      {!isCategory && (
         <Controller
           control={control}
           name="category"
@@ -89,7 +91,10 @@ const AddForm: React.FC<IAddForm> = ({
       />
 
       <div className="flex gap-4 mt-6">
-        <Thumbnail name="thumbnail" control={control} />
+        <Thumbnail
+          name={!isCategory ? "thumbnail" : "icon"}
+          control={control}
+        />
         {status !== "categories" && <Images name="images" control={control} />}
       </div>
       <div className="flex justify-end">

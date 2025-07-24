@@ -12,6 +12,7 @@ const ProjectList = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
+    isSuccess
   } = useGetProjects();
 
   const { categoryMap } = useGetCategoryName();
@@ -24,6 +25,8 @@ const ProjectList = () => {
 
   return (
     <>
+    {isSuccess && allProjects.length > 0 && (
+
       <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
         {allProjects.map((el) => (
           <ProjectCard
@@ -33,6 +36,7 @@ const ProjectList = () => {
           />
         ))}
       </div>
+    )}
 
       {hasNextPage && (
         <div
@@ -44,7 +48,7 @@ const ProjectList = () => {
       )}
 
       {!hasNextPage && !isLoading && allProjects.length === 0 && (
-        <p className="text-center mt-6 text-gray-500">پروژه‌ای موجود نیست.</p>
+        <p className="mt-6 text-gray-500">پروژه‌ای موجود نیست.</p>
       )}
     </>
   );

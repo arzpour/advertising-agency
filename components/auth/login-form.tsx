@@ -4,18 +4,11 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { loginSchema, loginSchemaType } from "@/validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CgSpinner } from "react-icons/cg";
-import { BsEyeSlashFill } from "react-icons/bs";
-import { FaEye } from "react-icons/fa";
+import { LoaderCircle, EyeOff, Eye } from "lucide-react";
 import { useLogin } from "@/apis/mutations/auth";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import {
-  setAccessToken,
-  setRefreshToken,
-  setRole,
-  setUserId,
-} from "@/utils/session";
+import { setAccessToken, setRefreshToken, setRole } from "@/utils/session";
 import { useAppDispatch } from "@/redux/hooks";
 import { adminPanelActions } from "@/redux/features/admin.slice";
 
@@ -46,7 +39,6 @@ const LoginForm = () => {
       const token = response.token;
 
       setRole(response.data.user.role);
-      setUserId(response.data.user._id);
 
       if (token) {
         setAccessToken(token.accessToken);
@@ -112,12 +104,12 @@ const LoginForm = () => {
             className="block w-full rounded-md border-b border-gray-600 px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6 outline-none"
           />
           {showPassword ? (
-            <FaEye
+            <Eye
               onClick={showPasswordHandler}
               className="w-4 h-4 absolute left-2 text-gray-600 cursor-pointer"
             />
           ) : (
-            <BsEyeSlashFill
+            <EyeOff
               onClick={showPasswordHandler}
               className="w-4 h-4 absolute left-2 text-gray-600 cursor-pointer"
             />
@@ -157,7 +149,7 @@ const LoginForm = () => {
             className="flex gap-2 items-center w-full cursor-pointer mb-3 justify-center rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <span>در حال ورود</span>
-            <CgSpinner className="w-5 h-5 animate-spin" />
+            <LoaderCircle className="w-5 h-5 animate-spin" />
           </button>
         ) : (
           <button

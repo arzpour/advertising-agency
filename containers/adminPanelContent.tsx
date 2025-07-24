@@ -1,9 +1,7 @@
 "use client";
+
 import React, { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
-import ProjectList from "@/components/admin/projects/project-list";
-import AddProjectForm from "@/components/admin/projects/add-project-form";
-import AddCategoryForm from "@/components/admin/categories/add-category-form";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,74 +10,79 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import AddBlogForm from "@/components/admin/blogs/add-blog-form";
-import BlogList from "@/components/admin/blogs/blog-list";
+import dynamic from "next/dynamic";
+
+// Dynamic imports
+const ProjectList = dynamic(
+  () => import("@/components/admin/projects/project-list")
+);
+const AddProjectForm = dynamic(
+  () => import("@/components/admin/projects/add-project-form")
+);
+// const CategoryList = dynamic(
+//   () => import("@/components/admin/categories/category-list")
+// );
+const AddCategoryForm = dynamic(
+  () => import("@/components/admin/categories/add-category-form")
+);
+const BlogList = dynamic(() => import("@/components/admin/blogs/blog-list"));
+const AddBlogForm = dynamic(
+  () => import("@/components/admin/blogs/add-blog-form")
+);
+
+// Constants
+const TAB_CONFIG = {
+  projects: {
+    title: "پروژه",
+    ListComponent: ProjectList,
+    FormComponent: AddProjectForm,
+  },
+  blogs: {
+    title: "بلاگ",
+    ListComponent: BlogList,
+    FormComponent: AddBlogForm,
+  },
+  categories: {
+    title: "خدمات",
+    ListComponent: ProjectList,
+    FormComponent: AddCategoryForm,
+  },
+} as const;
 
 const AdminPanelContent = () => {
   const { adminPanelTab } = useAppSelector((state) => state.admin);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const showAddButtonTabs = ["projects", "blogs", "categories"] as const;
-  const shouldShowAddDialog = showAddButtonTabs.includes(
-    adminPanelTab as (typeof showAddButtonTabs)[number]
-  );
+  const tab = TAB_CONFIG[adminPanelTab as keyof typeof TAB_CONFIG];
 
-  const getDialogTitle = () => {
-    switch (adminPanelTab) {
-      case "projects":
-        return "پروژه";
-      case "blogs":
-        return "وبلاگ";
-      case "categories":
-        return "خدمات";
-      default:
-        return "";
-    }
-  };
+  if (!tab) return null;
 
-  const renderDialogContent = () => {
-    if (adminPanelTab === "projects")
-      return <AddProjectForm setDialogOpen={setDialogOpen} />;
-    if (adminPanelTab === "categories")
-      return <AddCategoryForm setDialogOpen={setDialogOpen} />;
-    if (adminPanelTab === "blogs")
-      return <AddBlogForm setDialogOpen={setDialogOpen} />;
-    return null;
-  };
-
-  const renderLists = () => {
-    if (adminPanelTab === "projects") return <ProjectList />;
-    if (adminPanelTab === "categories") return null;
-    if (adminPanelTab === "blogs") return <BlogList />;
-    return null;
-  };
+  const { title, ListComponent, FormComponent } = tab;
 
   return (
     <>
-      {shouldShowAddDialog && (
-        <div className="mt-12 flex gap-3 justify-between items-center ml-10">
-          <h3 className="text-lg font-medium">{getDialogTitle()}</h3>
+      <div className="mt-12 flex gap-3 justify-between items-center ml-10">
+        <h3 className="text-lg font-medium">{title}</h3>
 
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
-              <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
-                افزودن {getDialogTitle()}
-              </Button>
-            </DialogTrigger>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogTrigger asChild>
+            <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
+              افزودن {title}
+            </Button>
+          </DialogTrigger>
 
-            <DialogContent className="max-w-6xl">
-              <DialogHeader>
-                <DialogTitle className="text-right mt-6">
-                  افزودن {getDialogTitle()} جدید
-                </DialogTitle>
-              </DialogHeader>
-              {renderDialogContent()}
-            </DialogContent>
-          </Dialog>
-        </div>
-      )}
+          <DialogContent className="max-w-6xl">
+            <DialogHeader>
+              <DialogTitle className="text-right mt-6 mb-3">
+                افزودن {title} جدید
+              </DialogTitle>
+            </DialogHeader>
+            <FormComponent setDialogOpen={setDialogOpen} />
+          </DialogContent>
+        </Dialog>
+      </div>
 
-      {renderLists()}
+      <ListComponent />
     </>
   );
 };
