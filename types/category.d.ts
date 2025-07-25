@@ -19,9 +19,16 @@ interface ICategoryResDto {
   };
 }
 
-interface ICategoryResDto {
+interface ICategoryByIdResDto {
   status: string;
   data: {
     category: ICategory;
+  };
+}
+
+interface ICategoryByIdResDto {
+  status: string;
+  data: {
+    categoryById: ICategory;
   };
 }

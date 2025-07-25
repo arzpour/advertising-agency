@@ -22,3 +22,35 @@ export const categorySchema = z.object({
 });
 
 export type categorySchemaType = z.infer<typeof categorySchema>;
+
+export const editCategorySchema = z.object({
+  name: z
+    .string({ message: "نام پروژه الزامی است" })
+    .min(2, { message: "نام پروژه باید بیشتر از ۲ حرف باشد" })
+    .optional(),
+  description: z.string({ message: "توضیحات الزامی است" }).optional(),
+  icon: z
+    .any()
+    .nullable()
+    .optional()
+    .refine(
+      (file) =>
+        !file ||
+        !(file instanceof File) ||
+        validThumbnailTypes.includes(file.type),
+      {
+        message: `فرمت عکس باید ${validThumbnailTypes.join("، ")} باشد`,
+      }
+    )
+    .refine(
+      (file) =>
+        !file ||
+        !(file instanceof File) ||
+        file.size <= validSize * 1024 * 1024,
+      {
+        message: `تصویر باید کمتر از ${validSize}MB باشد`,
+      }
+    ),
+});
+
+export type editCategorySchemaType = z.infer<typeof editCategorySchema>;

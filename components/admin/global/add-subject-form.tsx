@@ -15,9 +15,10 @@ import {
 interface IDefaultValue {
   name: string;
   description: string;
-  categoryName: string;
-  thumbnail: string;
-  images: string[];
+  categoryName?: string;
+  thumbnail?: string;
+  images?: string[];
+  icon?: string;
 }
 
 interface IAddForm {

@@ -9,6 +9,7 @@ import {
 import { Edit } from "lucide-react";
 import EditProjectForm from "../projects/edit-project-form";
 import EditBlogForm from "../blogs/edit-blog-form";
+import EditCategoryForm from "../categories/edit-category-form";
 
 interface IEditDialog {
   title: "خدمات" | "بلاگ" | "پروژه";
@@ -21,7 +22,7 @@ const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
   const renderEditComponent = () => {
     switch (title) {
       case "خدمات":
-        return null;
+        return <EditCategoryForm _id={_id} setDialogOpen={setDialogOpen} />;
       case "بلاگ":
         return <EditBlogForm _id={_id} setDialogOpen={setDialogOpen} />;
       case "پروژه":

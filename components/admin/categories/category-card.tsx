@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { Trash, Edit } from "lucide-react";
 import DeleteDialog from "../global/delete-dialog";
+import EditDialog from "../global/edit-dialog";
 
 interface ICategoryCard {
   name: string;
@@ -32,7 +33,7 @@ const CategoryCard: React.FC<ICategoryCard> = ({
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
       ></p>
       <div className="flex gap-3 mt-4 justify-end items-center">
-        <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
+        <EditDialog title="خدمات" _id={_id} />
         <DeleteDialog title="خدمات" _id={_id} />
       </div>
     </div>
