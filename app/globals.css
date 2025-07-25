@@ -120,3 +120,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-Vazirmatn: var(--font-Vazirmatn);
+  --color-gray-1: #ededed;
+  --color-gray-2: #f0f0ee;
+  --color-dark-1: #1c1c1a;
+}
+
+@keyframes brandScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brandScroll {
+  animation: brandScroll 20s linear infinite;
+}
+
+.scrollWebkit::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 730px) {
+  .contact-us-pic {
+    display: block;
+  }
+}
