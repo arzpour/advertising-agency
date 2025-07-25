@@ -3,7 +3,7 @@ import { z } from "zod";
 const validThumbnailTypes = ["image/png", "image/jpeg", "image/jpg"];
 const validSize = 2; // MB
 
-export const projectSchema = z.object({
+export const addSchema = z.object({
   name: z
     .string({ message: "نام پروژه الزامی است" })
     .min(2, { message: "نام پروژه باید بیشتر از ۲ حرف باشد" }),
@@ -46,9 +46,9 @@ export const projectSchema = z.object({
     ),
 });
 
-export type projectSchemaType = z.infer<typeof projectSchema>;
+export type addSchemaType = z.infer<typeof addSchema>;
 
-export const editProjectSchema = z.object({
+export const editSchema = z.object({
   name: z
     .string({ message: "نام پروژه الزامی است" })
     .min(2, { message: "نام پروژه باید بیشتر از ۲ حرف باشد" }),
@@ -56,30 +56,53 @@ export const editProjectSchema = z.object({
   category: z.string({ message: "نام دسته بندی الزامی است" }).optional(),
   thumbnail: z
     .any()
+    .nullable()
     .optional()
-    .refine((file) => !file || validThumbnailTypes.includes(file.type), {
-      message: `فرمت عکس باید ${validThumbnailTypes} باشد`,
-    })
     .refine(
       (file) =>
-        !file || validSize * Math.pow(10, 6) >= Number(file.size || Infinity),
-      { message: `تصاویر باید کمتر از ${validSize}مگابایت باشند` }
+        !file ||
+        !(file instanceof File) ||
+        validThumbnailTypes.includes(file.type),
+      {
+        message: `فرمت عکس باید ${validThumbnailTypes.join("، ")} باشد`,
+      }
+    )
+    .refine(
+      (file) =>
+        !file ||
+        !(file instanceof File) ||
+        file.size <= validSize * 1024 * 1024,
+      {
+        message: `تصویر باید کمتر از ${validSize}MB باشد`,
+      }
     ),
 
   images: z
     .array(z.any())
+    .nullable()
     .optional()
     .refine(
       (files) =>
         !files ||
-        files.every((file) => validThumbnailTypes.includes(file.type)),
-      { message: `فرمت تصاویر باید ${validThumbnailTypes.join(", ")} باشد` }
+        files.every(
+          (file) =>
+            !(file instanceof File) || validThumbnailTypes.includes(file.type)
+        ),
+      {
+        message: `فرمت تصاویر باید ${validThumbnailTypes.join(", ")} باشد`,
+      }
     )
     .refine(
       (files) =>
-        !files || files.every((file) => file.size <= validSize * 1024 * 1024),
-      { message: `تصاویر باید کمتر از ${validSize}MB باشند` }
+        !files ||
+        files.every(
+          (file) =>
+            !(file instanceof File) || file.size <= validSize * 1024 * 1024
+        ),
+      {
+        message: `تصاویر باید کمتر از ${validSize}MB باشند`,
+      }
     ),
 });
 
-export type editProjectSchemaType = z.infer<typeof editProjectSchema>;
+export type editSchemaType = z.infer<typeof editSchema>;

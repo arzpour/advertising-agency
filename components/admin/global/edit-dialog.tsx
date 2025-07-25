@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Edit } from "lucide-react";
 import EditProjectForm from "../projects/edit-project-form";
+import EditBlogForm from "../blogs/edit-blog-form";
 
 interface IEditDialog {
   title: "خدمات" | "بلاگ" | "پروژه";
@@ -22,7 +23,7 @@ const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
       case "خدمات":
         return null;
       case "بلاگ":
-        return null;
+        return <EditBlogForm _id={_id} setDialogOpen={setDialogOpen} />;
       case "پروژه":
         return <EditProjectForm _id={_id} setDialogOpen={setDialogOpen} />;
       default:

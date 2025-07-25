@@ -2,8 +2,8 @@
 import React from "react";
 import useGetProjects from "@/hooks/useGetProjects";
 import ProjectCard from "./project-card";
-import { useGetCategoryName } from "@/hooks/getCategoryName";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 
 const ProjectList = () => {
   const {
@@ -15,7 +15,7 @@ const ProjectList = () => {
     isSuccess
   } = useGetProjects();
 
-  const { categoryMap } = useGetCategoryName();
+  const { categoryMap } = useGetCategoryInfo();
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,

@@ -27,3 +27,10 @@ interface IBlogResDto {
   };
   status: string;
 }
+
+interface IBlogByIdResDto {
+  data: {
+    blogById: IProjectRes;
+  };
+  status: string;
+}

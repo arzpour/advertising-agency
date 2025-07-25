@@ -1,4 +1,3 @@
-import { useEditProject } from "@/apis/mutations/projects";
 import { queryClient } from "@/providers/tanstack.provider";
 import { editSchema, editSchemaType } from "@/validations/project";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -6,27 +5,33 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AddForm from "../global/add-subject-form";
-import useGetProjectById from "@/hooks/useGetProjectById";
+import useGetBlogById from "@/hooks/useGetBlogById";
+import { useEditBlog } from "@/apis/mutations/blog";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 
-interface IEditProjectForm {
+interface IEditBlogForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   _id: string;
 }
 
-const EditProjectForm: React.FC<IEditProjectForm> = ({
-  _id,
-  setDialogOpen,
-}) => {
-  const { data: projectData, isSuccess } = useGetProjectById(_id);
+const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
+  const { data: blogData, isSuccess } = useGetBlogById(_id);
 
   const { categoryData, categoryId, categoryName, setSelectedCategory } =
     useGetCategoryInfo();
-  const editProject = useEditProject();
+
+  const editBlog = useEditBlog();
 
   const { control, handleSubmit, reset } = useForm<editSchemaType>({
     mode: "all",
     resolver: zodResolver(editSchema),
+    defaultValues: {
+      name: blogData?.name,
+      description: blogData?.description,
+      category: categoryName(blogData?.category ?? ""),
+      thumbnail: blogData?.thumbnail,
+      images: blogData?.images,
+    },
   });
 
   const onSubmit: SubmitHandler<editSchemaType> = async (data) => {
@@ -44,7 +49,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
       const category =
         categoryId !== "" || !!categoryId
           ? categoryId
-          : projectData?.category ?? "";
+          : blogData?.category ?? "";
 
       if (!!category) {
         formData.append("category", category);
@@ -61,7 +66,8 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
           }
         });
       }
-      await editProject.mutateAsync({
+
+      await editBlog.mutateAsync({
         data: formData,
         id: _id,
       });
@@ -71,7 +77,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setDialogOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["get-projects"] });
+      queryClient.invalidateQueries({ queryKey: ["get-blogs"] });
     } catch (error) {
       setDialogOpen(false);
 
@@ -84,29 +90,30 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
   };
 
   const defaultValue = {
-    name: projectData?.name ?? "",
-    description: projectData?.description ?? "",
-    categoryName: categoryName(projectData?.category ?? "") ?? "",
-    thumbnail: projectData?.thumbnail ?? "",
-    images: projectData?.images ?? [],
+    name: blogData?.name ?? "",
+    description: blogData?.description ?? "",
+    categoryName: categoryName(blogData?.category ?? "") ?? "",
+    thumbnail: blogData?.thumbnail ?? "",
+    images: blogData?.images ?? [],
   };
+  console.log("🚀 ~ EditBlogForm ~ defaultValue:", defaultValue);
 
   React.useEffect(() => {
-    if (isSuccess && projectData) {
+    if (isSuccess && blogData) {
       reset({
-        name: projectData?.name,
-        description: projectData?.description,
-        category: categoryName(projectData.category ?? ""),
-        thumbnail: projectData?.thumbnail,
-        images: projectData?.images,
+        name: blogData?.name,
+        description: blogData?.description,
+        category: categoryName(blogData.category ?? ""),
+        thumbnail: blogData?.thumbnail,
+        images: blogData?.images,
       });
     }
-  }, [isSuccess, projectData, reset, categoryName]);
+  }, [isSuccess, blogData, reset, categoryName]);
 
   return (
     <AddForm
       control={control}
-      status="projects"
+      status="blogs"
       setSelectedCategory={setSelectedCategory}
       categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
@@ -115,4 +122,4 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
   );
 };
 
-export default EditProjectForm;
+export default EditBlogForm;

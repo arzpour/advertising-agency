@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import useCategoryList from "@/hooks/useGetCategories";
 import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { projectSchema, projectSchemaType } from "@/validations/project";
+import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
 import { useAddBlog } from "@/apis/mutations/blog";
@@ -19,9 +19,9 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
 
   const { adminPanelTab } = useAppSelector((state) => state.admin);
 
-  const { handleSubmit, control } = useForm<projectSchemaType>({
+  const { handleSubmit, control } = useForm<addSchemaType>({
     mode: "all",
-    resolver: zodResolver(projectSchema),
+    resolver: zodResolver(addSchema),
   });
 
   const addBlog = useAddBlog();
@@ -35,7 +35,7 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
       (category: ICategory) => category.name === selectedCategory
     )?._id || "";
 
-  const onSubmit: SubmitHandler<projectSchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<addSchemaType> = async (data) => {
     const formData = new FormData();
 
     formData.append("name", data.name || "");

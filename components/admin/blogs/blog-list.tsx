@@ -3,8 +3,8 @@
 import React from "react";
 import useGetBlogs from "@/hooks/useGetBlogs";
 import BlogCard from "./blog-card";
-import { useGetCategoryName } from "@/hooks/getCategoryName";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 
 const BlogList: React.FC = () => {
   const {
@@ -16,7 +16,7 @@ const BlogList: React.FC = () => {
     isSuccess,
   } = useGetBlogs();
 
-  const { categoryMap } = useGetCategoryName();
+  const { categoryMap } = useGetCategoryInfo();
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,

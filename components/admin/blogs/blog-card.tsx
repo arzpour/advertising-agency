@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { Trash, Edit } from "lucide-react";
 import DeleteDialog from "../global/delete-dialog";
+import EditDialog from "../global/edit-dialog";
 
 interface IBlogCard {
   name: string;
@@ -39,7 +40,7 @@ const BlogCard: React.FC<IBlogCard> = ({
               {name}
             </h5>
             <div className="flex gap-3 justify-end items-start mr-10">
-              <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
+              <EditDialog title="بلاگ" _id={_id} />
               <DeleteDialog title="بلاگ" _id={_id} />
             </div>
           </div>
@@ -59,8 +60,3 @@ const BlogCard: React.FC<IBlogCard> = ({
 };
 
 export default BlogCard;
-
-
-
-
-

@@ -1,12 +1,12 @@
 "use client";
 
-import { projectSchemaType } from "@/validations/project";
+import { addSchemaType } from "@/validations/project";
 import Image from "next/image";
 import React from "react";
 import { Control, useController } from "react-hook-form";
 
 interface IImages {
-  name: keyof projectSchemaType;
+  name: keyof addSchemaType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   defaultValue?: string[];
