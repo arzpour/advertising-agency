@@ -15,12 +15,18 @@ export const getProjectById: getProjectByIdType = async (id) => {
   return response.data;
 };
 
-type addProjectType = (data: FormData) => Promise<IAddProjectResDto>;
+type addProjectType = (data: FormData) => Promise<IProjectResDto>;
 export const addProject: addProjectType = async (data) => {
   const response = await axiosInstance.post(urls.project.list, data, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
+  return response.data;
+};
+
+type deleteProjectType = (id: string) => Promise<IProjectResDto>;
+export const deleteProject: deleteProjectType = async (id) => {
+  const response = await axiosInstance.delete(urls.project.ById(id));
   return response.data;
 };

@@ -2,12 +2,14 @@ import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
 import { Trash, Edit } from "lucide-react";
+import DeleteDialog from "../global/delete-dialog";
 
 interface IProjectCard {
   name: string;
   description: string;
   category: string;
   thumbnail: string;
+  _id: string;
 }
 
 const ProjectCard: React.FC<IProjectCard> = ({
@@ -15,6 +17,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
   description,
   name,
   thumbnail,
+  _id,
 }) => {
   return (
     <div className="w-80 rounded-lg overflow-hidden bg-white hover:shadow-2xl cursor-pointer">
@@ -42,7 +45,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
         ></p>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
           <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
-          <Trash className="w-4 h-4 text-red-500 cursor-pointer" />
+          <DeleteDialog title="پروژه" _id={_id} />
         </div>
       </div>
     </div>

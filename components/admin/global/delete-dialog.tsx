@@ -9,6 +9,7 @@ import {
 import { Trash } from "lucide-react";
 import DeleteBlog from "../blogs/delete-blog";
 import DeleteCategory from "../categories/delete-category";
+import DeleteProject from "../projects/delete-project";
 
 interface IDeleteDialog {
   title: "خدمات" | "بلاگ" | "پروژه";
@@ -25,7 +26,7 @@ const DeleteDialog: React.FC<IDeleteDialog> = ({ title, _id }) => {
       case "بلاگ":
         return <DeleteBlog _id={_id} setDialogOpen={setDialogOpen} />;
       case "پروژه":
-        return <></>;
+        return <DeleteProject _id={_id} setDialogOpen={setDialogOpen} />;
       default:
         return null;
     }

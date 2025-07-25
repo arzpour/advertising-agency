@@ -3,6 +3,7 @@ import { useDeleteBlog } from "@/apis/mutations/blog";
 import { queryClient } from "@/providers/tanstack.provider";
 import React from "react";
 import { toast } from "sonner";
+import SubmitBtn from "../global/submitBtn";
 
 interface IDeleteBlog {
   _id: string;
@@ -33,17 +34,7 @@ const DeleteBlog: React.FC<IDeleteBlog> = ({ _id, setDialogOpen }) => {
     }
   };
 
-  return (
-    <div className="flex justify-end">
-      <button
-        type="button"
-        onClick={onSubmit}
-        className="shadow-sm py-1.5 px-6 text-sm cursor-pointer font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none"
-      >
-        تایید
-      </button>
-    </div>
-  );
+  return <SubmitBtn onSubmit={onSubmit} />;
 };
 
 export default DeleteBlog;

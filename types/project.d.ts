@@ -21,7 +21,7 @@ interface IProjectResDto {
   total_pages: number;
 }
 
-interface IAddProjectResDto {
+interface IProjectResDto {
   data: {
     project: IProjectRes;
   };
