@@ -1,38 +1,45 @@
 "use client";
+
 import React from "react";
-import { useFormik } from "formik";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { contactUsFormValidationSchema } from "@/validation/contact-us-validation";
 
+type ContactFormFields = {
+  email: string;
+  text: string;
+};
+
 const ContactUsForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      text: "",
-    },
-    validationSchema: contactUsFormValidationSchema,
-    onSubmit: (values) => console.log(values),
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, touchedFields },
+  } = useForm<ContactFormFields>({
+    resolver: yupResolver(contactUsFormValidationSchema),
   });
+
+  const onSubmit = (data: ContactFormFields) => {
+    console.log(data);
+  };
 
   return (
     <form
-      onSubmit={formik.handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-wrap sm:flex-nowrap gap-3 md:gap-6 items-center text-white mt-5"
     >
       <div>
         <input
           type="text"
-          name="email"
-          value={formik.values.email}
           placeholder="آدرس ایمیل"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
           className="outline-none px-3 py-1.5 bg-gray-2 text-gray-900 rounded placeholder:text-sm text-sm"
+          {...register("email")}
         />
-        {formik.touched.email && formik.errors.email ? (
-          <p className="text-red-500 text-xs mt-2">{formik.errors.email}</p>
-        ) : null}
+        {touchedFields.email && errors.email && (
+          <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>
+        )}
 
-        {formik.touched.text && formik.errors.text && !formik.errors.email && (
+        {touchedFields.text && errors.text && !errors.email && (
           <div className="h-6 w-2"></div>
         )}
       </div>
@@ -40,18 +47,15 @@ const ContactUsForm = () => {
       <div>
         <input
           type="text"
-          name="text"
-          value={formik.values.text}
           placeholder="متن..."
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
           className="outline-none px-3 py-1.5 bg-gray-2 text-gray-900 rounded placeholder:text-sm text-sm"
+          {...register("text")}
         />
-        {formik.touched.text && formik.errors.text ? (
-          <p className="text-red-500 text-xs mt-2">{formik.errors.text}</p>
-        ) : null}
+        {touchedFields.text && errors.text && (
+          <p className="text-red-500 text-xs mt-2">{errors.text.message}</p>
+        )}
 
-        {formik.touched.email && formik.errors.email && !formik.errors.text && (
+        {touchedFields.email && errors.email && !errors.text && (
           <div className="h-6 w-2"></div>
         )}
       </div>

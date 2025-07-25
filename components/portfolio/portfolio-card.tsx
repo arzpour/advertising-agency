@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { ArrowLeft } from "lucide-react";
 
 interface IPortfolioCard {
   showCard: string;
@@ -45,13 +45,6 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({
         data-twe-ripple-init
         data-twe-ripple-color="light"
       >
-        {/* <Image
-          src={ImageHref}
-          alt="portfolio"
-          className="w-full"
-          width={200}
-          height={200}
-        /> */}
         <img src={ImageHref} alt="portfolio" className="rounded-t-lg" />
         <div className="absolute h-full overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 ease-in-out z-20"></div>
 
@@ -66,10 +59,10 @@ const PortfolioCard: React.FC<IPortfolioCard> = ({
         <p className="mb-0.5 text-xs text-gray-600">{categoryFa}</p>
         <Link
           href={buttonHref}
-          className="flex gap-2 items-center rounded bg-primary justify-end pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-500 shadow-primary-3 transition duration-150 ease-in-out"
+          className="flex gap-2 items-center rounded justify-end pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-500 shadow-primary-3 transition duration-150 ease-in-out"
         >
           مشاهده بیشتر
-          <FaArrowLeftLong />
+          <ArrowLeft />
         </Link>
       </div>
     </div>
