@@ -59,7 +59,7 @@ const TAB_CONFIG = {
 
 const AdminPanelContent = () => {
   const { adminPanelTab } = useAppSelector((state) => state.admin);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const tab = TAB_CONFIG[adminPanelTab as keyof typeof TAB_CONFIG];
 

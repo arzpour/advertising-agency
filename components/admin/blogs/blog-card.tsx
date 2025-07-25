@@ -2,12 +2,14 @@ import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
 import { Trash, Edit } from "lucide-react";
+import DeleteDialog from "../global/delete-dialog";
 
 interface IBlogCard {
   name: string;
   description: string;
   category: string;
   thumbnail: string;
+  _id: string;
 }
 
 const BlogCard: React.FC<IBlogCard> = ({
@@ -15,6 +17,7 @@ const BlogCard: React.FC<IBlogCard> = ({
   description,
   name,
   thumbnail,
+  _id,
 }) => {
   return (
     <>
@@ -31,17 +34,17 @@ const BlogCard: React.FC<IBlogCard> = ({
           />
         </div>
         <div className="flex flex-col justify-between p-4 leading-normal w-full">
-          <div className="flex gap- justify-between items-center">
+          <div className="flex justify-between items-center">
             <h5 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
               {name}
             </h5>
             <div className="flex gap-3 justify-end items-start mr-10">
               <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
-              <Trash className="w-4 h-4 text-red-500 cursor-pointer" />
+              <DeleteDialog title="بلاگ" _id={_id} />
             </div>
           </div>
           <p
-            className="mb-3 text-gray-700 dark:text-gray-400 text-sm"
+            className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate"
             dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
           ></p>
           <div className="flex justify-end">
@@ -56,3 +59,8 @@ const BlogCard: React.FC<IBlogCard> = ({
 };
 
 export default BlogCard;
+
+
+
+
+

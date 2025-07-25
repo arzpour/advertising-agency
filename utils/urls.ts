@@ -10,9 +10,11 @@ export const urls = {
   },
   category: {
     list: "/categories",
+    ById: (id: string) => `/categories/${id}`,
   },
   blog: {
     list: "/blogs",
+    ById: (id: string) => `/blogs/${id}`,
   },
   ticket: "/tickets",
 };

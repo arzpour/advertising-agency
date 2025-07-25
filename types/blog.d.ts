@@ -21,7 +21,7 @@ interface IBlogResDto {
   total_pages: number;
 }
 
-interface IAddBlogResDto {
+interface IBlogResDto {
   data: {
     blog: IBlogRes;
   };

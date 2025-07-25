@@ -15,7 +15,7 @@ const useGetCategories = (limitCus?: number) => {
     error,
     isSuccess,
   } = useInfiniteQuery({
-    queryKey: ["get-categories"],
+    queryKey: ["get-category-list"],
     queryFn: async ({ pageParam = 1 }) =>
       await getAllCategories({ limit: limit, page: pageParam }),
 

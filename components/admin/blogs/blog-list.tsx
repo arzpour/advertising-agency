@@ -31,7 +31,7 @@ const BlogList: React.FC = () => {
   return (
     <>
       {isSuccess && allblogs.length > 0 && (
-        <div className="grid grid-cols-2 gap-8 w-full mt-14 mb-10 justify-center items-center gap-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-14 mb-10 justify-center items-center gap-y-10">
           {allblogs.map((blog) => (
             <BlogCard
               key={blog._id}

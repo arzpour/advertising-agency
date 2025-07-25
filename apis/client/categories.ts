@@ -12,12 +12,18 @@ export const getAllCategories: getAllCategoriesType = async ({
   return response.data;
 };
 
-type addCategoryType = (data: FormData) => Promise<IAddCategoryResDto>;
+type addCategoryType = (data: FormData) => Promise<ICategoryResDto>;
 export const addCategory: addCategoryType = async (data) => {
   const response = await axiosInstance.post(urls.category.list, data, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
+  return response.data;
+};
+
+type deleteCategoryType = (id: string) => Promise<ICategoryResDto>;
+export const deleteCategory: deleteCategoryType = async (id) => {
+  const response = await axiosInstance.delete(urls.category.ById(id));
   return response.data;
 };

@@ -19,7 +19,7 @@ interface ICategoryResDto {
   };
 }
 
-interface IAddCategoryResDto {
+interface ICategoryResDto {
   status: string;
   data: {
     category: ICategory;
