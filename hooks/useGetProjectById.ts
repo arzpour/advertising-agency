@@ -7,7 +7,7 @@ const useGetProjectById = (id: string) => {
     queryKey: ["get-project-by-id", id],
     queryFn: async () => {
       const res = await getProjectById(id);
-      return res;
+      return res.data.projectById;
     },
     refetchOnWindowFocus: false,
     retry: 1,

@@ -1,8 +1,8 @@
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
-import { Trash, Edit } from "lucide-react";
 import DeleteDialog from "../global/delete-dialog";
+import EditDialog from "../global/edit-dialog";
 
 interface IProjectCard {
   name: string;
@@ -44,7 +44,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></p>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
-          <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
+          <EditDialog title="پروژه" _id={_id} />
           <DeleteDialog title="پروژه" _id={_id} />
         </div>
       </div>

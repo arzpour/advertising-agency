@@ -27,3 +27,10 @@ interface IProjectResDto {
   };
   status: string;
 }
+
+interface IProjectByIdResDto {
+  data: {
+    projectById: IProjectRes;
+  };
+  status: string;
+}

@@ -11,8 +11,7 @@ interface IThumbnail {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   defaultValue?: string;
-  status?: string;
-  thumbnailStatus?: "product" | "blog";
+  status?: "projects" | "blogs" | "categories";
 }
 
 export const Thumbnail: React.FC<IThumbnail> = ({
@@ -20,7 +19,6 @@ export const Thumbnail: React.FC<IThumbnail> = ({
   control,
   defaultValue,
   status,
-  thumbnailStatus,
 }) => {
   const [url, setUrl] = React.useState<string | undefined>(undefined);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -32,13 +30,15 @@ export const Thumbnail: React.FC<IThumbnail> = ({
 
   React.useEffect(() => {
     const thumbnailUrl =
-      thumbnailStatus === "blog"
+      status === "blogs"
         ? process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL
-        : process.env.NEXT_PUBLIC_THUMBNAIL_URL;
-    if (status === "edit" && defaultValue) {
+        : status === "projects"
+        ? process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL
+        : process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+    if (!!defaultValue) {
       setUrl(`${thumbnailUrl}/${defaultValue}`);
     }
-  }, [defaultValue, status, thumbnailStatus]);
+  }, [defaultValue, status]);
 
   const onClick = () => {
     inputRef.current?.click();

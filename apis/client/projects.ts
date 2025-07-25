@@ -9,7 +9,7 @@ export const getProjects: getProjectsType = async ({ page, limit }) => {
   return response.data;
 };
 
-type getProjectByIdType = (id: string) => Promise<IProjectRes>;
+type getProjectByIdType = (id: string) => Promise<IProjectByIdResDto>;
 export const getProjectById: getProjectByIdType = async (id) => {
   const response = await axiosInstance.get(urls.project.ById(id));
   return response.data;
@@ -28,5 +28,16 @@ export const addProject: addProjectType = async (data) => {
 type deleteProjectType = (id: string) => Promise<IProjectResDto>;
 export const deleteProject: deleteProjectType = async (id) => {
   const response = await axiosInstance.delete(urls.project.ById(id));
+  return response.data;
+};
+
+type editProjectByIdType = (_: {
+  data: FormData;
+  id: string;
+}) => Promise<IProjectResDto>;
+export const editProjectById: editProjectByIdType = async ({ data, id }) => {
+  const response = await axiosInstance.patch(urls.project.ById(id), data, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return response.data;
 };

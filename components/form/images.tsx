@@ -10,9 +10,15 @@ interface IImages {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   defaultValue?: string[];
+  status?: "projects" | "blogs" | "categories";
 }
 
-export const Images: React.FC<IImages> = ({ name, control }) => {
+export const Images: React.FC<IImages> = ({
+  name,
+  control,
+  defaultValue,
+  status,
+}) => {
   const [urls, setUrls] = React.useState<string[]>([]);
   const [files, setFiles] = React.useState<File[]>([]);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -52,6 +58,20 @@ export const Images: React.FC<IImages> = ({ name, control }) => {
       urls.forEach((url) => URL.revokeObjectURL(url));
     };
   }, [urls]);
+
+  React.useEffect(() => {
+    if (defaultValue && defaultValue.length > 0) {
+      const imageUrl =
+        status === "blogs"
+          ? process.env.NEXT_PUBLIC_BLOG_IMAGE_URL
+          : status === "projects"
+          ? process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL
+          : process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+      const fullUrls = defaultValue.map((img) => `${imageUrl}/${img}`);
+      setUrls(fullUrls);
+      field.onChange([]);
+    }
+  }, [defaultValue]);
 
   return (
     <div className="w-full">
