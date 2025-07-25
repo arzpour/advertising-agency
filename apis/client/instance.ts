@@ -23,8 +23,11 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const req = error.config;
 
-    if (error.response.status === 401 || !req.send) {
-      req.sent = true;
+    if (
+      (error.response?.status === 401 || error.response?.status === 403) &&
+      !req._retry
+    ) {
+      req._retry = true;
 
       if (
         req.url !== "/auth/login" &&
@@ -36,16 +39,17 @@ axiosInstance.interceptors.response.use(
 
           if (!refreshToken) throw new Error("No refresh token");
 
-          const newAccessToken = await getToken(refreshToken as string);
+          const newAccessToken = await getToken(refreshToken);
 
           req.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
           return axiosInstance(req);
-        } catch (error) {
-          console.log("🚀 ~ async ~ error:", error);
+        } catch (err) {
+          console.error("Token refresh failed:", err);
         }
       }
     }
-    return error.response;
+
+    return Promise.reject(error);
   }
 );

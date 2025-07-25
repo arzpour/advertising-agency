@@ -19,9 +19,12 @@ const ProjectList = dynamic(
 const AddProjectForm = dynamic(
   () => import("@/components/admin/projects/add-project-form")
 );
-// const CategoryList = dynamic(
-//   () => import("@/components/admin/categories/category-list")
-// );
+const CategoryList = dynamic(
+  () => import("@/components/admin/categories/category-list")
+);
+const TicketList = dynamic(
+  () => import("@/components/admin/tickets/ticket-list")
+);
 const AddCategoryForm = dynamic(
   () => import("@/components/admin/categories/add-category-form")
 );
@@ -44,8 +47,13 @@ const TAB_CONFIG = {
   },
   categories: {
     title: "خدمات",
-    ListComponent: ProjectList,
+    ListComponent: CategoryList,
     FormComponent: AddCategoryForm,
+  },
+  tickets: {
+    title: "تیکت",
+    ListComponent: TicketList,
+    FormComponent: null,
   },
 } as const;
 
@@ -64,22 +72,23 @@ const AdminPanelContent = () => {
       <div className="mt-12 flex gap-3 justify-between items-center ml-10">
         <h3 className="text-lg font-medium">{title}</h3>
 
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogTrigger asChild>
-            <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
-              افزودن {title}
-            </Button>
-          </DialogTrigger>
-
-          <DialogContent className="max-w-6xl">
-            <DialogHeader>
-              <DialogTitle className="text-right mt-6 mb-3">
-                افزودن {title} جدید
-              </DialogTitle>
-            </DialogHeader>
-            <FormComponent setDialogOpen={setDialogOpen} />
-          </DialogContent>
-        </Dialog>
+        {title !== "تیکت" && (
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
+                افزودن {title}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-6xl">
+              <DialogHeader>
+                <DialogTitle className="text-right mt-6 mb-3">
+                  افزودن {title} جدید
+                </DialogTitle>
+              </DialogHeader>
+              <FormComponent setDialogOpen={setDialogOpen} />
+            </DialogContent>
+          </Dialog>
+        )}
       </div>
 
       <ListComponent />

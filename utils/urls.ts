@@ -14,4 +14,5 @@ export const urls = {
   blog: {
     list: "/blogs",
   },
+  ticket: "/tickets",
 };

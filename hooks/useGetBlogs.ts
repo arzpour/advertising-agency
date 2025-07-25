@@ -19,7 +19,10 @@ const useGetBlogs = (limitCus?: number) => {
     queryFn: async ({ pageParam = 1 }) =>
       await getBlogs({ limit: limit, page: pageParam }),
     getNextPageParam: (lastPage, allPages) => {
-      const hasMore = lastPage.data?.blogs.length === limit;
+      const blogs = lastPage?.data?.blogs;
+      if (!blogs || blogs.length === 0) return undefined;
+
+      const hasMore = blogs.length === limit;
       return hasMore ? allPages.length + 1 : undefined;
     },
     initialPageParam: 1,

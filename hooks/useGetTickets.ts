@@ -1,8 +1,8 @@
-import { getProjects } from "@/apis/client/projects";
-import { perPageLimit } from "@/utils/config";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { perPageLimit } from "../utils/config";
+import { getTickets } from "@/apis/client/tickets";
 
-const useGetProjects = (limitCus?: number) => {
+const useGetTickets = (limitCus?: number) => {
   const limit = limitCus ?? perPageLimit;
 
   const {
@@ -15,14 +15,14 @@ const useGetProjects = (limitCus?: number) => {
     error,
     isSuccess,
   } = useInfiniteQuery({
-    queryKey: ["get-projects"],
+    queryKey: ["get-tickets"],
     queryFn: async ({ pageParam = 1 }) =>
-      await getProjects({ limit: limit, page: pageParam }),
+      await getTickets({ limit: limit, page: pageParam }),
     getNextPageParam: (lastPage, allPages) => {
-      const projects = lastPage?.data?.projects;
-      if (!projects || projects.length === 0) return undefined;
+      const tickets = lastPage?.data?.tickets;
+      if (!tickets || tickets.length === 0) return undefined;
 
-      const hasMore = projects.length === limit;
+      const hasMore = tickets.length === limit;
       return hasMore ? allPages.length + 1 : undefined;
     },
     initialPageParam: 1,
@@ -30,10 +30,10 @@ const useGetProjects = (limitCus?: number) => {
     retry: 1,
   });
 
-  const allProjects = data?.pages.flatMap((page) => page.data.projects) || [];
+  const allTickets = data?.pages.flatMap((page) => page.data?.tickets) || [];
 
   return {
-    allProjects,
+    allTickets,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -44,4 +44,4 @@ const useGetProjects = (limitCus?: number) => {
   };
 };
 
-export default useGetProjects;
+export default useGetTickets;

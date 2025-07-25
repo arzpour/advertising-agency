@@ -131,13 +131,13 @@ const LoginForm = () => {
           />
           <label
             htmlFor="remember-me"
-            className="text-gray-400 ml-3 block text-sm"
+            className="text-gray-400 ml-3 block text-xs"
           >
             مرا به خاطر بسپار
           </label>
         </div>
 
-        <a href={"/"} className="text-red-500 text-sm hover:underline">
+        <a href={"/"} className="text-red-500 text-xs hover:underline">
           رمز عبور را فراموش کرده اید؟
         </a>
       </div>

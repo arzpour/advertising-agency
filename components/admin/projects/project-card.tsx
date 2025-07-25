@@ -17,7 +17,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
   thumbnail,
 }) => {
   return (
-    <div className="w-80 rounded-lg overflow-hidden bg-white hover:shadow-2xl ">
+    <div className="w-80 rounded-lg overflow-hidden bg-white hover:shadow-2xl cursor-pointer">
       <div className="h-40">
         <Image
           src={`${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${
@@ -41,8 +41,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></p>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
-          <Edit className="w-4 h-4 text-red-500" />
-          <Trash className="w-4 h-4 text-red-500" />
+          <Edit className="w-4 h-4 text-red-500 cursor-pointer" />
+          <Trash className="w-4 h-4 text-red-500 cursor-pointer" />
         </div>
       </div>
     </div>
