@@ -1,4 +1,5 @@
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
+import { toPersianDate } from "@/utils/toPersianDate";
 import Image from "next/image";
 import React from "react";
 
@@ -35,7 +36,7 @@ const BlogCard: React.FC<IBlogCard> = ({
           {name}
         </h4>
         <span className="absolute bottom-17 left-3 z-40 text-gray-300 text-xs">
-          {updatedAt ?? createdAt}
+          {toPersianDate(updatedAt) ?? toPersianDate(createdAt)}
         </span>
       </div>
       <p

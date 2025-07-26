@@ -18,7 +18,7 @@ const Projects: React.FC<IProjectList> = ({
       : projects.filter((project) => project.category === categoryFilter);
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex gap-4">
       {filteredProjects.map((item, index) => (
         <ProjectCard
           key={index}
