@@ -5,7 +5,10 @@ import { Mail, Phone } from "lucide-react";
 
 const ContactUs = () => {
   return (
-    <section className="bg-dark-1 my-10 sm:my-28 lg:mt-40 text-white inline-block w-full">
+    <section
+      id="contactUs"
+      className="bg-dark-1 my-10 sm:my-28 lg:mt-40 text-white inline-block w-full"
+    >
       <div className="flex max-w-6xl mx-auto lg:gap-28 p-5 py-10 md:px-20 items-center justify-center">
         <div className="md:ml-16 lg:ml-20">
           <p className="text-gray-100 text-sm md:text-base">

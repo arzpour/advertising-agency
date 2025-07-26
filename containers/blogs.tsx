@@ -8,7 +8,10 @@ const Blogs = async () => {
   const blogs = blogData.data.blogs;
 
   return (
-    <section className="max-w-6xl mx-auto space-y-5 md:space-y-7 xl:mt-14 px-5 md:px-10 xl:px-0">
+    <section
+      id="blogs"
+      className="max-w-6xl mx-auto space-y-5 md:space-y-7 xl:mt-14 px-5 md:px-10 xl:px-0"
+    >
       {blogs.length > 0 && (
         <>
           <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7">

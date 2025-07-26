@@ -7,6 +7,7 @@ const Services = async () => {
 
   return (
     <section
+      id="services"
       className="flex flex-col my-16 mb-20 max-w-[90rem] mx-auto px-10"
       dir="rtl"
     >

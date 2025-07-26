@@ -4,6 +4,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <section
+      id="aboutUs"
       className="max-w-6xl mx-auto my-6 mt-10 md:mt-16 lg:mt-28"
       dir="rtl"
     >

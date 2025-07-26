@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import { Phone } from "lucide-react";
+import { Phone, Instagram } from "lucide-react";
 import Menu from "./menu";
 
 const Header = () => {
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
   return (
-    <header className="relative h-[33rem] w-full overflow-hidden">
+    <header id="header" className="relative h-[33rem] w-full overflow-hidden">
       <video
         autoPlay
         muted
@@ -26,7 +26,7 @@ const Header = () => {
         </h1>
         <div className="flex gap-4 md:gap-6 items-center">
           <Link href={`tel:${phoneNumber}`} aria-label="phone">
-            <Phone className="md:w-6 md:h-5 text-gray-300" />
+            <Phone className="md:w-6 md:h-5 text-white" />
           </Link>
           <Link
             href={`https://wa.me/${phoneNumber}`}
@@ -65,6 +65,9 @@ const Header = () => {
                 </g>
               </g>
             </svg>
+          </Link>
+          <Link href="https://www.instagram.com/setarz" aria-label="instagram">
+            <Instagram className="md:w-6 md:h-6 text-[#CF2C8C]" />
           </Link>
         </div>
       </div>

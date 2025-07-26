@@ -9,6 +9,7 @@ const ProjectContainer = async () => {
 
   return (
     <section
+      id="projects"
       className="relative w-full bg-gray-100 py-16 md:py-20 mt-10"
       dir="rtl"
     >

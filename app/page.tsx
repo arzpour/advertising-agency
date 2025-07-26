@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
       <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
         <Services />
@@ -27,6 +27,6 @@ export default function Home() {
 
       <Brands />
       <Footer />
-    </div>
+    </>
   );
 }
