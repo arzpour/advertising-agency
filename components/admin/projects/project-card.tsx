@@ -28,7 +28,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
           }`}
           alt={`project-${name}`}
           width={800}
-          height={0}
+          height={800}
           className="h-40 w-full object-cover object-center "
         />
       </div>

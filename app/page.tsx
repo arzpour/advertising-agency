@@ -1,7 +1,7 @@
 import AboutUs from "@/components/about-us";
 import ContactUs from "@/components/contact-us/contact-us";
 import Header from "@/components/header-footer/header";
-import Portfolio from "@/containers/portfolio";
+import ProjectContainer from "@/containers/projectContainer";
 import Services from "@/containers/services";
 import Blogs from "@/containers/blogs";
 import Brands from "@/components/brands";
@@ -15,7 +15,10 @@ export default function Home() {
       <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
         <Services />
       </Suspense>
-      <Portfolio />
+      <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
+        <ProjectContainer />
+      </Suspense>
+
       <AboutUs />
       <ContactUs />
       <Blogs />
