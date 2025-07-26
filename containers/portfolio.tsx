@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import PortfolioCard from "@/components/portfolio/portfolio-card";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const portfolioData = [
   {
@@ -158,14 +158,14 @@ const Portfolio = () => {
             onClick={() => scroll("left")}
             className="absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
           >
-            <FaArrowLeft />
+            <ArrowLeft />
           </button>
 
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
           >
-            <FaArrowRight />
+            <ArrowRight />
           </button>
 
           <div

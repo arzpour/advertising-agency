@@ -1,8 +1,7 @@
 import React from "react";
 import ContactUsForm from "./contact-us-form";
 import Image from "next/image";
-import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
+import { Mail, Phone } from "lucide-react";
 
 const ContactUs = () => {
   return (
@@ -21,13 +20,13 @@ const ContactUs = () => {
               <span className="text-gray-300 text-sm md:text-base">
                 saeeed@gmail.com
               </span>
-              <MdEmail className="w-4 h-4 relative bottom-0.5" />
+              <Mail className="w-4 h-4 relative bottom-0.5" />
             </div>
             <div className="flex gap-3 items-center">
               <span className="text-gray-300 text-sm md:text-base">
                 +21-32374672
               </span>
-              <FaPhoneAlt className="w-4 h-4 relative bottom-0.5" />
+              <Phone className="w-4 h-4 relative bottom-0.5" />
             </div>
           </div>
         </div>

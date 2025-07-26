@@ -6,12 +6,15 @@ import Services from "@/containers/services";
 import Blogs from "@/containers/blogs";
 import Brands from "@/components/brands";
 import Footer from "@/components/header-footer/footer";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <Services />
+      <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
+        <Services />
+      </Suspense>
       <Portfolio />
       <AboutUs />
       <ContactUs />
