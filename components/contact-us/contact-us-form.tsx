@@ -1,26 +1,46 @@
 "use client";
 
 import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { contactUsFormValidationSchema } from "@/validations/contact-us-validation";
-
-type ContactFormFields = {
-  email: string;
-  text: string;
-};
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import {
+  contactUsFormValidationSchema,
+  contactUsFormValidationSchemaType,
+} from "@/validations/contact-us-validation";
+import { useAddTicket } from "@/apis/mutations/tickets";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../form/input";
+import { toast } from "sonner";
 
 const ContactUsForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, touchedFields },
-  } = useForm<ContactFormFields>({
-    resolver: yupResolver(contactUsFormValidationSchema),
+  const { handleSubmit, control } = useForm<contactUsFormValidationSchemaType>({
+    mode: "all",
+    resolver: zodResolver(contactUsFormValidationSchema),
   });
 
-  const onSubmit = (data: ContactFormFields) => {
+  const sendTicket = useAddTicket();
+
+  const onSubmit: SubmitHandler<contactUsFormValidationSchemaType> = async (
+    data
+  ) => {
     console.log(data);
+
+    try {
+      await sendTicket.mutateAsync({
+        phoneNumber: data.phoneNumber,
+        message: data.message,
+      });
+
+      toast("ارسال شد", {
+        icon: "✅",
+        className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
+      });
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error);
+
+      toast("مشکلی به وجود آمده است", {
+        className: "!bg-red-100 !text-red-800 !shadow-md !h-[60px]",
+      });
+    }
   };
 
   return (
@@ -28,37 +48,31 @@ const ContactUsForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-wrap sm:flex-nowrap gap-3 md:gap-6 items-center text-white mt-5"
     >
-      <div>
-        <input
-          type="text"
-          placeholder="آدرس ایمیل"
-          className="outline-none px-3 py-1.5 bg-gray-2 text-gray-900 rounded placeholder:text-sm text-sm"
-          {...register("email")}
-        />
-        {touchedFields.email && errors.email && (
-          <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>
+      <Controller
+        control={control}
+        name="phoneNumber"
+        render={({ field, fieldState }) => (
+          <Input
+            type="text"
+            placeholder="آدرس ایمیل یا شماره همراه..."
+            error={fieldState.error?.message}
+            {...field}
+          />
         )}
+      />
 
-        {touchedFields.text && errors.text && !errors.email && (
-          <div className="h-6 w-2"></div>
+      <Controller
+        control={control}
+        name="message"
+        render={({ field, fieldState }) => (
+          <Input
+            type="text"
+            placeholder="متن..."
+            error={fieldState.error?.message}
+            {...field}
+          />
         )}
-      </div>
-
-      <div>
-        <input
-          type="text"
-          placeholder="متن..."
-          className="outline-none px-3 py-1.5 bg-gray-2 text-gray-900 rounded placeholder:text-sm text-sm"
-          {...register("text")}
-        />
-        {touchedFields.text && errors.text && (
-          <p className="text-red-500 text-xs mt-2">{errors.text.message}</p>
-        )}
-
-        {touchedFields.email && errors.email && !errors.text && (
-          <div className="h-6 w-2"></div>
-        )}
-      </div>
+      />
 
       <button
         type="submit"

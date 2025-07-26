@@ -1,7 +1,6 @@
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
-import { Trash, Edit } from "lucide-react";
 import DeleteDialog from "../global/delete-dialog";
 import EditDialog from "../global/edit-dialog";
 
@@ -24,7 +23,7 @@ const CategoryCard: React.FC<ICategoryCard> = ({
         src={`${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon ?? ""}`}
         alt={`${name} image`}
         width={800}
-        height={200}
+        height={800}
         className="h-20 w-20 object-cover rounded"
       />
       <h3 className="text-gray-800 truncate line-clamp-1">{name}</h3>

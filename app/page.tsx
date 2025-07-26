@@ -15,13 +15,16 @@ export default function Home() {
       <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
         <Services />
       </Suspense>
-      <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
+      <Suspense fallback={<p>در حال بارگذاری پروژه...</p>}>
         <ProjectContainer />
       </Suspense>
 
       <AboutUs />
       <ContactUs />
-      <Blogs />
+      <Suspense fallback={<p>در حال بارگذاری بلاگ...</p>}>
+        <Blogs />
+      </Suspense>
+
       <Brands />
       <Footer />
     </div>
