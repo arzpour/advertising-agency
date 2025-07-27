@@ -7,21 +7,36 @@ import Blogs from "@/containers/blogs";
 import Brands from "@/components/brands";
 import Footer from "@/components/header-footer/footer";
 import { Suspense } from "react";
+import { ServiceCardSkeleton } from "@/components/services/service-card";
+import { ProjectCardSkeleton } from "@/components/projects/project-card";
+import { BlogCardSkeleton } from "@/components/blogs/blog-card";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Suspense fallback={<p>در حال بارگذاری خدمات...</p>}>
+      <Suspense
+        fallback={[...Array(5)].map((_, i) => (
+          <ServiceCardSkeleton key={i} />
+        ))}
+      >
         <Services />
       </Suspense>
-      <Suspense fallback={<p>در حال بارگذاری پروژه...</p>}>
+      <Suspense
+        fallback={[...Array(5)].map((_, i) => (
+          <ProjectCardSkeleton key={i} />
+        ))}
+      >
         <ProjectContainer />
       </Suspense>
 
       <AboutUs />
       <ContactUs />
-      <Suspense fallback={<p>در حال بارگذاری بلاگ...</p>}>
+      <Suspense
+        fallback={[...Array(5)].map((_, i) => (
+          <BlogCardSkeleton key={i} />
+        ))}
+      >
         <Blogs />
       </Suspense>
 
