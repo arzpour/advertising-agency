@@ -10,21 +10,21 @@ const Blogs = async () => {
   return (
     <section
       id="blogs"
-      className="max-w-6xl mx-auto space-y-5 md:space-y-7 xl:mt-14 px-5 md:px-10 xl:px-0"
+      className="space-y-5 md:space-y-7 px-5 md:px-10 xl:px-0 bg-black py-14 pb-20 lg:pt-24 lg:pb-28"
     >
-      {blogs.length > 0 && (
-        <>
-          <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7">
-            {blogs[0] && <BlogCard {...blogs[0]} width="w-full sm:w-1/3" />}
-            {blogs[1] && <BlogCard {...blogs[1]} width="w-full sm:w-2/3" />}
-          </div>
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="text-xl md:text-3xl font-bold my-2 text-white mb-8">
+          وبلاگ
+        </h2>
 
-          <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7">
-            {blogs[2] && <BlogCard {...blogs[2]} width="w-full sm:w-2/3" />}
-            {blogs[3] && <BlogCard {...blogs[3]} width="w-full sm:w-1/3" />}
+        {blogs.length > 0 && (
+          <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7 w-full">
+            {blogs.slice(0, 3).map((el) => (
+              <BlogCard key={el._id} {...el} />
+            ))}
           </div>
-        </>
-      )}
+        )}
+      </div>
     </section>
   );
 };

@@ -15,32 +15,46 @@ import useLogout from "@/hooks/useLogout";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { adminPanelActions } from "@/redux/features/admin.slice";
 
-const PanelSideBar = () => {
+interface IPanelSideBar {
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
   const dispatch = useAppDispatch();
   const { adminPanelTab } = useAppSelector((state) => state.admin);
 
   const { logoutHandler } = useLogout();
 
   return (
-    <ul className="font-medium mt-4 space-y-3">
-      <li className="flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+    <ul className="font-medium mt-4 space-y-3 w-full">
+      <button
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+        }}
+        className="w-full flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer"
+      >
         <House className="w-5 h-5" />
-        <Link href="/" className="hidden md:block">
+        <Link href="/" className="sm:hidden md:block">
           صفحه اصلی
         </Link>
-      </li>
+      </button>
       <button
-        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
           adminPanelTab === "adminInfo" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
-        onClick={() =>
-          dispatch(adminPanelActions.setadminPanelTab("adminInfo"))
-        }
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setadminPanelTab("adminInfo"));
+        }}
       >
         <User className="w-5 h-5" />
         <Link
           href="/admin"
-          className={`hidden md:block ${
+          className={`sm:hidden md:block ${
             adminPanelTab === "adminInfo" ? "font-medium" : ""
           }`}
         >
@@ -48,15 +62,20 @@ const PanelSideBar = () => {
         </Link>
       </button>
       <button
-        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
           adminPanelTab === "projects" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
-        onClick={() => dispatch(adminPanelActions.setadminPanelTab("projects"))}
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setadminPanelTab("projects"));
+        }}
       >
         <SquareChartGantt className="w-5 h-5" />
         <Link
           href="/admin"
-          className={`hidden md:block ${
+          className={`sm:hidden md:block ${
             adminPanelTab === "projects" ? "font-medium" : ""
           }`}
         >
@@ -64,15 +83,20 @@ const PanelSideBar = () => {
         </Link>
       </button>
       <button
-        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
           adminPanelTab === "blogs" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
-        onClick={() => dispatch(adminPanelActions.setadminPanelTab("blogs"))}
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setadminPanelTab("blogs"));
+        }}
       >
         <Newspaper className="w-5 h-5" />
         <Link
           href="/admin"
-          className={`hidden md:block ${
+          className={`sm:hidden md:block ${
             adminPanelTab === "blogs" ? "font-medium" : ""
           }`}
         >
@@ -80,19 +104,22 @@ const PanelSideBar = () => {
         </Link>
       </button>
       <button
-        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
           adminPanelTab === "categories"
             ? "bg-gray-100 w-full text-red-600"
             : ""
         }`}
-        onClick={() =>
-          dispatch(adminPanelActions.setadminPanelTab("categories"))
-        }
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setadminPanelTab("categories"));
+        }}
       >
         <Layers2 className="w-5 h-5" />
         <Link
           href="/admin"
-          className={`hidden md:block ${
+          className={`sm:hidden md:block ${
             adminPanelTab === "categories" ? "font-medium" : ""
           }`}
         >
@@ -100,30 +127,45 @@ const PanelSideBar = () => {
         </Link>
       </button>
       <button
-        className={`flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
           adminPanelTab === "tickets" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
-        onClick={() => dispatch(adminPanelActions.setadminPanelTab("tickets"))}
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setadminPanelTab("tickets"));
+        }}
       >
         <MessageSquareText className="w-5 h-5" />
         <Link
           href="/admin"
-          className={`hidden md:block ${
+          className={`sm:hidden md:block ${
             adminPanelTab === "tickets" ? "font-medium" : ""
           }`}
         >
           تیکت ها
         </Link>
       </button>
-      <li className="flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+      <button
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+        }}
+        className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer"
+      >
         <Heart className="w-5 h-5" />
-        <Link href="/admin" className="hidden md:block">
+        <Link href="/admin" className="sm:hidden md:block">
           علاقه مندی ها
         </Link>
-      </li>
-      <li className="flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+      </button>
+      <li className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
         <LogOut className="w-5 h-5" />
-        <button onClick={logoutHandler} className="md:block cursor-pointer">
+        <button
+          onClick={logoutHandler}
+          className="sm:hidden md:block cursor-pointer"
+        >
           خروج
         </button>
       </li>

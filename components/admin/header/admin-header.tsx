@@ -1,11 +1,15 @@
 import React from "react";
-import SearchInput from "../form/searchInput";
+import SearchInput from "../../form/searchInput";
 import { Mail, Bell } from "lucide-react";
-import AdminInfoCard from "./adminInfo-card";
+import AdminInfoCard from "../adminInfo-card";
+import HamburgerMenu from "./hamburgerMenu";
 
 const AdminHead = () => {
   return (
-    <div className="flex gap-10 justify-between items-center">
+    <div className="flex gap-5 lg:gap-10 justify-between items-center mx-5">
+      <div className="max-w-4/5 sm:hidden">
+        <HamburgerMenu />
+      </div>
       <SearchInput />
       <div className="flex gap-8 items-center">
         <Bell className="w-6 h-6" />

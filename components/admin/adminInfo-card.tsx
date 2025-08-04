@@ -7,7 +7,7 @@ const AdminInfoCard = () => {
   const { adminInfo } = useAppSelector((state) => state.admin);
 
   return (
-    <div className="flex gap-6 items-center mx-8 mr-5">
+    <div className="hidden lg:flex gap-6 items-center lg:mx-8 lg:mr-5">
       <div>
         <h4>{adminInfo.name === "" ? "موجود نیست" : adminInfo.name}</h4>
         <span className="text-gray-500 text-xs">

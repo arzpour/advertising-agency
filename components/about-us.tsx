@@ -24,7 +24,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <h3 className="text-lg font-medium text-gray-800 my-5">
+            <h3 className="text-xl md:text-3xl font-bold text-gray-800 my-5">
               آژانس تبلیغاتی <span className="text-red-500">هانس</span>
             </h3>
           </div>

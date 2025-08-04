@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { Button } from "@/components/ui/button";
 import {
@@ -69,7 +69,7 @@ const AdminPanelContent = () => {
 
   return (
     <>
-      <div className="mt-12 flex gap-3 justify-between items-center ml-10">
+      <div className="mt-12 flex gap-3 justify-between items-center mx-5 lg:ml-10">
         <h3 className="text-lg font-medium">{title}</h3>
 
         {title !== "تیکت" && (

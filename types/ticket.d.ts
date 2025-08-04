@@ -22,6 +22,6 @@ interface IAddTicketResDto {
 interface ITicketResDto {
   status: string;
   data: {
-    ticket: ITicketRes[];
+    tickets: ITicketRes[];
   };
 }

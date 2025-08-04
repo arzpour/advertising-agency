@@ -10,10 +10,9 @@ export const Input: React.FC<IInputProps> = ({
   ...props
 }) => {
   return (
-    <div className="flex flex-col gap-y-2 w-full">
+    <div className="flex flex-col gap-y-2 sm:w-full">
       <ShadcnInput
-        className={`
-          text-xs placeholder:text-xs placeholder:text-gray-600 outline-none focus:border-none focus:shadow-none
+        className={`text-xs placeholder:text-xs placeholder:text-gray-600 outline-none focus:border-none focus:shadow-none
           ${error ? "border-red-400" : "border-gray-400"}
           ${className}
         `}

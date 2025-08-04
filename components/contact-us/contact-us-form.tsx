@@ -46,7 +46,7 @@ const ContactUsForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-wrap sm:flex-nowrap gap-3 md:gap-6 items-center text-white mt-5"
+      className="flex flex-wrap gap-3 items-center text-white mt-5"
     >
       <Controller
         control={control}
@@ -57,6 +57,7 @@ const ContactUsForm = () => {
             placeholder="آدرس ایمیل یا شماره همراه..."
             error={fieldState.error?.message}
             {...field}
+            className="placeholder:text-white"
           />
         )}
       />
@@ -70,13 +71,14 @@ const ContactUsForm = () => {
             placeholder="متن..."
             error={fieldState.error?.message}
             {...field}
+            className="placeholder:text-white"
           />
         )}
       />
 
       <button
         type="submit"
-        className="text-red-500 underline cursor-pointer outline-none md:mr-7 text-sm md:text-base"
+        className="text-red-500 underline cursor-pointer outline-none text-xs sm:text-sm md:text-base"
       >
         ارسال
       </button>

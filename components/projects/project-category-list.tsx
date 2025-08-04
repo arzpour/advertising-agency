@@ -77,7 +77,7 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
         </button>
         <div
           ref={scrollRef}
-          className="flex gap-10 overflow-x-auto px-2 scrollbar-hide scroll-smooth max-w-7xl mx-auto"
+          className="flex gap-10 overflow-x-auto px-2 scrollbar-hide scroll-smooth max-w-7xl mx-auto py-10"
         >
           <Projects
             projects={projects}
