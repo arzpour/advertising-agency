@@ -61,7 +61,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
       });
       setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
-    } catch (error) {
+    } catch {
       setDialogOpen(false);
 
       toast("اطلاعات وارد شده صحیح نیست", {

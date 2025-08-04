@@ -72,7 +72,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
       });
       setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-projects"] });
-    } catch (error) {
+    } catch {
       setDialogOpen(false);
 
       toast("اطلاعات وارد شده صحیح نیست", {

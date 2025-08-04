@@ -71,6 +71,7 @@ export const Images: React.FC<IImages> = ({
       setUrls(fullUrls);
       field.onChange([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue]);
 
   return (

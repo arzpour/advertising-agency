@@ -78,7 +78,7 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
       });
       setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-blogs"] });
-    } catch (error) {
+    } catch {
       setDialogOpen(false);
 
       toast("اطلاعات وارد شده صحیح نیست", {
