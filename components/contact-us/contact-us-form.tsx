@@ -57,7 +57,7 @@ const ContactUsForm = () => {
             placeholder="آدرس ایمیل یا شماره همراه..."
             error={fieldState.error?.message}
             {...field}
-            className="placeholder:text-white"
+            className="placeholder:text-white placeholder:text-sm"
           />
         )}
       />
@@ -71,7 +71,7 @@ const ContactUsForm = () => {
             placeholder="متن..."
             error={fieldState.error?.message}
             {...field}
-            className="placeholder:text-white"
+            className="placeholder:text-white placeholder:text-sm"
           />
         )}
       />

@@ -8,22 +8,23 @@ const Blogs = async () => {
   const blogs = blogData.data.blogs;
 
   return (
-    <section
-      id="blogs"
-      className="space-y-5 md:space-y-7 px-5 md:px-10 xl:px-0 bg-black py-14 pb-20 lg:pt-24 lg:pb-28"
-    >
-      <div className="container mx-auto max-w-7xl">
-        <h2 className="text-xl md:text-3xl font-bold my-2 text-white mb-8">
+    <section id="blogs">
+      <div className="container mx-auto">
+        <h2 className="text-xl font-bold text-white bg-black rounded-t-md inline-block py-4 px-16">
           وبلاگ
         </h2>
+      </div>
 
-        {blogs.length > 0 && (
-          <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7 w-full">
-            {blogs.slice(0, 3).map((el) => (
-              <BlogCard key={el._id} {...el} />
-            ))}
-          </div>
-        )}
+      <div className="bg-black px-5 md:px-10 xl:px-0 py-14 pb-20 lg:pt-24 lg:pb-28">
+        <div className="container mx-auto max-w-7xl">
+          {blogs.length > 0 && (
+            <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-7 w-full">
+              {blogs.slice(0, 3).map((el) => (
+                <BlogCard key={el._id} {...el} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

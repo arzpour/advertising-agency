@@ -6,17 +6,15 @@ const Services = async () => {
   const servicesData = await getAllCategories({ page: 1, limit: 6 });
 
   return (
-    <section
-      id="services"
-      className="flex flex-col my-16 md:my-28 mb-20 px-10 bg-gray-100 py-14"
-      dir="rtl"
-    >
-      <div className="container mx-auto max-w-7xl">
-        <h2 className="text-xl md:text-3xl font-bold my-2 text-gray-900 mb-8">
+    <section id="services" className="pt-14 mt-16 md:mt-20" dir="rtl">
+      <div className="container mx-auto">
+        <h2 className="text-xl font-bold bg-gray-100 rounded-t-md inline-block py-4 px-16">
           خدمات
         </h2>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-9 lg:gap-7">
+      <div className="flex flex-col bg-gray-100 py-16 pb-28">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-9 lg:gap-7 container mx-auto max-w-7xl px-10">
           {servicesData.data.categories.map((el) => (
             <ServiceCard
               key={el.name}

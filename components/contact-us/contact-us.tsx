@@ -5,7 +5,7 @@ const ContactUs = () => {
   return (
     <section id="contactUs" className="text-white inline-block">
       <div className="w-full">
-        <p className="text-gray-100 text-xs sm:text-sm md:text-base">
+        <p className="text-gray-100 text-xs sm:text-sm">
           برای ارتباط با ما ایمیل و متن خود را به صورت تیکت نوشته و ارسال کنید
         </p>
         <ContactUsForm />

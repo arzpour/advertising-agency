@@ -15,8 +15,8 @@ const Footer = () => {
         width={200}
         height={200}
       />
-  
-      <div className="relative z-20 flex flex-wrap md:flex-nowrap gap-10 md:gap-7 lg:gap-10 xl:gap-20 justify-start xl:justify-center items-start px-0 2xl:px-40">
+
+      <div className="relative z-20 flex flex-wrap md:flex-nowrap gap-10 md:gap-7 lg:gap-10 justify-start xl:justify-center items-start px-0 2xl:px-40">
         <nav className="space-y-6">
           <h6 className="text-white text-base text-start">خدمات</h6>
           <ul className="space-y-4 text-start">
@@ -62,12 +62,12 @@ const Footer = () => {
             </li>
             <li>
               <Link href="#" className="text-white text-sm hover:text-red-500">
-                پروژه‌ها
+                استخدام
               </Link>
             </li>
           </ul>
         </nav>
-        <nav className="space-y-6">
+        {/* <nav className="space-y-6">
           <h6 className="text-white text-base text-start">سایر</h6>
           <ul className="space-y-4 text-start">
             <li>
@@ -86,7 +86,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         <nav className="space-y-6">
           <h6 className="text-white text-base text-start">دسترسی سریع</h6>
           <ul className="space-y-4 text-start">

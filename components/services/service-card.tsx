@@ -14,7 +14,7 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
       <Image
         src={`${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon}`}
         alt={`${name} image`}
-        className="w-20 h-20 object-cover"
+        className="w-20 h-20 object-cover rounded-full"
         width={200}
         height={200}
       />
