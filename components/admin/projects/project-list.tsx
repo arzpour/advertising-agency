@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import useGetProjects from "@/hooks/useGetProjects";
-import ProjectCard from "./project-card";
+import ProjectCard, { ProjectCardSkeleton } from "./project-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 
@@ -12,7 +12,7 @@ const ProjectList = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
-    isSuccess
+    isSuccess,
   } = useGetProjects();
 
   const { categoryMap } = useGetCategoryInfo();
@@ -25,19 +25,24 @@ const ProjectList = () => {
 
   return (
     <>
-    {isSuccess && allProjects.length > 0 && (
+      {isLoading && (
+        <div className="flex flex-wrap gap-8 mt-14 mb-14 justify-center items-center gap-y-10">
+          {isLoading &&
+            [1, 2, 3, 4].map((el) => <ProjectCardSkeleton key={el} />)}
+        </div>
+      )}
 
-      <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
-        {allProjects.map((el) => (
-          <ProjectCard
-            key={el._id}
-            {...el}
-            category={categoryMap[el.category]}
-          />
-        ))}
-      </div>
-    )}
-
+      {isSuccess && allProjects.length > 0 && (
+        <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
+          {allProjects.map((el) => (
+            <ProjectCard
+              key={el._id}
+              {...el}
+              category={categoryMap[el.category]}
+            />
+          ))}
+        </div>
+      )}
       {hasNextPage && (
         <div
           ref={observerRef}
@@ -46,7 +51,6 @@ const ProjectList = () => {
           {isFetchingNextPage ? "در حال بارگذاری..." : "بارگذاری بیشتر"}
         </div>
       )}
-
       {!hasNextPage && !isLoading && allProjects.length === 0 && (
         <p className="mt-6 text-gray-500">پروژه‌ای موجود نیست.</p>
       )}

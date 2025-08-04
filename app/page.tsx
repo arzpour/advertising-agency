@@ -9,6 +9,9 @@ import { Suspense } from "react";
 import { ServiceCardSkeleton } from "@/components/services/service-card";
 import { ProjectCardSkeleton } from "@/components/projects/project-card";
 import { BlogCardSkeleton } from "@/components/blogs/blog-card";
+import { ServiceCardSkeleton } from "@/components/services/service-card";
+import { ProjectCardSkeleton } from "@/components/projects/project-card";
+import { BlogCardSkeleton } from "@/components/blogs/blog-card";
 
 export default function Home() {
   return (
@@ -23,6 +26,11 @@ export default function Home() {
       >
         <Services />
       </Suspense>
+      <Suspense
+        fallback={[...Array(5)].map((_, i) => (
+          <ProjectCardSkeleton key={i} />
+        ))}
+      >
       <Suspense
         fallback={[...Array(5)].map((_, i) => (
           <ProjectCardSkeleton key={i} />

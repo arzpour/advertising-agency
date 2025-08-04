@@ -57,3 +57,26 @@ const BlogCard: React.FC<IBlogCard> = ({
 };
 
 export default BlogCard;
+
+export const BlogCardSkeleton = () => {
+  return (
+    <div className="flex flex-col gap-4 items-center bg-white border border-gray-200 cursor-pointer rounded-lg shadow-sm hover:shadow-2xl md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
+      <div className="w-full">
+        <div className="h-32 w-full bg-gray-300 animate-pulse object-cover object-center rounded-t-md"></div>
+      </div>
+      <div className="flex flex-col justify-between p-4 leading-normal w-full">
+        <div className="flex justify-between items-center">
+          <div className="mb-2 tracking-tight h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
+          <div className="flex gap-3 justify-end items-start mr-10">
+            <div className="h-4 w-16 rounded-full bg-gray-300 animate-pulse"></div>
+            <div className="h-4 w-16 rounded-full bg-gray-300 animate-pulse"></div>
+          </div>
+        </div>
+        <p className="mb-3 text-sm truncate mt-2 h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
+        <div className="flex justify-end">
+          <span className="py-2 px-4 rounded-full text-xs truncate h-4 w-10 bg-gray-300 animate-pulse"></span>
+        </div>
+      </div>
+    </div>
+  );
+};

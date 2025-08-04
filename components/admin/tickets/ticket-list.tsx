@@ -1,5 +1,5 @@
 import React from "react";
-import TicketCard from "./ticket-card";
+import TicketCard, { TicketCardSkeleton } from "./ticket-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import useGetTickets from "@/hooks/useGetTickets";
 
@@ -21,8 +21,15 @@ const TicketList = () => {
 
   return (
     <>
+      {isLoading && (
+        <div className="flex flex-wrap gap-7 mt-14 mb-10 justify-center items-center gap-y-7">
+          {isLoading &&
+            [1, 2, 3, 4].map((el) => <TicketCardSkeleton key={el} />)}
+        </div>
+      )}
+
       {isSuccess && allTickets.length > 0 && (
-        <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
+        <div className="flex flex-wrap gap-8 mt-12 mb-10 justify-center items-center gap-y-10">
           {allTickets.map((el) => (
             <TicketCard key={el._id} {...el} />
           ))}

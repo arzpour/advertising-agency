@@ -2,7 +2,7 @@
 
 import React from "react";
 import useGetBlogs from "@/hooks/useGetBlogs";
-import BlogCard from "./blog-card";
+import BlogCard, { BlogCardSkeleton } from "./blog-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 
@@ -30,6 +30,12 @@ const BlogList: React.FC = () => {
 
   return (
     <>
+      {isLoading && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full my-14 justify-center items-center">
+          {isLoading && [1, 2, 3, 4].map((el) => <BlogCardSkeleton key={el} />)}
+        </div>
+      )}
+
       {isSuccess && allblogs.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-14 mb-10 justify-center items-center gap-y-10">
           {allblogs.map((blog) => (
