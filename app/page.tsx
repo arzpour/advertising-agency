@@ -23,7 +23,7 @@ export default function Home() {
       >
         <Services />
       </Suspense>
-
+ 
       <Suspense
         fallback={[...Array(5)].map((_, i) => (
           <ProjectCardSkeleton key={i} />
