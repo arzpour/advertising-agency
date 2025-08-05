@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-// import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import TanstackProvider from "@/providers/tanstack.provider";
 import ReduxProvider from "@/providers/redux.provider";
 import { vazirMatn } from "@/lib/fonts";
-
-// const vazirMatn = VazirMatn({
-//   variable: "--font-Vazirmatn",
-//   subsets: ["arabic"],
-// });
 
 export const metadata: Metadata = {
   title: "آژانس تبلیغاتی هانس",

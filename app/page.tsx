@@ -23,11 +23,15 @@ export default function Home() {
       >
         <Services />
       </Suspense>
- 
+
       <Suspense
-        fallback={[...Array(5)].map((_, i) => (
-          <ProjectCardSkeleton key={i} />
-        ))}
+        fallback={
+          <div className="flex flex-wrap gap-4 gap-y-8 justify-center mb-10">
+            {[...Array(5)].map((_, i) => (
+              <ProjectCardSkeleton key={i} />
+            ))}
+          </div>
+        }
       >
         <ProjectContainer />
       </Suspense>

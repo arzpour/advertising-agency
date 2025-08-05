@@ -23,8 +23,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
     categories.find((item) => item._id === category)?.name ?? "نامشخص";
 
   return (
-    <div className="rounded-lg bg-white shadow-lg w-72">
-      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
+    <div className="rounded-lg bg-white shadow-lg w-72 rounded-t-lg">
+      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer rounded-t-lg">
         <Image
           src={`${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`}
           alt="project"
@@ -68,10 +68,10 @@ export default ProjectCard;
 
 export const ProjectCardSkeleton = () => {
   return (
-    <div className="rounded-lg bg-white shadow-secondary-1 w-72">
+    <div className="rounded-lg bg-white shadow-md w-72">
       <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
         <div className="rounded-t-lg bg-gray-300 animate-pulse h-32 w-full"></div>
-        <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
+        <div className="absolute h-full w-full top-0 bg-gray-400 opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
 
         <div className="absolute inset-0 h-full w-full bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
       </div>

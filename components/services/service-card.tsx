@@ -33,10 +33,10 @@ export default ServiceCard;
 export const ServiceCardSkeleton = () => {
   return (
     <div className="flex flex-col space-y-2 justify-center items-center">
-      <div className="w-20 h-20 object-cover rounded-full bg-gray-300 animate-pulse"></div>
-      <div className="text-gray-800 truncate line-clamp-1 h-4 w-16 rounded-full bg-gray-300 animate-pulse"></div>
+      <div className="w-20 h-20 object-cover rounded-full bg-gray-200 animate-pulse"></div>
+      <div className="text-gray-800 truncate line-clamp-1 h-4 w-16 rounded-full bg-gray-200 animate-pulse"></div>
 
-      <p className="text-sm text-gray-500 text-center h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
+      <p className="text-sm text-gray-500 text-center h-4 w-40 rounded-full bg-gray-200 animate-pulse"></p>
     </div>
   );
 };

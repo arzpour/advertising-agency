@@ -8,6 +8,6 @@ export const vazirMatn = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-vazirmatn",
+  variable: "--font-Vazirmatn",
   display: "swap",
 });

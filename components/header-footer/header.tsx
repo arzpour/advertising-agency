@@ -7,7 +7,10 @@ const Header = () => {
   const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
   return (
-    <header id="header" className="relative h-[33rem] w-full overflow-hidden">
+    <header
+      id="header"
+      className="relative h-[33rem] w-full overflow-hidden font-Vazirmatn"
+    >
       <video
         autoPlay
         muted
