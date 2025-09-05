@@ -34,3 +34,15 @@ interface IProjectByIdResDto {
   };
   status: string;
 }
+
+interface IEditProjectOrderReq {
+  orders: {
+    id: string;
+    order: number;
+  }[];
+}
+
+interface IEditProjectOrderRes {
+  message: string;
+  status: string;
+}

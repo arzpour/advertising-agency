@@ -1,5 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
-import { addProject, deleteProject, editProjectById } from "../client/projects";
+import {
+  addProject,
+  deleteProject,
+  editProjectById,
+  editProjectOrder,
+} from "../client/projects";
 
 export const useAddProject = () => {
   return useMutation({
@@ -19,5 +24,12 @@ export const useEditProject = () => {
   return useMutation({
     mutationKey: ["edit-project"],
     mutationFn: editProjectById,
+  });
+};
+
+export const useEditProjectOrder = () => {
+  return useMutation({
+    mutationKey: ["edit-project-order"],
+    mutationFn: editProjectOrder,
   });
 };

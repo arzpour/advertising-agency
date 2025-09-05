@@ -41,3 +41,11 @@ export const editProjectById: editProjectByIdType = async ({ data, id }) => {
   });
   return response.data;
 };
+
+type editProjectOrderType = (
+  data: IEditProjectOrderReq
+) => Promise<IEditProjectOrderRes>;
+export const editProjectOrder: editProjectOrderType = async (data) => {
+  const response = await axiosInstance.patch(urls.project.editOrder, data);
+  return response.data;
+};
