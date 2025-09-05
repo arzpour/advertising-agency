@@ -34,11 +34,11 @@ export default TicketCard;
 export const TicketCardSkeleton = () => {
   return (
     <div className="flex flex-col justify-between p-4 leading-normal w-full bg-white rounded-lg">
-      <div className="flex gap- justify-between items-center">
-        <div className="mb-2 tracking-tight h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
-        <span className="h-4 w-10 bg-gray-300 animate-pulse rounded-full"></span>
+      <div className="flex justify-between items-center">
+        <div className="mb-2 tracking-tight h-4 w-24 bg-gray-200 animate-pulse rounded-full"></div>
+        <span className="h-4 w-10 bg-gray-200 animate-pulse rounded-full"></span>
       </div>
-      <p className="text-gray-700 dark:text-gray-400 text-sm mb-1 h-4 w-40 bg-gray-300 animate-pulse rounded-full"></p>
+      <p className="text-gray-700 dark:text-gray-400 text-sm mb-1 h-4 w-48 bg-gray-200 animate-pulse rounded-full"></p>
     </div>
   );
 };
