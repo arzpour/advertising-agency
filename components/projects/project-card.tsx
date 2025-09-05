@@ -26,7 +26,11 @@ const ProjectCard: React.FC<IProjectCard> = ({
     <div className="rounded-lg bg-white shadow-lg w-72">
       <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
         <Image
-          src={`${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`}
+          src={
+            thumbnail
+              ? `${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`
+              : "/gettyimages-2149038061-612x612.jpg"
+          }
           alt="project"
           className="rounded-t-lg"
           width={500}

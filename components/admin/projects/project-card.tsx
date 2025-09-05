@@ -23,9 +23,11 @@ const ProjectCard: React.FC<IProjectCard> = ({
     <div className="w-80 rounded-lg overflow-hidden bg-white hover:shadow-2xl cursor-pointer">
       <div className="h-40">
         <Image
-          src={`${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${
-            thumbnail ?? ""
-          }`}
+          src={
+            thumbnail
+              ? `${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`
+              : "/gettyimages-2149038061-612x612.jpg"
+          }
           alt={`project-${name}`}
           width={800}
           height={800}

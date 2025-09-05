@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-// import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import TanstackProvider from "@/providers/tanstack.provider";
 import ReduxProvider from "@/providers/redux.provider";
-import { vazirMatn } from "@/lib/fonts";
-
-// const vazirMatn = VazirMatn({
-//   variable: "--font-Vazirmatn",
-//   subsets: ["arabic"],
-// });
+import { vazirmatnGoogle, vazirMatn } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "آژانس تبلیغاتی هانس",
@@ -24,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirMatn.variable} font-Vazirmatn antialiased`}>
+      <body
+        className={`${vazirmatnGoogle.variable} ${vazirMatn.variable} font-Vazirmatn antialiased`}
+      >
         <Toaster position="top-right" dir="rtl" />
         <ReduxProvider>
           <TanstackProvider>{children}</TanstackProvider>

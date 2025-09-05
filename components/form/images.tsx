@@ -71,7 +71,7 @@ export const Images: React.FC<IImages> = ({
       setUrls(fullUrls);
       field.onChange([]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue]);
 
   return (
@@ -90,7 +90,7 @@ export const Images: React.FC<IImages> = ({
                 className="relative w-20 rounded-md overflow-hidden"
               >
                 <Image
-                  src={url}
+                  src={url ?? "/gettyimages-2149038061-612x612.jpg"}
                   alt={`Image ${index + 1}`}
                   className="object-center"
                   width={400}

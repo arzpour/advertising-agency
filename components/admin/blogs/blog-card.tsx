@@ -23,9 +23,11 @@ const BlogCard: React.FC<IBlogCard> = ({
     <div className="flex flex-col gap-4 items-center bg-white border border-gray-200 cursor-pointer rounded-lg shadow-sm hover:shadow-2xl md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
       <div className="my-4 mr-4">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${
-            thumbnail ?? ""
-          }`}
+          src={
+            thumbnail
+              ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`
+              : "/gettyimages-2149038061-612x612.jpg"
+          }
           alt={`project-${name}`}
           width={200}
           height={200}

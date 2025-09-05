@@ -21,7 +21,7 @@ const Brands = () => {
         {[...brands, ...brands, ...brands].map((el, index) => (
           <Image
             key={index}
-            src={el}
+            src={el ?? "/gettyimages-2149038061-612x612.jpg"}
             alt={`brand-${index}`}
             width={100}
             height={100}
