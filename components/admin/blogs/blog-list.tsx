@@ -5,10 +5,12 @@ import useGetBlogs from "@/hooks/useGetBlogs";
 import BlogCard, { BlogCardSkeleton } from "./blog-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
+import useDragAndDrop from "@/hooks/useDragAndDrop";
+import { useEditBlogOrder } from "@/apis/mutations/blog";
 
 const BlogList: React.FC = () => {
   const {
-    allblogs,
+    allBlogs,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -24,7 +26,15 @@ const BlogList: React.FC = () => {
     isFetchingNextPage,
   });
 
-  if (!isLoading && allblogs.length === 0) {
+  const editBlogOrder = useEditBlogOrder();
+
+  const { handleDrop, setDraggedId, items, draggedId } =
+    useDragAndDrop<IBlogRes>({
+      getItems: allBlogs,
+      editOrder: editBlogOrder,
+    });
+
+  if (!isLoading && allBlogs.length === 0) {
     return <p className="mt-6 text-gray-500">بلاگی موجود نیست.</p>;
   }
 
@@ -36,18 +46,24 @@ const BlogList: React.FC = () => {
         </div>
       )}
 
-      {isSuccess && allblogs.length > 0 && (
+      {isSuccess && allBlogs.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-14 mb-10 justify-center items-center gap-y-10">
-          {allblogs.map((blog) => (
-            <BlogCard
+          {items.map((blog) => (
+            <div
               key={blog._id}
-              {...blog}
-              category={categoryMap[blog.category]}
-            />
+              draggable
+              onDragStart={() => setDraggedId(blog._id)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={() => handleDrop(blog._id)}
+              className={`cursor-move transition-transform duration-200 ${
+                draggedId === blog._id ? "scale-105 shadow-2xl z-50" : ""
+              }`}
+            >
+              <BlogCard {...blog} category={categoryMap[blog.category]} />{" "}
+            </div>
           ))}
         </div>
       )}
-
       {hasNextPage && (
         <div
           ref={observerRef}

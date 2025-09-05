@@ -41,3 +41,9 @@ export const editBlogById: editBlogByIdType = async ({ data, id }) => {
   });
   return response.data;
 };
+
+type editBlogOrderType = (data: IEditOrderReq) => Promise<IEditOrderRes>;
+export const editBlogOrder: editBlogOrderType = async (data) => {
+  const response = await axiosInstance.patch(urls.blog.editOrder, data);
+  return response.data;
+};

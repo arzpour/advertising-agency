@@ -1,5 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
-import { addBlog, deleteBlog, editBlogById } from "../client/blogs";
+import {
+  addBlog,
+  deleteBlog,
+  editBlogById,
+  editBlogOrder,
+} from "../client/blogs";
 
 export const useAddBlog = () => {
   return useMutation({
@@ -19,5 +24,12 @@ export const useEditBlog = () => {
   return useMutation({
     mutationKey: ["edit-blog"],
     mutationFn: editBlogById,
+  });
+};
+
+export const useEditBlogOrder = () => {
+  return useMutation({
+    mutationKey: ["edit-blog-order"],
+    mutationFn: editBlogOrder,
   });
 };

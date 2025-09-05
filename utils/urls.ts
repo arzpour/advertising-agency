@@ -17,6 +17,7 @@ export const urls = {
   blog: {
     list: "/blogs",
     ById: (id: string) => `/blogs/${id}`,
+    editOrder: "/blogs/editOrder",
   },
   ticket: "/tickets",
 };
