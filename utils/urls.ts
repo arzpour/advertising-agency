@@ -12,6 +12,7 @@ export const urls = {
   category: {
     list: "/categories",
     ById: (id: string) => `/categories/${id}`,
+    editOrder: "/categories/editOrder",
   },
   blog: {
     list: "/blogs",

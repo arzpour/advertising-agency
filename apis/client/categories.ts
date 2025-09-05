@@ -44,3 +44,9 @@ export const editCategoryById: editCategoryByIdType = async ({ data, id }) => {
   });
   return response.data;
 };
+
+type editCategoryOrderType = (data: IEditOrderReq) => Promise<IEditOrderRes>;
+export const editCategoryOrder: editCategoryOrderType = async (data) => {
+  const response = await axiosInstance.patch(urls.category.editOrder, data);
+  return response.data;
+};

@@ -5,6 +5,7 @@ import ProjectCard, { ProjectCardSkeleton } from "./project-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
 import { useEditProjectOrder } from "@/apis/mutations/projects";
+import useDragAndDrop from "@/hooks/useDragAndDrop";
 
 const ProjectList = () => {
   const {
@@ -23,44 +24,13 @@ const ProjectList = () => {
     hasNextPage,
     isFetchingNextPage,
   });
+  const editProjectOrder = useEditProjectOrder();
 
-  const [items, setItems] = React.useState<typeof allProjects>([]);
-  const [draggedId, setDraggedId] = React.useState<string | null>(null);
-
-  const editOrder = useEditProjectOrder();
-
-  const handleDrop = async (id: string) => {
-    if (!draggedId) return;
-
-    const draggedIndex = items.findIndex((p) => p._id === draggedId);
-    const droppedIndex = items.findIndex((p) => p._id === id);
-
-    const newItems = [...items];
-    const [draggedItem] = newItems.splice(draggedIndex, 1);
-    newItems.splice(droppedIndex, 0, draggedItem);
-
-    setItems(newItems);
-    setDraggedId(null);
-
-    try {
-      const changedOrders = newItems
-        .map((item, index) => ({
-          id: item._id,
-          order: index + 1,
-        }))
-        .filter((o, i) => o.id !== items[i]?._id);
-
-      await editOrder.mutateAsync({ orders: changedOrders });
-    } catch (error) {
-      console.log("🚀 ~ handleDrop ~ error:", error);
-    }
-  };
-
-  React.useEffect(() => {
-    if (items.length === 0 && allProjects.length > 0) {
-      setItems(allProjects);
-    }
-  }, [allProjects, items.length]);
+  const { handleDrop, setDraggedId, items, draggedId } =
+    useDragAndDrop<IProjectRes>({
+      getItems: allProjects,
+      editOrder: editProjectOrder,
+    });
 
   return (
     <>
