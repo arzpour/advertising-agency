@@ -6,32 +6,50 @@ const MenuLinks = () => (
     dir="rtl"
   >
     <li>
-      <Link href="#aboutUs" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#aboutUs"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         درباره ما
       </Link>
     </li>
     <li>
-      <Link href="#services" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#services"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         خدمات
       </Link>
     </li>
     <li>
-      <Link href="#projects" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#projects"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         پروژه‌ها
       </Link>
     </li>
     <li>
-      <Link href="#blogs" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#blogs"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         وبلاگ
       </Link>
     </li>
     <li>
-      <Link href="#clients" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#clients"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         مشتریان
       </Link>
     </li>
     <li>
-      <Link href="#contactUs" className="hover:text-red-500 text-xs sm:text-sm">
+      <Link
+        href="#contactUs"
+        className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
+      >
         ارتباط با ما
       </Link>
     </li>

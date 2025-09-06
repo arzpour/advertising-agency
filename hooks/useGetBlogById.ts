@@ -2,7 +2,7 @@ import { getBlogById } from "@/apis/client/blogs";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetBlogById = (id: string) => {
-  const { data, isSuccess, isLoading, isError, error } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["get-blog-by-id", id],
     queryFn: async () => {
       const res = await getBlogById(id);

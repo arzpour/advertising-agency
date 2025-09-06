@@ -7,14 +7,17 @@ export const urls = {
   project: {
     list: "/projects",
     ById: (id: string) => `/projects/${id}`,
+    editOrder: "/projects/editOrder",
   },
   category: {
     list: "/categories",
     ById: (id: string) => `/categories/${id}`,
+    editOrder: "/categories/editOrder",
   },
   blog: {
     list: "/blogs",
     ById: (id: string) => `/blogs/${id}`,
+    editOrder: "/blogs/editOrder",
   },
   ticket: "/tickets",
 };

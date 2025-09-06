@@ -30,10 +30,10 @@ const useGetBlogs = (limitCus?: number) => {
     retry: 1,
   });
 
-  const allblogs = data?.pages.flatMap((page) => page.data.blogs) || [];
+  const allBlogs = data?.pages.flatMap((page) => page.data.blogs) || [];
 
   return {
-    allblogs,
+    allBlogs,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,

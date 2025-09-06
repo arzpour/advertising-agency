@@ -73,7 +73,7 @@ export const Thumbnail: React.FC<IThumbnail> = ({
         {!!url && (
           <>
             <Image
-              src={url}
+              src={url ?? "/gettyimages-2149038061-612x612.jpg"}
               alt="thumbnail"
               width={500}
               height={500}

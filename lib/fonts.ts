@@ -1,4 +1,11 @@
 import localFont from "next/font/local";
+import { Vazirmatn } from "next/font/google";
+
+export const vazirmatnGoogle = Vazirmatn({
+  subsets: ["arabic"],
+  variable: "--font-Vazirmatn",
+  fallback: ["Tahoma", "Arial", "sans-serif"],
+});
 
 export const vazirMatn = localFont({
   src: [

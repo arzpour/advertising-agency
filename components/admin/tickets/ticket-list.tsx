@@ -22,7 +22,7 @@ const TicketList = () => {
   return (
     <>
       {isLoading && (
-        <div className="flex flex-wrap gap-7 mt-14 mb-10 justify-center items-center gap-y-7">
+        <div className="flex flex-wrap lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-7 mt-14 mb-10 justify-center items-center gap-y-7">
           {isLoading &&
             [1, 2, 3, 4].map((el) => <TicketCardSkeleton key={el} />)}
         </div>

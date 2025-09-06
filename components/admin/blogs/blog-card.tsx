@@ -23,9 +23,11 @@ const BlogCard: React.FC<IBlogCard> = ({
     <div className="flex flex-col gap-4 items-center bg-white border border-gray-200 cursor-pointer rounded-lg shadow-sm hover:shadow-2xl md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
       <div className="my-4 mr-4">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${
-            thumbnail ?? ""
-          }`}
+          src={
+            thumbnail
+              ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`
+              : "/gettyimages-2149038061-612x612.jpg"
+          }
           alt={`project-${name}`}
           width={200}
           height={200}
@@ -61,20 +63,20 @@ export default BlogCard;
 export const BlogCardSkeleton = () => {
   return (
     <div className="flex flex-col gap-4 items-center bg-white border border-gray-200 cursor-pointer rounded-lg shadow-sm hover:shadow-2xl md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
-      <div className="w-full">
-        <div className="h-32 w-full bg-gray-300 animate-pulse object-cover object-center rounded-t-md"></div>
+      <div className="w-36">
+        <div className="h-32 w-36 bg-gray-200 animate-pulse object-cover object-center rounded-md"></div>
       </div>
       <div className="flex flex-col justify-between p-4 leading-normal w-full">
         <div className="flex justify-between items-center">
-          <div className="mb-2 tracking-tight h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
-          <div className="flex gap-3 justify-end items-start mr-10">
-            <div className="h-4 w-16 rounded-full bg-gray-300 animate-pulse"></div>
-            <div className="h-4 w-16 rounded-full bg-gray-300 animate-pulse"></div>
+          <div className="mb-2 tracking-tight h-4 w-24 bg-gray-200 animate-pulse rounded-full"></div>
+          <div className="flex gap-2 justify-end items-start mr-10">
+            <div className="h-4 w-8 rounded-full bg-gray-200 animate-pulse"></div>
+            <div className="h-4 w-8 rounded-full bg-gray-200 animate-pulse"></div>
           </div>
         </div>
-        <p className="mb-3 text-sm truncate mt-2 h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
+        <p className="text-sm truncate my-1 h-4 w-40 rounded-full bg-gray-200 animate-pulse"></p>
         <div className="flex justify-end">
-          <span className="py-2 px-4 rounded-full text-xs truncate h-4 w-10 bg-gray-300 animate-pulse"></span>
+          <span className="py-2 px-4 rounded-full text-xs truncate h-4 w-28 bg-gray-200 animate-pulse"></span>
         </div>
       </div>
     </div>

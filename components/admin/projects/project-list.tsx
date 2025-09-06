@@ -4,6 +4,8 @@ import useGetProjects from "@/hooks/useGetProjects";
 import ProjectCard, { ProjectCardSkeleton } from "./project-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
+import { useEditProjectOrder } from "@/apis/mutations/projects";
+import useDragAndDrop from "@/hooks/useDragAndDrop";
 
 const ProjectList = () => {
   const {
@@ -22,6 +24,13 @@ const ProjectList = () => {
     hasNextPage,
     isFetchingNextPage,
   });
+  const editProjectOrder = useEditProjectOrder();
+
+  const { handleDrop, setDraggedId, items, draggedId } =
+    useDragAndDrop<IProjectRes>({
+      getItems: allProjects,
+      editOrder: editProjectOrder,
+    });
 
   return (
     <>
@@ -34,12 +43,19 @@ const ProjectList = () => {
 
       {isSuccess && allProjects.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
-          {allProjects.map((el) => (
-            <ProjectCard
+          {items.map((el) => (
+            <div
               key={el._id}
-              {...el}
-              category={categoryMap[el.category]}
-            />
+              draggable
+              onDragStart={() => setDraggedId(el._id)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={() => handleDrop(el._id)}
+              className={`cursor-move transition-transform duration-200 ${
+                draggedId === el._id ? "scale-105 shadow-2xl z-50" : ""
+              }`}
+            >
+              <ProjectCard {...el} category={categoryMap[el.category]} />
+            </div>
           ))}
         </div>
       )}

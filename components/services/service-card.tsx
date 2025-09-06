@@ -12,7 +12,11 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
   return (
     <div className="flex flex-col space-y-2 justify-center items-center">
       <Image
-        src={`${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon}`}
+        src={
+          icon
+            ? `${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon}`
+            : "/gettyimages-2149038061-612x612.jpg"
+        }
         alt={`${name} image`}
         className="w-20 h-20 object-cover rounded-full"
         width={200}

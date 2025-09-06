@@ -23,7 +23,11 @@ const BlogCard: React.FC<IBlogCard> = ({
     <div className="rounded-lg bg-white shadow-lg w-full mx-5 sm:mx-0 sm:w-72">
       <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`}
+          src={
+            thumbnail
+              ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`
+              : "/gettyimages-2149038061-612x612.jpg"
+          }
           alt="project"
           className="rounded-t-lg"
           width={500}

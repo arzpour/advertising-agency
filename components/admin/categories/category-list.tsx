@@ -3,6 +3,8 @@ import React from "react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import CategoryCard, { CategoryCardSkeleton } from "./category-card";
 import useGetCategories from "@/hooks/useGetCategoryList";
+import useDragAndDrop from "@/hooks/useDragAndDrop";
+import { useEditCategoryOrder } from "@/apis/mutations/category";
 
 const CategoryList = () => {
   const {
@@ -20,6 +22,14 @@ const CategoryList = () => {
     isFetchingNextPage,
   });
 
+  const editCategoryOrder = useEditCategoryOrder();
+
+  const { handleDrop, setDraggedId, items, draggedId } =
+    useDragAndDrop<ICategory>({
+      getItems: allCategories,
+      editOrder: editCategoryOrder,
+    });
+
   return (
     <>
       {isLoading && (
@@ -31,11 +41,23 @@ const CategoryList = () => {
 
       {isSuccess && allCategories.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
-          {allCategories.map((el) => (
-            <CategoryCard key={el._id} {...el} icon={el.icon ?? ""} />
+          {items.map((el) => (
+            <div
+              key={el._id}
+              draggable
+              onDragStart={() => setDraggedId(el._id)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={() => handleDrop(el._id)}
+              className={`cursor-move transition-transform duration-200 ${
+                draggedId === el._id ? "scale-105 shadow-2xl z-50" : ""
+              }`}
+            >
+              <CategoryCard key={el._id} {...el} icon={el.icon ?? ""} />
+            </div>
           ))}
         </div>
       )}
+
       {hasNextPage && (
         <div
           ref={observerRef}
