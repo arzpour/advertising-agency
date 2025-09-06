@@ -53,6 +53,7 @@ const useDragAndDrop = <T extends IHasId>({
     if (items.length === 0 && getItems.length > 0) {
       setItems(getItems);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getItems, getItems.length]);
 
   return { handleDrop, setDraggedId, items, draggedId };

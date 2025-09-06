@@ -3,6 +3,8 @@ import { getProjects } from "@/apis/client/projects";
 import { getAllCategories } from "@/apis/client/categories";
 import ProjectCategoryList from "@/components/projects/project-category-list";
 
+export const revalidate = 1800;
+
 const ProjectContainer = async () => {
   const projectData = await getProjects({ page: 1, limit: 10 });
   const categoryData = await getAllCategories({ page: 1, limit: 6 });

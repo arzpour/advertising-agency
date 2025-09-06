@@ -75,7 +75,10 @@ const AdminPanelContent = () => {
         {title !== "تیکت" && (
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer">
+              <Button
+                aria-label="add"
+                className="bg-red-500 hover:bg-red-400 text-white rounded-full px-6 cursor-pointer"
+              >
                 افزودن {title}
               </Button>
             </DialogTrigger>

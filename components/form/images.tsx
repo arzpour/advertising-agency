@@ -101,6 +101,7 @@ export const Images: React.FC<IImages> = ({
                     e.stopPropagation();
                     handleDelete(index);
                   }}
+                  aria-label="cancle"
                   className="absolute top-1 right-1 bg-gray-900 opacity-70 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs"
                 >
                   ×

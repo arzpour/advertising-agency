@@ -1,9 +1,10 @@
 "use client";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import React from "react";
 import HamburgerMenu from "./hamburgerMenu";
+import MenuOptions from "./menu-options";
 
-const MenuOptions = dynamic(() => import("./menu-options"), { ssr: true });
+// const MenuOptions = dynamic(() => import("./menu-options"), { ssr: true });
 
 const Menu = () => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);

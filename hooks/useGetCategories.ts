@@ -13,7 +13,7 @@ const useCategoryList = ({ enabled, limitCus }: IUseCategoryList) => {
 
   const limit = limitCus ?? perPageLimit;
 
-  const { data, isSuccess, isLoading, isError, error } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["get-categories", page, limit],
     queryFn: async () => {
       const res = await getAllCategories({
@@ -27,10 +27,6 @@ const useCategoryList = ({ enabled, limitCus }: IUseCategoryList) => {
     enabled,
   });
 
-  React.useEffect(() => {
-    if (!error || !isError) return;
-    // errorHandler(error as AxiosError<IError>);
-  }, [error, isError]);
   return { data, isLoading, isSuccess, setPage, page };
 };
 

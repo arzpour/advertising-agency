@@ -1,9 +1,8 @@
 import { getProjectById } from "@/apis/client/projects";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 
 const useGetProjectById = (id: string) => {
-  const { data, isSuccess, isLoading, isError, error } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["get-project-by-id", id],
     queryFn: async () => {
       const res = await getProjectById(id);
@@ -13,10 +12,6 @@ const useGetProjectById = (id: string) => {
     retry: 1,
   });
 
-  React.useEffect(() => {
-    if (!error || !isError) return;
-    // errorHandler(error as AxiosError<IError>);
-  }, [error, isError]);
   return { data, isLoading, isSuccess };
 };
 

@@ -2,6 +2,8 @@ import { getAllCategories } from "@/apis/client/categories";
 import ServiceCard from "@/components/services/service-card";
 import React from "react";
 
+export const revalidate = 1800;
+
 const Services = async () => {
   const servicesData = await getAllCategories({ page: 1, limit: 6 });
 

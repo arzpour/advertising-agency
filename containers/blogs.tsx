@@ -2,6 +2,8 @@ import React from "react";
 import BlogCard from "../components/blogs/blog-card";
 import { getBlogs } from "@/apis/client/blogs";
 
+export const revalidate = 1800;
+
 const Blogs = async () => {
   const blogData = await getBlogs({ page: 1, limit: 4 });
 

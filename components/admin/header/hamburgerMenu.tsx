@@ -10,11 +10,14 @@ const HamburgerMenu = () => {
 
   return (
     <div className="sm:hidden w-full flex justify-between items-center">
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="align-left"
+      >
         <AlignLeft className="w-6 h-6" />
       </button>
 
-      <Link href="#header" className="hidden md:block">
+      <Link href="#header" aria-label="header" className="hidden md:block">
         <Image src="/logo.png" width={120} height={100} alt="logo-image" />
       </Link>
 

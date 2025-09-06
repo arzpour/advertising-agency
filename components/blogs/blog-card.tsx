@@ -9,7 +9,6 @@ interface IBlogCard {
   description: string;
   createdAt: string;
   updatedAt: string;
-  width?: string;
 }
 
 const BlogCard: React.FC<IBlogCard> = ({
@@ -32,6 +31,7 @@ const BlogCard: React.FC<IBlogCard> = ({
           className="rounded-t-lg"
           width={500}
           height={500}
+          loading="lazy"
         />
         <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
       </div>

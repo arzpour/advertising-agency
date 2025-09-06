@@ -14,6 +14,7 @@ const Footer = () => {
         className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
         width={200}
         height={200}
+        loading="lazy"
       />
 
       <div className="relative z-20 flex flex-wrap md:flex-nowrap gap-10 md:gap-7 lg:gap-10 justify-start xl:justify-center items-start px-0 2xl:px-40">
@@ -21,27 +22,47 @@ const Footer = () => {
           <h6 className="text-white text-base text-start">خدمات</h6>
           <ul className="space-y-4 text-start">
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="branding"
+                className="text-white text-sm hover:text-red-500"
+              >
                 برندینگ و استراتژی
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="images"
+                className="text-white text-sm hover:text-red-500"
+              >
                 تولید محتوا تصویری
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="text"
+                className="text-white text-sm hover:text-red-500"
+              >
                 تولید محتوا گرافیکی و متنی
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="media"
+                className="text-white text-sm hover:text-red-500"
+              >
                 مدیریت شبکه های اجتماعی
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="seo-site"
+                className="text-white text-sm hover:text-red-500"
+              >
                 طراحی سایت و سئو
               </Link>
             </li>
@@ -51,17 +72,29 @@ const Footer = () => {
           <h6 className="text-white text-base text-start">شرکت</h6>
           <ul className="space-y-4 text-start">
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="about-us"
+                className="text-white text-sm hover:text-red-500"
+              >
                 درباره ما
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="contact-us"
+                className="text-white text-sm hover:text-red-500"
+              >
                 ارتباط با ما
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white text-sm hover:text-red-500">
+              <Link
+                href="#"
+                aria-label="hire"
+                className="text-white text-sm hover:text-red-500"
+              >
                 استخدام
               </Link>
             </li>

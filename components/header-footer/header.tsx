@@ -13,6 +13,7 @@ const Header = () => {
         muted
         loop
         playsInline
+        preload="none"
         className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
       >
         <source src="/6561920-uhd_3840_2160_25fps.mp4" type="video/mp4" />

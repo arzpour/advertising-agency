@@ -85,7 +85,7 @@ const AddForm: React.FC<IAddForm> = ({
               </SelectTrigger>
               <SelectContent>
                 {(categoryData?.data?.categories || []).map((item) => (
-                  <SelectItem key={item._id} value={item.name as string}>
+                  <SelectItem key={item._id} value={item.name}>
                     {item.name}
                   </SelectItem>
                 ))}
@@ -127,6 +127,7 @@ const AddForm: React.FC<IAddForm> = ({
       <div className="flex justify-end">
         <button
           type="submit"
+          aria-label="add-or-edit"
           className="shadow-sm py-1.5 px-6 text-sm cursor-pointer font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none"
         >
           {!!defaultData ? "ویرایش" : "ایجاد"}

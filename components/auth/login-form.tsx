@@ -146,6 +146,7 @@ const LoginForm = () => {
         {login.isPending && !login.isError ? (
           <button
             type="submit"
+            aria-label="login"
             className="flex gap-2 items-center w-full cursor-pointer mb-3 justify-center rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             <span>در حال ورود</span>
@@ -154,6 +155,7 @@ const LoginForm = () => {
         ) : (
           <button
             type="submit"
+            aria-label="enter"
             className="flex w-full mb-3 justify-center cursor-pointer rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
           >
             ورود

@@ -8,6 +8,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#aboutUs"
+        aria-label="about-us"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         درباره ما
@@ -16,6 +17,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#services"
+        aria-label="services"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         خدمات
@@ -24,6 +26,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#projects"
+        aria-label="projects"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         پروژه‌ها
@@ -32,6 +35,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#blogs"
+        aria-label="blogs"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         وبلاگ
@@ -40,6 +44,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#clients"
+        aria-label="clients"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         مشتریان
@@ -48,6 +53,7 @@ const MenuLinks = () => (
     <li>
       <Link
         href="#contactUs"
+        aria-label="contact-us"
         className="hover:text-red-500 text-xs sm:text-sm lg:text-base"
       >
         ارتباط با ما

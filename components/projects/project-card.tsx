@@ -33,12 +33,13 @@ const ProjectCard: React.FC<IProjectCard> = ({
           }
           alt="project"
           className="rounded-t-lg"
-          width={500}
-          height={500}
+          width={300}
+          height={200}
+          loading="lazy"
         />
         <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
 
-        <Link href="#">
+        <Link href="#" aria-label="project">
           <div className="absolute inset-0 h-full w-full bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
         </Link>
       </div>
@@ -58,6 +59,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
 
         <Link
           href="#"
+          aria-label="more"
           className="flex gap-2 items-center justify-end pt-2 text-xs font-medium text-red-500"
         >
           مشاهده بیشتر

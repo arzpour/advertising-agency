@@ -5,7 +5,7 @@ import MenuLinks from "./menu-links";
 const MenuOptions = () => {
   return (
     <div className="flex justify-center items-center gap-8">
-      <Link href="#header">
+      <Link href="#header" aria-label="header">
         <Image
           src="/logo.png"
           width={200}
