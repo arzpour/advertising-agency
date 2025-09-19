@@ -28,7 +28,7 @@ const BlogCard: React.FC<IBlogCard> = ({
               : "/gettyimages-2149038061-612x612.jpg"
           }
           alt="project"
-          className="rounded-t-lg"
+          className="rounded-t-lg h-48"
           width={500}
           height={500}
           loading="lazy"
@@ -58,17 +58,17 @@ const BlogCard: React.FC<IBlogCard> = ({
 
 export default BlogCard;
 
-export const BlogCardSkeleton = () => {
-  return (
-    <div className={`relative h-60 cursor-pointer`}>
-      <div className="w-full h-60 rounded-t-xl bg-gray-300 animate-pulse"></div>
+// export const BlogCardSkeleton = () => {
+//   return (
+//     <div className="h-60 bg-gray-400 animate-pulse cursor-pointer">
+//       <div className="w-full h-60 rounded-t-xl bg-gray-300 animate-pulse"></div>
 
-      <div className="absolute h-full rounded-xl overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-45 hover:opacity-25 transition-all duration-300 ease-in-out z-20"></div>
-      <div className="flex justify-between items-center">
-        <div className="absolute bottom-17 right-5 z-40 text-red-500 underline line-clamp-1 h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
-        <span className="absolute bottom-17 left-3 z-40 text-gray-300 text-xs"></span>
-      </div>
-      <p className="absolute bottom-7 right-5 z-40 text-gray-300 truncate line-clamp-2 overflow-ellipsis h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
-    </div>
-  );
-};
+//       {/* <div className="absolute h-full rounded-xl overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-45 hover:opacity-25 transition-all duration-300 ease-in-out z-20"></div> */}
+//       <div className="flex justify-between items-center">
+//         <div className="z-40 text-red-500 underline line-clamp-1 h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
+//         <span className="z-40 text-gray-300 text-xs"></span>
+//       </div>
+//       <p className="z-40 text-gray-300 truncate line-clamp-2 overflow-ellipsis h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
+//     </div>
+//   );
+// };

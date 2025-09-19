@@ -21,7 +21,7 @@ const Services = async () => {
 
       <div className="flex flex-col bg-gray-100 py-16 pb-28">
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-9 lg:gap-7 container mx-auto max-w-7xl px-10">
-          {servicesData.data.categories.slice(0, 6).map((el) => (
+          {servicesData.data.categories.slice(0, 5).map((el) => (
             <ServiceCard
               key={el.name}
               description={el.description}

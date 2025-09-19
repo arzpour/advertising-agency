@@ -12,7 +12,7 @@ const ProjectContainer = async () => {
   return (
     <section
       id="projects"
-      className="relative w-full sm:pb-15 bottom-16"
+      className="relative w-full sm:pb-4 bottom-16"
       dir="rtl"
     >
       <div className="container mx-auto max-w-[78rem]">
