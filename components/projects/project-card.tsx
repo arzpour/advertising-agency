@@ -33,12 +33,13 @@ const ProjectCard: React.FC<IProjectCard> = ({
           }
           alt="project"
           className="rounded-t-lg"
-          width={500}
-          height={500}
+          width={300}
+          height={200}
+          loading="lazy"
         />
         <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
 
-        <Link href="#">
+        <Link href="#" aria-label="project">
           <div className="absolute inset-0 h-full w-full bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
         </Link>
       </div>
@@ -58,6 +59,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
 
         <Link
           href="#"
+          aria-label="more"
           className="flex gap-2 items-center justify-end pt-2 text-xs font-medium text-red-500"
         >
           مشاهده بیشتر
@@ -72,17 +74,17 @@ export default ProjectCard;
 
 export const ProjectCardSkeleton = () => {
   return (
-    <div className="rounded-lg bg-white shadow-md w-72">
-      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
-        <div className="rounded-t-lg bg-gray-300 animate-pulse h-32 w-full"></div>
+    <div className="rounded-lg bg-white shadow-secondary-1 w-72">
+      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer rounded-lg">
+        <div className="rounded-t-lg bg-gray-300 animate-pulse h-32 w-full rounded-lg"></div>
         <div className="absolute h-full w-full top-0 bg-gray-400 opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
 
-        <div className="absolute inset-0 h-full w-full bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        <div className="absolute inset-0 h-full w-full bg-gray-400 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
       </div>
 
       <div className="px-6 py-5 text-surface dark:text-white">
         <div className="flex justify-between items-center">
-          <h5 className="mb-2 text-sm text-gray-800 h-4 w-16 font-medium truncate line-clamp-1 rounded-full bg-gray-300 animate-pulse"></h5>
+          <h5 className="mb-2 text-sm h-4 w-16 font-medium truncate line-clamp-1 rounded-full bg-gray-300 animate-pulse"></h5>
           <p className="mb-0.5 text-xs text-gray-600 h-4 w-20 rounded-full bg-gray-300 animate-pulse"></p>
         </div>
 

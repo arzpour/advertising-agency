@@ -82,6 +82,7 @@ const AddProjectForm: React.FC<IAddProjectForm> = ({ setDialogOpen }) => {
       setSelectedCategory={setSelectedCategory}
       categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
+      isPending={addProject.isPending}
     />
   );
 };

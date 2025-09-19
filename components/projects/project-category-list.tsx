@@ -32,10 +32,11 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
     <>
       <div className="w-full flex flex-wrap justify-center">
         <div className="w-full md:px-4">
-          <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-12 space-x-1">
+          <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-8 sm:mb-12 space-x-1">
             <li className="mb-1">
               <button
                 onClick={() => handleProject("all")}
+                aria-label={"all"}
                 className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                   categoryFilter === "all"
                     ? "bg-red-600 text-white"
@@ -49,6 +50,7 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
               <li className="mb-1" key={el._id}>
                 <button
                   onClick={() => handleProject(el._id)}
+                  aria-label={`-${el.name}`}
                   className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
                     categoryFilter === el._id
                       ? "bg-red-600 text-white"
@@ -64,14 +66,16 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
       </div>
       <div className="relative">
         <button
+          aria-label="left"
           onClick={() => scroll("left")}
-          className="absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+          className="hidden sm:block absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
         >
           <ArrowLeft />
         </button>
         <button
+          aria-label="right"
           onClick={() => scroll("right")}
-          className="absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+          className="hidden sm:block absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
         >
           <ArrowRight />
         </button>

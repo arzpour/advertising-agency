@@ -50,13 +50,21 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="relative bottom-20 h-52 w-full lg:w-1/3 hidden sm:block mr-28 lg:mr-32 xl:mr-44 mt-32 lg:mt-0">
-          <Image
+          {/* <Image
             src="/istockphoto-1385970223-1024x1024.jpg"
             alt="advertising-agency-1"
             width={200}
             height={200}
             className="w-[29rem] h-[16rem] relative right-14 rounded-xl"
+          /> */}
+          <Image
+            src="/istockphoto-1385970223-1024x1024.jpg"
+            alt="advertising-agency-1"
+            width={464}
+            height={256}
+            className="rounded-xl"
           />
+
           <Image
             src="/gettyimages-2149038061-612x612.jpg"
             alt="advertising-agency-1"

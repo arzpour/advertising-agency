@@ -21,6 +21,7 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
         className="w-20 h-20 object-cover rounded-full"
         width={200}
         height={200}
+        loading="lazy"
       />
       <h3 className="text-gray-800 truncate line-clamp-1">{name}</h3>
 

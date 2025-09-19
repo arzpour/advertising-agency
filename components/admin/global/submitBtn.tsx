@@ -9,6 +9,7 @@ const SubmitBtn: React.FC<ISubmitBtn> = ({ onSubmit }) => {
     <div className="flex justify-end">
       <button
         type="button"
+        aria-label="submit"
         onClick={onSubmit}
         className="shadow-sm py-1.5 px-6 text-sm cursor-pointer font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none"
       >

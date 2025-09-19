@@ -3,6 +3,8 @@ import { getProjects } from "@/apis/client/projects";
 import { getAllCategories } from "@/apis/client/categories";
 import ProjectCategoryList from "@/components/projects/project-category-list";
 
+export const revalidate = 1800;
+
 const ProjectContainer = async () => {
   let projectData: IProjectResDto | null = null;
   let categoryData: ICategoryResDto | null = null;
@@ -24,13 +26,13 @@ const ProjectContainer = async () => {
     projectData.data.projects.length > 0 && (
       <section
         id="projects"
-        className="relative w-full pb-15 bottom-16"
+        className="relative w-full sm:pb-4 bottom-16"
         dir="rtl"
       >
         <div className="container mx-auto max-w-[78rem]">
           <div className="flex flex-wrap">
             <div className="w-full px-4">
-              <div className="mx-auto mb-14 max-w-sm text-center">
+              <div className="mx-auto mb-11 sm:mb-14 max-w-sm text-center">
                 <h2 className="text-gray-700 mb-3 text-xl leading-[1.208] font-bold bg-white rounded-t-xl pt-8 pb-6">
                   پروژه ها
                 </h2>

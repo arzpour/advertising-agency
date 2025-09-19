@@ -80,6 +80,7 @@ export const Thumbnail: React.FC<IThumbnail> = ({
               className="w-full h-full object-cover object-center rounded-md"
             />
             <button
+              aria-label="cancle"
               onClick={deleteImage}
               className="absolute top-1 right-1 bg-gray-900 opacity-70 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs"
             >

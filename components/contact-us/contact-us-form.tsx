@@ -78,6 +78,7 @@ const ContactUsForm = () => {
 
       <button
         type="submit"
+        aria-label="send"
         className="text-red-500 underline cursor-pointer outline-none text-xs sm:text-sm md:text-base"
       >
         ارسال

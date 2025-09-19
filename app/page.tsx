@@ -8,7 +8,6 @@ import Footer from "@/components/header-footer/footer";
 import { Suspense } from "react";
 import { ServiceCardSkeleton } from "@/components/services/service-card";
 import { ProjectCardSkeleton } from "@/components/projects/project-card";
-import { BlogCardSkeleton } from "@/components/blogs/blog-card";
 
 export default function Home() {
   return (
@@ -17,16 +16,20 @@ export default function Home() {
       <AboutUs />
 
       <Suspense
-        fallback={[...Array(5)].map((_, i) => (
-          <ServiceCardSkeleton key={i} />
-        ))}
+        fallback={
+          <div className="flex flex-wrap justify-center gap-5 mb-24 mt-24">
+            {[...Array(6)].map((_, i) => (
+              <ServiceCardSkeleton key={i} />
+            ))}
+          </div>
+        }
       >
         <Services />
       </Suspense>
 
       <Suspense
         fallback={
-          <div className="flex flex-wrap gap-4 gap-y-8 justify-center mb-10">
+          <div className="flex flex-wrap justify-center gap-5 my-10 mt-14">
             {[...Array(5)].map((_, i) => (
               <ProjectCardSkeleton key={i} />
             ))}
@@ -37,9 +40,13 @@ export default function Home() {
       </Suspense>
 
       <Suspense
-        fallback={[...Array(5)].map((_, i) => (
-          <BlogCardSkeleton key={i} />
-        ))}
+        fallback={
+          <div className="flex flex-wrap justify-center gap-5 my-10 mt-14">
+            {[...Array(4)].map((_, i) => (
+              <ProjectCardSkeleton key={i} />
+            ))}
+          </div>
+        }
       >
         <Blogs />
       </Suspense>

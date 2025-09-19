@@ -9,7 +9,6 @@ interface IBlogCard {
   description: string;
   createdAt: string;
   updatedAt: string;
-  width?: string;
 }
 
 const BlogCard: React.FC<IBlogCard> = ({
@@ -29,9 +28,10 @@ const BlogCard: React.FC<IBlogCard> = ({
               : "/gettyimages-2149038061-612x612.jpg"
           }
           alt="project"
-          className="rounded-t-lg"
+          className="rounded-t-lg h-48"
           width={500}
           height={500}
+          loading="lazy"
         />
         <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
       </div>
@@ -58,26 +58,17 @@ const BlogCard: React.FC<IBlogCard> = ({
 
 export default BlogCard;
 
-export const BlogCardSkeleton = () => {
-  return (
-    <div
-      className={`rounded-lg bg-white shadow-lg w-full mx-5 sm:mx-0 sm:w-80 skeletooon h-fit`}
-    >
-      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
-        <div className="h-52 w-full bg-gray-100 animate-pulse rounded-t-md"></div>
-        <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
-      </div>
+// export const BlogCardSkeleton = () => {
+//   return (
+//     <div className="h-60 bg-gray-400 animate-pulse cursor-pointer">
+//       <div className="w-full h-60 rounded-t-xl bg-gray-300 animate-pulse"></div>
 
-      <div className="px-6 py-10 text-surface dark:text-white">
-        <div className="flex justify-between items-center gap-4 mb-4">
-          <div className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 h-4 w-24 rounded-full bg-gray-300 animate-pulse"></div>
-          <p className="mb-0.5 text-xs text-gray-600 h-4 w-14 rounded-full bg-gray-300 animate-pulse">
-            {" "}
-          </p>
-        </div>
-
-        <p className="mb-0.5 text-xs text-gray-600 h-4 w-48 rounded-full bg-gray-300 animate-pulse"></p>
-      </div>
-    </div>
-  );
-};
+//       {/* <div className="absolute h-full rounded-xl overflow-hidden whitespace-nowrap w-full top-0 bg-black opacity-45 hover:opacity-25 transition-all duration-300 ease-in-out z-20"></div> */}
+//       <div className="flex justify-between items-center">
+//         <div className="z-40 text-red-500 underline line-clamp-1 h-4 w-24 bg-gray-300 animate-pulse rounded-full"></div>
+//         <span className="z-40 text-gray-300 text-xs"></span>
+//       </div>
+//       <p className="z-40 text-gray-300 truncate line-clamp-2 overflow-ellipsis h-4 w-40 rounded-full bg-gray-300 animate-pulse"></p>
+//     </div>
+//   );
+// };

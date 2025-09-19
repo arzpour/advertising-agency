@@ -17,6 +17,7 @@ const NotFound = () => {
             <div className="mt-8 gap-x-6">
               <Link
                 href="/"
+                aria-label="home-page"
                 className="rounded-md bg-red-500 px-5 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-400"
               >
                 صفحه اصلی
