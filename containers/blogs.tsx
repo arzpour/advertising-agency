@@ -5,9 +5,16 @@ import { getBlogs } from "@/apis/client/blogs";
 export const revalidate = 1800;
 
 const Blogs = async () => {
-  const blogData = await getBlogs({ page: 1, limit: 4 });
+  let blogData: IBlogResDto | null = null;
 
-  const blogs = blogData.data.blogs;
+  try {
+    blogData = await getBlogs({ page: 1, limit: 4 });
+  } catch (err) {
+    console.error("🚀 ~ Blogs ~ err:", err);
+  }
+  const blogs = blogData?.data.blogs || [];
+
+  if (!blogData || blogs.length === 0) return null;
 
   return (
     <section id="blogs">
