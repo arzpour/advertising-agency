@@ -71,6 +71,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      aria-busy={login.isPending}
       className="md:max-w-md w-full mx-auto text-white"
     >
       <div>
@@ -143,24 +144,26 @@ const LoginForm = () => {
       </div>
 
       <div className="mt-4 sm:mt-6">
-        {login.isPending && !login.isError ? (
-          <button
-            type="submit"
-            aria-label="login"
-            className="flex gap-2 items-center w-full cursor-pointer mb-3 justify-center rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            <span>در حال ورود</span>
-            <LoaderCircle className="w-5 h-5 animate-spin" />
-          </button>
-        ) : (
-          <button
-            type="submit"
-            aria-label="enter"
-            className="flex w-full mb-3 justify-center cursor-pointer rounded-md bg-slate-600 px-3 py-2 text-sm/6 font-semibold text-white shadow-xs hover:bg-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          >
-            ورود
-          </button>
-        )}
+        <button
+          type="submit"
+          aria-label="enter"
+          disabled={login.isPending}
+          className={`flex w-full mb-3 justify-center cursor-pointer rounded-md px-3 py-2 text-sm/6 font-semibold text-white shadow-xs 
+      ${
+        login.isPending
+          ? "bg-slate-400 cursor-not-allowed"
+          : "bg-slate-600 hover:bg-slate-500 focus-visible:outline-slate-600"
+      }`}
+        >
+          {login.isPending ? (
+            <>
+              <span>در حال ورود...</span>
+              <LoaderCircle className="w-5 h-5 animate-spin" />
+            </>
+          ) : (
+            "ورود"
+          )}
+        </button>
         <a
           href={"/"}
           className="text-gray-500 text-center text-sm hover:underline mt-9 whitespace-nowrap"

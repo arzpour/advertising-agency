@@ -57,6 +57,7 @@ const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
       control={control}
       status="categories"
       handleSubmit={handleSubmit(onSubmit)}
+      isPending={addCategory.isPending}
     />
   );
 };

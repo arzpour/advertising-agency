@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { LoaderCircle } from "lucide-react";
 
 interface IDefaultValue {
   name: string;
@@ -29,6 +30,7 @@ interface IAddForm {
   categoryData?: { data?: { categories: ICategory[] } };
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   defaultData?: IDefaultValue;
+  isPending: boolean;
 }
 
 const AddForm: React.FC<IAddForm> = ({
@@ -38,6 +40,7 @@ const AddForm: React.FC<IAddForm> = ({
   setSelectedCategory,
   categoryData,
   defaultData,
+  isPending,
 }) => {
   const isCategory = status === "categories";
 
@@ -45,6 +48,7 @@ const AddForm: React.FC<IAddForm> = ({
     <form
       dir="rtl"
       onSubmit={handleSubmit}
+      aria-busy={!!isPending}
       className="w-full mx-auto space-y-4"
     >
       <Controller
@@ -127,10 +131,25 @@ const AddForm: React.FC<IAddForm> = ({
       <div className="flex justify-end">
         <button
           type="submit"
-          aria-label="add-or-edit"
-          className="shadow-sm py-1.5 px-6 text-sm cursor-pointer font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none"
+          aria-label="enter"
+          disabled={!!isPending}
+          className={`flex w-full mb-3 justify-center cursor-pointer rounded-md px-3 py-2 text-sm/6 font-semibold text-white shadow-xs 
+              ${
+                isPending
+                  ? "bg-green-400 cursor-not-allowed"
+                  : "bg-green-600 hover:bg-green-500"
+              }`}
         >
-          {!!defaultData ? "ویرایش" : "ایجاد"}
+          {isPending ? (
+            <>
+              <span>
+                {!!defaultData ? "در حال ویرایش..." : "درحال افزودن..."}
+              </span>
+              <LoaderCircle className="w-5 h-5 animate-spin" />
+            </>
+          ) : (
+            <>{!!defaultData ? "ویرایش" : "افزودن"}</>
+          )}
         </button>
       </div>
     </form>

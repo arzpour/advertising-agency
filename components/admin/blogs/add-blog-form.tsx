@@ -82,6 +82,7 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
       setSelectedCategory={setSelectedCategory}
       categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
+      isPending={addBlog.isPending}
     />
   );
 };
