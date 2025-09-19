@@ -32,7 +32,7 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
     <>
       <div className="w-full flex flex-wrap justify-center">
         <div className="w-full md:px-4">
-          <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-12 space-x-1">
+          <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-8 sm:mb-12 space-x-1">
             <li className="mb-1">
               <button
                 onClick={() => handleProject("all")}
@@ -68,14 +68,14 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
         <button
           aria-label="left"
           onClick={() => scroll("left")}
-          className="absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+          className="hidden sm:block absolute left-0 2xl:-left-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
         >
           <ArrowLeft />
         </button>
         <button
           aria-label="right"
           onClick={() => scroll("right")}
-          className="absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
+          className="hidden sm:block absolute right-0 2xl:-right-20 top-1/2 z-10 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200"
         >
           <ArrowRight />
         </button>

@@ -15,7 +15,7 @@ const Brands = () => {
   return (
     <section
       id="clients"
-      className="overflow-hidden relative w-full bg-white py-6 mt-14"
+      className="overflow-hidden relative w-full bg-white py-6 mt-10 sm:mt-14"
     >
       <div className="whitespace-nowrap brandScroll flex gap-10 items-center justify-center min-w-full">
         {[...brands, ...brands, ...brands].map((el, index) => (

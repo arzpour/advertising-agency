@@ -22,7 +22,7 @@ const HamburgerMenu = () => {
 
       {isOpen && (
         <div className="absolute top-9 left-0 w-full bg-white z-50 p-5 rounded shadow">
-          <MenuLinks />
+          <MenuLinks onClick={() => setIsOpen(false)} />
         </div>
       )}
     </div>

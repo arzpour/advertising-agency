@@ -20,8 +20,10 @@ const Menu = () => {
   }, []);
   return (
     <nav
-      className={`w-full z-30 bg-black/45 sm:text-white shadow-md transition-all duration-300 ${
-        isSticky ? "fixed top-0" : "absolute top-0 sm:bottom-0 sm:top-auto"
+      className={`w-full z-30 sm:text-white shadow-md transition-all duration-300 ${
+        isSticky
+          ? "fixed top-0 bg-black"
+          : "absolute top-0 sm:bottom-0 sm:top-auto bg-black/45"
       }`}
     >
       <div className="hidden sm:block max-w-1400 mx-auto">

@@ -12,13 +12,13 @@ const ProjectContainer = async () => {
   return (
     <section
       id="projects"
-      className="relative w-full pb-15 bottom-16"
+      className="relative w-full sm:pb-15 bottom-16"
       dir="rtl"
     >
       <div className="container mx-auto max-w-[78rem]">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
-            <div className="mx-auto mb-14 max-w-sm text-center">
+            <div className="mx-auto mb-11 sm:mb-14 max-w-sm text-center">
               <h2 className="text-gray-700 mb-3 text-xl leading-[1.208] font-bold bg-white rounded-t-xl pt-8 pb-6">
                 پروژه ها
               </h2>

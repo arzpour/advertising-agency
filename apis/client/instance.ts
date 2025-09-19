@@ -4,6 +4,7 @@ import { getToken } from "./auth";
 
 export const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  headers: { "Cache-Control": "no-cache" },
 });
 
 axiosInstance.interceptors.request.use(
