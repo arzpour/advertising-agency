@@ -111,6 +111,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
       categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
       defaultData={defaultValue}
+      isPending={editProject.isPending}
     />
   );
 };

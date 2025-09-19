@@ -94,6 +94,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
       status="categories"
       handleSubmit={handleSubmit(onSubmit)}
       defaultData={defaultValue}
+      isPending={editCategory.isPending}
     />
   );
 };

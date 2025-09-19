@@ -118,6 +118,7 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
       categoryData={categoryData}
       handleSubmit={handleSubmit(onSubmit)}
       defaultData={defaultValue}
+      isPending={editBlog.isPending}
     />
   );
 };
