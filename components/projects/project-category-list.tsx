@@ -31,13 +31,13 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
   return (
     <>
       <div className="w-full flex flex-wrap justify-center">
-        <div className="w-full md:px-4">
-          <ul className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-8 sm:mb-12 space-x-1">
+        <div className="w-full md:px-4 overflow-auto scrollbar-hide whitespace-nowrap cursor-grab">
+          <ul className="flex gap-2 sm:gap-4 justify-center mb-8 sm:mb-12 space-x-1">
             <li className="mb-1">
               <button
                 onClick={() => handleProject("all")}
                 aria-label={"all"}
-                className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
+                className={`inline-block cursor-pointer text-sm rounded-md py-2 px-5 text-center font-medium transition-all duration-300 md:py-2 lg:px-7 ${
                   categoryFilter === "all"
                     ? "bg-red-600 text-white"
                     : "hover:bg-red-600 hover:text-white"
@@ -51,7 +51,7 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
                 <button
                   onClick={() => handleProject(el._id)}
                   aria-label={`-${el.name}`}
-                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-6 text-center font-medium transition-all duration-300 md:py-2 lg:px-8 ${
+                  className={`inline-block cursor-pointer text-sm rounded-md py-2 px-5 text-center font-medium transition-all duration-300 md:py-2 lg:px-7 ${
                     categoryFilter === el._id
                       ? "bg-red-600 text-white"
                       : "hover:bg-red-600 hover:text-white"

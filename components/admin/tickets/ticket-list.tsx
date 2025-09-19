@@ -29,7 +29,7 @@ const TicketList = () => {
       )}
 
       {isSuccess && allTickets.length > 0 && (
-        <div className="flex flex-wrap gap-8 mt-12 mb-10 justify-center items-center gap-y-10">
+        <div className="flex flex-wrap gap-8 mt-12 mb-10 justify-center items-center gap-y-7">
           {allTickets.map((el) => (
             <TicketCard key={el._id} {...el} />
           ))}

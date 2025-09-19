@@ -19,16 +19,20 @@ const Projects: React.FC<IProjectList> = ({
 
   return (
     <div className="flex gap-4">
-      {filteredProjects.map((item, index) => (
-        <ProjectCard
-          key={index}
-          thumbnail={item.thumbnail}
-          category={item.category}
-          description={item.description}
-          name={item.name}
-          categories={categories}
-        />
-      ))}
+      {filteredProjects.length > 0 ? (
+        filteredProjects.map((item, index) => (
+          <ProjectCard
+            key={index}
+            thumbnail={item.thumbnail}
+            category={item.category}
+            description={item.description}
+            name={item.name}
+            categories={categories}
+          />
+        ))
+      ) : (
+        <p>پروژه ای در این زیرمجموعه موجود نیست</p>
+      )}
     </div>
   );
 };

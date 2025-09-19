@@ -1,3 +1,5 @@
+export const revalidate = 1800;
+
 import AboutUs from "@/components/about-us";
 import Header from "@/components/header-footer/header";
 import ProjectContainer from "@/containers/projectContainer";
