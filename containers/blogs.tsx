@@ -14,15 +14,15 @@ const Blogs = async () => {
   }
   const blogs = blogData?.data.blogs || [];
 
+  if (!blogData || blogs.length === 0) return null;
+
   return (
-    blogData &&
-    blogs.length > 0 && (
-      <section id="blogs">
-        <div className="container mx-auto">
-          <h2 className="text-xl font-bold text-white bg-black rounded-t-md inline-block py-4 px-16">
-            وبلاگ
-          </h2>
-        </div>
+    <section id="blogs">
+      <div className="container mx-auto">
+        <h2 className="text-xl font-bold text-white bg-black rounded-t-md inline-block py-4 px-16">
+          وبلاگ
+        </h2>
+      </div>
 
       <div className="bg-black px-5 md:px-10 xl:px-0 py-14 pb-20 lg:pt-24 lg:pb-28">
         <div className="container mx-auto max-w-7xl">
