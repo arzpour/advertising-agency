@@ -47,7 +47,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
       }
 
       if (data.icon instanceof File) {
-        formData.append("thumbnail", data.icon);
+        formData.append("icon", data.icon);
       }
 
       await editCategory.mutateAsync({
