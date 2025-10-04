@@ -17,7 +17,7 @@ const ProjectList = () => {
     isSuccess,
   } = useGetProjects();
 
-  const { categoryMap } = useGetCategoryInfo();
+  const { categoryMap } = useGetCategoryInfo("project");
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,

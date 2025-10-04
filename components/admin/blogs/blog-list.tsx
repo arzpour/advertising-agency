@@ -18,7 +18,7 @@ const BlogList: React.FC = () => {
     isSuccess,
   } = useGetBlogs();
 
-  const { categoryMap } = useGetCategoryInfo();
+  const { categoryMap } = useGetCategoryInfo("blog");
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,

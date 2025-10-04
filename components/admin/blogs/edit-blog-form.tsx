@@ -18,7 +18,7 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
   const { data: blogData, isSuccess } = useGetBlogById(_id);
 
   const { categoryData, categoryId, categoryName, setSelectedCategory } =
-    useGetCategoryInfo();
+    useGetCategoryInfo("blog");
 
   const editBlog = useEditBlog();
 

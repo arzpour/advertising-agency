@@ -21,7 +21,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
   const { data: projectData, isSuccess } = useGetProjectById(_id);
 
   const { categoryData, categoryId, categoryName, setSelectedCategory } =
-    useGetCategoryInfo();
+    useGetCategoryInfo("project");
   const editProject = useEditProject();
 
   const { control, handleSubmit, reset } = useForm<editSchemaType>({

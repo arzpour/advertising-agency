@@ -1,7 +1,8 @@
 import React from "react";
 import { useAppSelector } from "@/redux/hooks";
+import useCategoryList from "./useGetCategoryList";
 
-export const useGetCategoryInfo = () => {
+export const useGetCategoryInfo = (type: "project" | "blog") => {
   const { adminPanelTab } = useAppSelector((state) => state.admin);
 
   const [selectedCategory, setSelectedCategory] = React.useState<string>("");
@@ -9,6 +10,7 @@ export const useGetCategoryInfo = () => {
   const { data: categoryData } = useCategoryList({
     limitCus: Infinity,
     enabled: adminPanelTab !== "categories",
+    type,
   });
 
   const categoryMap = React.useMemo(() => {

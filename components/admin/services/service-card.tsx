@@ -4,14 +4,14 @@ import React from "react";
 import DeleteDialog from "../global/delete-dialog";
 import EditDialog from "../global/edit-dialog";
 
-interface ICategoryCard {
+interface IServiceCard {
   name: string;
   icon: string;
   description: string;
   _id: string;
 }
 
-const CategoryCard: React.FC<ICategoryCard> = ({
+const ServiceCard: React.FC<IServiceCard> = ({
   description,
   icon,
   name,
@@ -22,7 +22,7 @@ const CategoryCard: React.FC<ICategoryCard> = ({
       <Image
         src={
           icon
-            ? `${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon}`
+            ? `${process.env.NEXT_PUBLIC_SERVICE_ICON_URL}/${icon}`
             : "/gettyimages-2149038061-612x612.jpg"
         }
         alt={`${name} image`}
@@ -43,9 +43,9 @@ const CategoryCard: React.FC<ICategoryCard> = ({
   );
 };
 
-export default CategoryCard;
+export default ServiceCard;
 
-export const CategoryCardSkeleton = () => {
+export const ServiceCardSkeleton = () => {
   return (
     <div className="flex flex-col space-y-2 justify-center items-center cursor-pointer w-64 p-8 rounded-lg bg-white shadow-md hover:shadow-2xl">
       <div className="h-20 w-20 object-cover rounded bg-gray-200 animate-pulse mb-6"></div>

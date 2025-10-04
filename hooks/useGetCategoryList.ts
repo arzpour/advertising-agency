@@ -1,49 +1,35 @@
-// import { useInfiniteQuery } from "@tanstack/react-query";
-// import { getAllCategories } from "../apis/client/categories";
-// import { perPageLimit } from "../utils/config";
+import { getAllCategories } from "@/apis/client/categories";
+import { perPageLimit } from "@/utils/config";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
-// const useGetCategories = (limitCus?: number) => {
-//   const limit = limitCus ?? perPageLimit;
+interface IUseCategoryList {
+  enabled?: boolean;
+  limitCus?: number;
+  type: "project" | "blog";
+}
 
-//   const {
-//     data,
-//     fetchNextPage,
-//     hasNextPage,
-//     isFetchingNextPage,
-//     isLoading,
-//     isError,
-//     error,
-//     isSuccess,
-//   } = useInfiniteQuery({
-//     queryKey: ["get-category-list"],
-//     queryFn: async ({ pageParam = 1 }) =>
-//       await getAllCategories({ limit: limit, page: pageParam }),
+const useCategoryList = ({ enabled, limitCus, type }: IUseCategoryList) => {
+  const [page, setPage] = React.useState<number>(1);
 
-//     getNextPageParam: (lastPage, allPages) => {
-//       const categories = lastPage?.data?.categories;
-//       if (!categories || categories.length === 0) return undefined;
+  const limit = limitCus ?? perPageLimit;
 
-//       const hasMore = categories.length === limit;
-//       return hasMore ? allPages.length + 1 : undefined;
-//     },
-//     initialPageParam: 1,
-//     refetchOnWindowFocus: false,
-//     retry: 1,
-//   });
+  const { data, isSuccess, isLoading } = useQuery({
+    queryKey: ["get-category-list", page, limit, type],
+    queryFn: async () => {
+      const res = await getAllCategories({
+        limit: limit,
+        page,
+        type,
+      });
+      return res;
+    },
+    refetchOnWindowFocus: false,
+    retry: 1,
+    enabled,
+  });
 
-//   const allCategories =
-//     data?.pages.flatMap((page) => page.data?.categories) || [];
+  return { data, isLoading, isSuccess, setPage, page };
+};
 
-//   return {
-//     allCategories,
-//     fetchNextPage,
-//     hasNextPage,
-//     isFetchingNextPage,
-//     isLoading,
-//     isError,
-//     error,
-//     isSuccess,
-//   };
-// };
-
-// export default useGetCategories;
+export default useCategoryList;

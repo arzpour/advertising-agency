@@ -7,4 +7,5 @@ interface IParams {
   limit: number;
   total?: number;
   total_pages?: number;
+  type?: string;
 }

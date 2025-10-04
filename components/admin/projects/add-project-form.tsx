@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
+import useCategoryList from "@/hooks/useGetCategoryList";
 
 interface IAddProjectForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,8 +26,9 @@ const AddProjectForm: React.FC<IAddProjectForm> = ({ setDialogOpen }) => {
 
   const addProject = useAddProject();
   const { data: categoryData } = useCategoryList({
-    enabled: adminPanelTab !== "categories",
+    enabled: adminPanelTab !== "services",
     limitCus: Infinity,
+    type: "project",
   });
 
   const categoryId =

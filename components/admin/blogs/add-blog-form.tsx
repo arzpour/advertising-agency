@@ -8,6 +8,7 @@ import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
 import { useAddBlog } from "@/apis/mutations/blog";
+import useCategoryList from "@/hooks/useGetCategoryList";
 
 interface IAddBlogForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,6 +28,7 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
   const { data: categoryData } = useCategoryList({
     enabled: adminPanelTab !== "categories",
     limitCus: Infinity,
+    type: "blog",
   });
 
   const categoryId =

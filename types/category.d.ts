@@ -1,7 +1,7 @@
 interface ICategory {
   name: string;
-  icon?: string;
-  description: string;
+  icon: string;
+  type: string;
   _id: string;
   createdAt: string;
   updatedAt: string;
