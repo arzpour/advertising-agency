@@ -22,8 +22,6 @@ const ContactUsForm = () => {
   const onSubmit: SubmitHandler<contactUsFormValidationSchemaType> = async (
     data
   ) => {
-    console.log(data);
-
     try {
       await sendTicket.mutateAsync({
         phoneNumber: data.phoneNumber,

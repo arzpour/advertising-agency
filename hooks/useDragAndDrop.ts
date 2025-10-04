@@ -7,12 +7,7 @@ interface IHasId {
 
 interface IUseDragAndDrop<T extends IHasId> {
   getItems: T[];
-  editOrder: UseMutationResult<
-    IEditOrderRes,
-    Error,
-    IEditOrderReq,
-    unknown
-  >;
+  editOrder: UseMutationResult<IEditOrderRes, Error, IEditOrderReq, unknown>;
 }
 
 const useDragAndDrop = <T extends IHasId>({
@@ -53,10 +48,10 @@ const useDragAndDrop = <T extends IHasId>({
     if (items.length === 0 && getItems.length > 0) {
       setItems(getItems);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getItems, getItems.length]);
 
-  return { handleDrop, setDraggedId, items, draggedId };
+  return { handleDrop, setDraggedId, items, draggedId, setItems };
 };
 
 export default useDragAndDrop;

@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import useGetBlogs from "@/hooks/useGetBlogs";
+import useGetBlogs from "@/hooks/blogs/useGetBlogs";
 import BlogCard, { BlogCardSkeleton } from "./blog-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
+import { useGetCategoryInfo } from "@/hooks/categories/useGetCategoryInfo";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
 import { useEditBlogOrder } from "@/apis/mutations/blog";
 
@@ -28,11 +28,15 @@ const BlogList: React.FC = () => {
 
   const editBlogOrder = useEditBlogOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId } =
+  const { handleDrop, setDraggedId, items, draggedId, setItems } =
     useDragAndDrop<IBlogRes>({
       getItems: allBlogs,
       editOrder: editBlogOrder,
     });
+
+  React.useEffect(() => {
+    setItems(allBlogs);
+  }, [allBlogs, setItems]);
 
   if (!isLoading && allBlogs.length === 0) {
     return <p className="mt-6 text-gray-500">بلاگی موجود نیست.</p>;
@@ -46,7 +50,7 @@ const BlogList: React.FC = () => {
         </div>
       )}
 
-      {isSuccess && allBlogs.length > 0 && (
+      {isSuccess && items.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((blog) => (
             <div

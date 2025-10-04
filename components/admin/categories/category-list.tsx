@@ -3,7 +3,7 @@ import React from "react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
 import { useEditCategoryOrder } from "@/apis/mutations/category";
-import useGetCategories from "@/hooks/useGetCategories";
+import useGetCategories from "@/hooks/categories/useGetCategories";
 import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
 
 interface ICategoryList {
@@ -33,11 +33,15 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
       ? allCategories
       : allCategories.filter((item) => item.type === filterType);
 
-  const { handleDrop, setDraggedId, items, draggedId } =
+  const { handleDrop, setDraggedId, items, draggedId, setItems } =
     useDragAndDrop<ICategory>({
       getItems: filteredCategories,
       editOrder: editCategoryOrder,
     });
+
+  React.useEffect(() => {
+    setItems(filteredCategories);
+  }, [filteredCategories, setItems]);
 
   return (
     <>
@@ -48,7 +52,7 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
         </div>
       )}
 
-      {isSuccess && filteredCategories.length > 0 && (
+      {isSuccess && items.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div

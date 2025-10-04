@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getAllCategories } from "../apis/client/categories";
-import { perPageLimit } from "../utils/config";
+import { getAllCategories } from "../../apis/client/categories";
+import { perPageLimit } from "../../utils/config";
 
 const useGetCategories = (limitCus?: number) => {
   const limit = limitCus ?? perPageLimit;

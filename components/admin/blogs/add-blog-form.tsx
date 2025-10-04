@@ -8,7 +8,7 @@ import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
 import { useAddBlog } from "@/apis/mutations/blog";
-import useCategoryList from "@/hooks/useGetCategoryList";
+import useCategoryList from "@/hooks/categories/useGetCategoryList";
 
 interface IAddBlogForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;

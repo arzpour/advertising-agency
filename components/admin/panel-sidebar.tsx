@@ -29,7 +29,14 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
 
   return (
     <ul className="font-medium mt-4 space-y-3 w-full scrollbar-hide relative">
-      <div className="w-full flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
+      <button
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+        }}
+        className="w-full flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip"
+      >
         <House className="w-5 h-5" />
         <span className="tooltipText">صفحه اصلی</span>
         <Link
@@ -44,11 +51,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           صفحه اصلی
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "adminInfo" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("adminInfo"));
+        }}
+        aria-label="user-info"
       >
         <User className="w-5 h-5" />
         <span className="tooltipText">اطلاعات کاربری</span>
@@ -67,11 +81,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           اطلاعات کاربری
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "projects" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        aria-label="projects"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("projects"));
+        }}
       >
         <SquareChartGantt className="w-5 h-5" />
         <span className="tooltipText lg:hidden">پروژه ها</span>
@@ -90,11 +111,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           پروژه ها
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "blogs" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        aria-label="blogs"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("blogs"));
+        }}
       >
         <Newspaper className="w-5 h-5" />
         <span className="tooltipText lg:hidden">بلاگ ها</span>
@@ -113,11 +141,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           بلاگ ها
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "services" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        aria-label="services"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("services"));
+        }}
       >
         <Layers2 className="w-5 h-5" />
         <span className="tooltipText lg:hidden">خدمات</span>
@@ -136,11 +171,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           خدمات
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "tickets" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        aria-label="tickets"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("tickets"));
+        }}
       >
         <MessageSquareText className="w-5 h-5" />
         <span className="tooltipText lg:hidden">تیکت ها</span>
@@ -159,13 +201,20 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           تیکت ها
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "categories"
             ? "bg-gray-100 w-full text-red-600"
             : ""
         }`}
+        aria-label="categories"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("categories"));
+        }}
       >
         <Server className="w-5 h-5" />
         <span className="tooltipText lg:hidden">دسته بندی ها</span>
@@ -184,13 +233,18 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           دسته بندی ها
         </Link>
-      </div>
-      <div
+      </button>
+      <button
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
-          adminPanelTab === "customers"
-            ? "bg-gray-100 w-full text-red-600"
-            : ""
+          adminPanelTab === "customers" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
+        aria-label="customers"
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+          dispatch(adminPanelActions.setAdminPanelTab("customers"));
+        }}
       >
         <Building2 className="w-5 h-5" />
         <span className="tooltipText lg:hidden">مشتریان</span>
@@ -209,8 +263,15 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           مشتریان
         </Link>
-      </div>
-      <div className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
+      </button>
+      <button
+        onClick={() => {
+          if (setIsOpen) {
+            setIsOpen(false);
+          }
+        }}
+        className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip"
+      >
         <Heart className="w-5 h-5" />
         <span className="tooltipText lg:hidden">علاقه مندی ها</span>
         <Link
@@ -225,7 +286,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         >
           علاقه مندی ها
         </Link>
-      </div>
+      </button>
       <li className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <LogOut className="w-5 h-5" />
         <span className="tooltipText lg:hidden">خروج</span>

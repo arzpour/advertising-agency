@@ -10,6 +10,8 @@ import { Trash } from "lucide-react";
 import DeleteBlog from "../blogs/delete-blog";
 import DeleteProject from "../projects/delete-project";
 import DeleteService from "../services/delete.service";
+import DeleteCategory from "../categories/delete-category";
+import DeleteCustomer from "../customers/delete-customer";
 
 interface IDeleteDialog {
   title: SubjectsType;
@@ -21,8 +23,10 @@ const DeleteDialog: React.FC<IDeleteDialog> = ({ title, _id }) => {
 
   const renderDeleteComponent = () => {
     switch (title) {
-      // case "خدمات":
-      //   return <DeleteCategory _id={_id} setDialogOpen={setDialogOpen} />;
+      case "مشتریان":
+        return <DeleteCustomer _id={_id} setDialogOpen={setDialogOpen} />;
+      case "دسته بندی":
+        return <DeleteCategory _id={_id} setDialogOpen={setDialogOpen} />;
       case "خدمات":
         return <DeleteService _id={_id} setDialogOpen={setDialogOpen} />;
       case "بلاگ":

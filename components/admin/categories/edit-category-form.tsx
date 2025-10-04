@@ -9,7 +9,7 @@ import {
   editCategorySchemaType,
 } from "@/validations/category";
 import { useEditCategory } from "@/apis/mutations/category";
-import useGetCategoryById from "@/hooks/useGetCategoryById";
+import useGetCategoryById from "@/hooks/categories/useGetCategoryById";
 
 interface IEditCategoryForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;

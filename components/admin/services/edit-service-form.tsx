@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import AddForm from "../global/add-subject-form";
 
 import { useEditService } from "@/apis/mutations/service";
-import useGetServiceById from "@/hooks/useGetServiceById";
+import useGetServiceById from "@/hooks/services/useGetServiceById";
 import {
   editServiceSchema,
   editServiceSchemaType,

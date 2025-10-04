@@ -2,9 +2,9 @@
 import React from "react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
-import { useEditCategoryOrder } from "@/apis/mutations/category";
 import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
 import useGetCustomers from "@/hooks/customers/useGetCustomers";
+import { useEditCustomerOrder } from "@/apis/mutations/customer";
 
 const CustomerList = () => {
   const {
@@ -22,13 +22,17 @@ const CustomerList = () => {
     isFetchingNextPage,
   });
 
-  const editCategoryOrder = useEditCategoryOrder();
+  const editCustomerOrder = useEditCustomerOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId } =
+  const { handleDrop, setDraggedId, items, draggedId, setItems } =
     useDragAndDrop<ICustomer>({
       getItems: allCustomers,
-      editOrder: editCategoryOrder,
+      editOrder: editCustomerOrder,
     });
+
+  React.useEffect(() => {
+    setItems(allCustomers);
+  }, [allCustomers, setItems]);
 
   return (
     <>
@@ -39,7 +43,7 @@ const CustomerList = () => {
         </div>
       )}
 
-      {isSuccess && allCustomers.length > 0 && (
+      {isSuccess && items.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div

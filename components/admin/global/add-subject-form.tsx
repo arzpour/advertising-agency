@@ -142,7 +142,7 @@ const AddForm: React.FC<IAddForm> = ({
         />
       )}
 
-      {!isIncludes && (
+      {!["categories", "customers"].includes(status) && (
         <Controller
           control={control}
           defaultValue={defaultData?.description}

@@ -8,8 +8,8 @@ import {
   editCategorySchema,
   editCategorySchemaType,
 } from "@/validations/category";
-import { useEditCategory } from "@/apis/mutations/category";
 import useGetCustomerById from "@/hooks/customers/useGetCustomerById";
+import { useEditCustomer } from "@/apis/mutations/customer";
 
 interface IEditCustomerForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,7 +22,7 @@ const EditCustomerForm: React.FC<IEditCustomerForm> = ({
 }) => {
   const { data: customerData, isSuccess } = useGetCustomerById(_id);
 
-  const editCustomer = useEditCategory();
+  const editCustomer = useEditCustomer();
 
   const { control, handleSubmit, reset } = useForm<editCategorySchemaType>({
     mode: "all",

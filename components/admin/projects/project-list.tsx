@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import useGetProjects from "@/hooks/useGetProjects";
+import useGetProjects from "@/hooks/projects/useGetProjects";
 import ProjectCard, { ProjectCardSkeleton } from "./project-card";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
+import { useGetCategoryInfo } from "@/hooks/categories/useGetCategoryInfo";
 import { useEditProjectOrder } from "@/apis/mutations/projects";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
 
@@ -26,11 +26,15 @@ const ProjectList = () => {
   });
   const editProjectOrder = useEditProjectOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId } =
+  const { handleDrop, setDraggedId, items, draggedId, setItems } =
     useDragAndDrop<IProjectRes>({
       getItems: allProjects,
       editOrder: editProjectOrder,
     });
+
+  React.useEffect(() => {
+    setItems(allProjects);
+  }, [allProjects, setItems]);
 
   return (
     <>
@@ -41,7 +45,7 @@ const ProjectList = () => {
         </div>
       )}
 
-      {isSuccess && allProjects.length > 0 && (
+      {isSuccess && items.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div

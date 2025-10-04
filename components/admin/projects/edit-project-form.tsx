@@ -6,8 +6,8 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AddForm from "../global/add-subject-form";
-import useGetProjectById from "@/hooks/useGetProjectById";
-import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
+import useGetProjectById from "@/hooks/projects/useGetProjectById";
+import { useGetCategoryInfo } from "@/hooks/categories/useGetCategoryInfo";
 
 interface IEditProjectForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;

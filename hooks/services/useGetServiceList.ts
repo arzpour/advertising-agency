@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { perPageLimit } from "../utils/config";
+import { perPageLimit } from "../../utils/config";
 import { getAllServices } from "@/apis/client/services";
 
 const useGetServices = (limitCus?: number) => {
@@ -29,6 +29,7 @@ const useGetServices = (limitCus?: number) => {
     initialPageParam: 1,
     refetchOnWindowFocus: false,
     retry: 1,
+    staleTime: 0,
   });
 
   const allServices = data?.pages.flatMap((page) => page.data?.services) || [];

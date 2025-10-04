@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
 import { useAppSelector } from "@/redux/hooks";
-import useCategoryList from "@/hooks/useGetCategoryList";
+import useCategoryList from "@/hooks/categories/useGetCategoryList";
 
 interface IAddProjectForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;

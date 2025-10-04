@@ -4,7 +4,7 @@ import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
 import ServiceCard, { ServiceCardSkeleton } from "./service-card";
 import { useEditServiceOrder } from "@/apis/mutations/service";
-import useGetServiceList from "@/hooks/useGetServiceList";
+import useGetServiceList from "@/hooks/services/useGetServiceList";
 
 const ServiceList = () => {
   const {
@@ -24,11 +24,15 @@ const ServiceList = () => {
 
   const editServiceOrder = useEditServiceOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId } =
+  const { handleDrop, setDraggedId, items, draggedId, setItems } =
     useDragAndDrop<IService>({
       getItems: allServices,
       editOrder: editServiceOrder,
     });
+
+  React.useEffect(() => {
+    setItems(allServices);
+  }, [allServices, setItems]);
 
   return (
     <>
@@ -39,7 +43,7 @@ const ServiceList = () => {
         </div>
       )}
 
-      {isSuccess && allServices.length > 0 && (
+      {isSuccess && items.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div

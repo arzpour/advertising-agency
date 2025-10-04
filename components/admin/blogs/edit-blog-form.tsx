@@ -6,8 +6,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AddForm from "../global/add-subject-form";
 import { useEditBlog } from "@/apis/mutations/blog";
-import { useGetCategoryInfo } from "@/hooks/useGetCategoryInfo";
-import useGetBlogById from "@/hooks/useGetBlogById";
+import { useGetCategoryInfo } from "@/hooks/categories/useGetCategoryInfo";
+import useGetBlogById from "@/hooks/blogs/useGetBlogById";
 
 interface IEditBlogForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;

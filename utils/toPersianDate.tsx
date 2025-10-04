@@ -62,6 +62,3 @@ export function toPersianDate(gregorianDate: string): string {
     .toString()
     .padStart(2, "0")}`;
 }
-
-const date = "2025-07-26T12:36:02.933Z";
-console.log(toPersianDate(date));
