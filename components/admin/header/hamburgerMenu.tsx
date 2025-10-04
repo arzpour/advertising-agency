@@ -22,7 +22,7 @@ const HamburgerMenu = () => {
       </Link>
 
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white z-50 p-5 rounded shadow">
+        <div className="absolute top-16 left-0 w-full bg-white z-50 py-5 rounded shadow">
           <PanelSideBar setIsOpen={setIsOpen} />
         </div>
       )}

@@ -26,9 +26,10 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
   const { logoutHandler } = useLogout();
 
   return (
-    <ul className="font-medium mt-4 space-y-3 w-full">
-      <div className="w-full flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+    <ul className="font-medium mt-4 space-y-3 w-full scrollbar-hide relative">
+      <div className="w-full flex items-center gap-3 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <House className="w-5 h-5" />
+        <span className="tooltipText">صفحه اصلی</span>
         <Link
           href="/"
           aria-label="home-page"
@@ -43,11 +44,12 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         </Link>
       </div>
       <div
-        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "adminInfo" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
       >
         <User className="w-5 h-5" />
+        <span className="tooltipText">اطلاعات کاربری</span>
         <Link
           href="/admin"
           onClick={() => {
@@ -65,11 +67,13 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         </Link>
       </div>
       <div
-        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "projects" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
       >
         <SquareChartGantt className="w-5 h-5" />
+        <span className="tooltipText">پروژه ها</span>
+
         <Link
           href="/admin"
           aria-label="projects"
@@ -87,11 +91,13 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         </Link>
       </div>
       <div
-        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "blogs" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
       >
         <Newspaper className="w-5 h-5" />
+        <span className="tooltipText">بلاگ ها</span>
+
         <Link
           href="/admin"
           aria-label="blogs"
@@ -109,13 +115,15 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         </Link>
       </div>
       <div
-        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "categories"
             ? "bg-gray-100 w-full text-red-600"
             : ""
         }`}
       >
         <Layers2 className="w-5 h-5" />
+        <span className="tooltipText">خدمات</span>
+
         <Link
           href="/admin"
           aria-label="services"
@@ -133,11 +141,13 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         </Link>
       </div>
       <div
-        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer ${
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
           adminPanelTab === "tickets" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
       >
         <MessageSquareText className="w-5 h-5" />
+        <span className="tooltipText">تیکت ها</span>
+
         <Link
           href="/admin"
           aria-label="tickets"
@@ -154,8 +164,10 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
           تیکت ها
         </Link>
       </div>
-      <div className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+      <div className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <Heart className="w-5 h-5" />
+        <span className="tooltipText">علاقه مندی ها</span>
+
         <Link
           href="/admin"
           onClick={() => {
@@ -169,8 +181,10 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
           علاقه مندی ها
         </Link>
       </div>
-      <li className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer">
+      <li className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <LogOut className="w-5 h-5" />
+        <span className="tooltipText">خروج</span>
+
         <button
           aria-label="exit"
           onClick={logoutHandler}

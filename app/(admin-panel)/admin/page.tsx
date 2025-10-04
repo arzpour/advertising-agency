@@ -9,7 +9,7 @@ const AdminPanel = () => {
   return (
     <div dir="rtl" className="bg-gray-100 max-w-1770 mx-auto">
       <div className="flex flex-col sm:flex-row h-svh">
-        <div className="hidden sm:block w-20 md:w-72 sticky top-0 h-screen overflow-y-auto bg-white shadow-lg">
+        <div className="hidden sm:block w-20 md:w-72 sticky top-0 h-screen overflow-y-auto bg-white shadow-lg scrollbar-hide z-10">
           <Image
             src="/IMG_20250717_163940_569.png"
             alt="logo panel"

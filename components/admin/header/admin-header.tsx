@@ -6,7 +6,7 @@ import HamburgerMenu from "./hamburgerMenu";
 
 const AdminHead = () => {
   return (
-    <div className="flex gap-5 lg:gap-10 justify-between items-center mx-5">
+    <div className="flex gap-5 lg:gap-10 justify-between items-center fixed inset-x-0 md:relative bg-gray-100 w-full sm:pr-32 px-5 md:inset-auto md:px-5">
       <div className="max-w-4/5 sm:hidden">
         <HamburgerMenu />
       </div>

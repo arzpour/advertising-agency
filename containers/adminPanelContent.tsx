@@ -69,7 +69,7 @@ const AdminPanelContent = () => {
 
   return (
     <>
-      <div className="mt-12 flex gap-3 justify-between items-center mx-5 lg:ml-10">
+      <div className="mt-16 md:mt-12 flex gap-3 justify-between items-center mx-5 lg:ml-10">
         <h3 className="text-lg font-medium">{title}</h3>
 
         {title !== "تیکت" && (

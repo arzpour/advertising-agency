@@ -167,3 +167,26 @@ html,
 html {
   scroll-behavior: smooth;
 }
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltipText {
+  position: fixed;
+  right: 60px;
+  top: auto;
+  transform: translateY(-50%);
+  background: #111;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.tooltip:hover .tooltipText {
+  opacity: 1;
+}
