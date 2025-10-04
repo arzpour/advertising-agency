@@ -10,7 +10,7 @@ interface IImages {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   defaultValue?: string[];
-  status?: "projects" | "blogs" | "categories" | "services";
+  status?: "projects" | "blogs" | "categories" | "services" | "customers";
 }
 
 export const Images: React.FC<IImages> = ({

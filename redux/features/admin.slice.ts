@@ -6,7 +6,8 @@ export type adminPanelTabType =
   | "blogs"
   | "adminInfo"
   | "categories"
-  | "services";
+  | "services"
+  | "customers";
 
 interface IAdminInfo {
   name: string;

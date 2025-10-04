@@ -6,21 +6,21 @@ import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import AddForm from "../global/add-subject-form";
 import { categorySchema, categorySchemaType } from "@/validations/category";
-import { useAddCategory } from "@/apis/mutations/category";
+import { useAddCustomer } from "@/apis/mutations/customer";
 
-interface IAddCategoryForm {
+interface IAddCustomerForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
+const AddCustomerForm: React.FC<IAddCustomerForm> = ({ setDialogOpen }) => {
   const [selectedType, setSelectedType] = React.useState("");
 
-  const { handleSubmit, control } = useForm<categorySchemaType>({
+  const { handleSubmit, control } = useForm<customerSchemaType>({
     mode: "all",
     resolver: zodResolver(categorySchema),
   });
 
-  const addCategory = useAddCategory();
+  const addCustomer = useAddCustomer();
 
   const onSubmit: SubmitHandler<categorySchemaType> = async (data) => {
     const formData = new FormData();
@@ -33,7 +33,7 @@ const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
     }
 
     try {
-      await addCategory.mutateAsync(formData);
+      await addCustomer.mutateAsync(formData);
 
       toast("ایجاد شد", {
         icon: "✅",
@@ -65,4 +65,4 @@ const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
   );
 };
 
-export default AddCategoryForm;
+export default AddCustomerForm;

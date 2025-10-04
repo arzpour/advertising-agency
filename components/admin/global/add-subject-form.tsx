@@ -15,18 +15,20 @@ import { LoaderCircle } from "lucide-react";
 
 interface IDefaultValue {
   name: string;
-  description: string;
+  description?: string;
   categoryName?: string;
   thumbnail?: string;
   images?: string[];
   icon?: string;
+  type?: string;
 }
 
 interface IAddForm {
-  status: "projects" | "blogs" | "categories" | "services";
+  status: "projects" | "blogs" | "categories" | "services" | "customers";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   setSelectedCategory?: (value: string) => void;
+  setSelectedType?: (value: string) => void;
   categoryData?: { data?: { categories: ICategory[] } };
   handleSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   defaultData?: IDefaultValue;
@@ -38,11 +40,13 @@ const AddForm: React.FC<IAddForm> = ({
   control,
   handleSubmit,
   setSelectedCategory,
+  setSelectedType,
   categoryData,
   defaultData,
   isPending,
 }) => {
-  const isCategory = status === "categories";
+  const isIncludes = ["services", "categories", "customers"].includes(status);
+  const typeOptions = ["blog", "project"];
 
   return (
     <form
@@ -65,7 +69,7 @@ const AddForm: React.FC<IAddForm> = ({
         )}
       />
 
-      {!isCategory && (
+      {!isIncludes && (
         <Controller
           control={control}
           defaultValue={defaultData?.categoryName}
@@ -99,27 +103,63 @@ const AddForm: React.FC<IAddForm> = ({
         />
       )}
 
-      <Controller
-        control={control}
-        defaultValue={defaultData?.description}
-        name="description"
-        render={({ field, fieldState }) => (
-          <TextEditor
-            error={fieldState.error?.message}
-            {...field}
-            defaultValue={defaultData?.description}
-          />
-        )}
-      />
+      {status === "categories" && (
+        <Controller
+          control={control}
+          defaultValue={defaultData?.type}
+          name="type"
+          render={({ field, fieldState }) => (
+            <Select
+              value={field.value}
+              onValueChange={(value: string) => {
+                field.onChange(value);
+                if (setSelectedType) {
+                  setSelectedType(value);
+                }
+              }}
+            >
+              <SelectTrigger
+                className={`w-full mt-2 text-xs border rounded-md p-2 ${
+                  fieldState.error ? "border-red-400" : "border-gray-400"
+                }`}
+              >
+                <SelectValue placeholder="تایپ را انتخاب کنید" />
+              </SelectTrigger>
+              <SelectContent>
+                {(typeOptions || []).map((item) => (
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      )}
+
+      {status !== "categories" && (
+        <Controller
+          control={control}
+          defaultValue={defaultData?.description}
+          name="description"
+          render={({ field, fieldState }) => (
+            <TextEditor
+              error={fieldState.error?.message}
+              {...field}
+              defaultValue={defaultData?.description}
+            />
+          )}
+        />
+      )}
 
       <div className="flex gap-4 mt-6">
         <Thumbnail
-          name={!isCategory ? "thumbnail" : "icon"}
+          name={!isIncludes ? "thumbnail" : "icon"}
           defaultValue={defaultData?.thumbnail}
           control={control}
           status={status}
         />
-        {status !== "categories" && (
+        {!isIncludes && (
           <Images
             defaultValue={defaultData?.images}
             name="images"

@@ -24,5 +24,10 @@ export const urls = {
     ById: (id: string) => `/blogs/${id}`,
     editOrder: "/blogs/editOrder",
   },
+  customer: {
+    list: "/customers",
+    ById: (id: string) => `/customers/${id}`,
+    editOrder: "/customers/editOrder",
+  },
   ticket: "/tickets",
 };

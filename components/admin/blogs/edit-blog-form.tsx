@@ -38,11 +38,11 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
     try {
       const formData = new FormData();
 
-      if (!!data.name) {
+      if (data.name) {
         formData.append("name", data.name);
       }
 
-      if (!!data.description) {
+      if (data.description) {
         formData.append("description", data.description);
       }
 
@@ -51,7 +51,7 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
           ? categoryId
           : blogData?.category ?? "";
 
-      if (!!category) {
+      if (category) {
         formData.append("category", category);
       }
 

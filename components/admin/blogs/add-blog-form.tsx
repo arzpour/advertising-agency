@@ -34,7 +34,7 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
   const categoryId =
     categoryData?.data?.categories.find(
       (category: ICategory) => category.name === selectedCategory
-    )?._id || "";
+    )?._id ?? "";
 
   const onSubmit: SubmitHandler<addSchemaType> = async (data) => {
     const formData = new FormData();

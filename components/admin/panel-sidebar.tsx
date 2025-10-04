@@ -184,6 +184,31 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
           دسته بندی ها
         </Link>
       </div>
+      <div
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
+          adminPanelTab === "categories"
+            ? "bg-gray-100 w-full text-red-600"
+            : ""
+        }`}
+      >
+        <Server className="w-5 h-5" />
+        <span className="tooltipText lg:hidden">مشتریان</span>
+        <Link
+          href="/admin"
+          aria-label="customers"
+          onClick={() => {
+            if (setIsOpen) {
+              setIsOpen(false);
+            }
+            dispatch(adminPanelActions.setAdminPanelTab("customers"));
+          }}
+          className={`sm:hidden md:block ${
+            adminPanelTab === "customers" ? "font-medium" : ""
+          }`}
+        >
+          مشتریان
+        </Link>
+      </div>
       <div className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <Heart className="w-5 h-5" />
         <span className="tooltipText lg:hidden">علاقه مندی ها</span>
