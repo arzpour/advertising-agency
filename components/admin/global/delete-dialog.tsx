@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/dialog";
 import { Trash } from "lucide-react";
 import DeleteBlog from "../blogs/delete-blog";
-import DeleteCategory from "../categories/delete-category";
 import DeleteProject from "../projects/delete-project";
+import DeleteService from "../services/delete.service";
 
 interface IDeleteDialog {
   title: "خدمات" | "بلاگ" | "پروژه";
@@ -21,8 +21,10 @@ const DeleteDialog: React.FC<IDeleteDialog> = ({ title, _id }) => {
 
   const renderDeleteComponent = () => {
     switch (title) {
+      // case "خدمات":
+      //   return <DeleteCategory _id={_id} setDialogOpen={setDialogOpen} />;
       case "خدمات":
-        return <DeleteCategory _id={_id} setDialogOpen={setDialogOpen} />;
+        return <DeleteService _id={_id} setDialogOpen={setDialogOpen} />;
       case "بلاگ":
         return <DeleteBlog _id={_id} setDialogOpen={setDialogOpen} />;
       case "پروژه":

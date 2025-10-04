@@ -15,20 +15,20 @@ interface IServiceResDto {
   total: number;
   total_pages: number;
   data: {
-    categories: IService[];
+    services: IService[];
   };
 }
 
 interface IServiceByIdResDto {
   status: string;
   data: {
-    category: IService;
+    service: IService;
   };
 }
 
 interface IServiceByIdResDto {
   status: string;
   data: {
-    categoryById: IService;
+    serviceById: IService;
   };
 }

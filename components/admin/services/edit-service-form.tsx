@@ -4,37 +4,38 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AddForm from "../global/add-subject-form";
-import {
-  editCategorySchema,
-  editCategorySchemaType,
-} from "@/validations/category";
-import useGetCategoryById from "@/hooks/useGetCategoryById";
-import { useEditCategory } from "@/apis/mutations/category";
 
-interface IEditCategoryForm {
+import { useEditService } from "@/apis/mutations/service";
+import useGetServiceById from "@/hooks/useGetServiceById";
+import {
+  editServiceSchema,
+  editServiceSchemaType,
+} from "@/validations/service";
+
+interface IEditServiceForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   _id: string;
 }
 
-const EditCategoryForm: React.FC<IEditCategoryForm> = ({
+const EditServiceForm: React.FC<IEditServiceForm> = ({
   _id,
   setDialogOpen,
 }) => {
-  const { data: categoryData, isSuccess } = useGetCategoryById(_id);
+  const { data: serviceData, isSuccess } = useGetServiceById(_id);
 
-  const editCategory = useEditCategory();
+  const editService = useEditService();
 
-  const { control, handleSubmit, reset } = useForm<editCategorySchemaType>({
+  const { control, handleSubmit, reset } = useForm<editServiceSchemaType>({
     mode: "all",
-    resolver: zodResolver(editCategorySchema),
+    resolver: zodResolver(editServiceSchema),
     defaultValues: {
-      name: categoryData?.name,
-      description: categoryData?.description,
-      icon: categoryData?.icon,
+      name: serviceData?.name,
+      description: serviceData?.description,
+      icon: serviceData?.icon,
     },
   });
 
-  const onSubmit: SubmitHandler<editCategorySchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<editServiceSchemaType> = async (data) => {
     try {
       const formData = new FormData();
 
@@ -50,7 +51,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
         formData.append("icon", data.icon);
       }
 
-      await editCategory.mutateAsync({
+      await editService.mutateAsync({
         data: formData,
         id: _id,
       });
@@ -60,7 +61,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setDialogOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-service-list"] });
     } catch {
       setDialogOpen(false);
 
@@ -73,30 +74,30 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
   };
 
   const defaultValue = {
-    name: categoryData?.name ?? "",
-    description: categoryData?.description ?? "",
-    thumbnail: categoryData?.icon ?? "",
+    name: serviceData?.name ?? "",
+    description: serviceData?.description ?? "",
+    thumbnail: serviceData?.icon ?? "",
   };
 
   React.useEffect(() => {
-    if (isSuccess && categoryData) {
+    if (isSuccess && serviceData) {
       reset({
-        name: categoryData?.name,
-        description: categoryData?.description,
-        icon: categoryData?.icon,
+        name: serviceData?.name,
+        description: serviceData?.description,
+        icon: serviceData?.icon,
       });
     }
-  }, [isSuccess, categoryData, reset]);
+  }, [isSuccess, serviceData, reset]);
 
   return (
     <AddForm
       control={control}
-      status="categories"
+      status="services"
       handleSubmit={handleSubmit(onSubmit)}
       defaultData={defaultValue}
-      isPending={editCategory.isPending}
+      isPending={editService.isPending}
     />
   );
 };
 
-export default EditCategoryForm;
+export default EditServiceForm;

@@ -1,5 +1,4 @@
 import React from "react";
-import useCategoryList from "./useGetCategories";
 import { useAppSelector } from "@/redux/hooks";
 
 export const useGetCategoryInfo = () => {

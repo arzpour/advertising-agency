@@ -5,22 +5,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import AddForm from "../global/add-subject-form";
-import { categorySchema, categorySchemaType } from "@/validations/category";
 import { useAddService } from "@/apis/mutations/service";
+import { serviceSchema, serviceSchemaType } from "@/validations/service";
 
 interface IAddServiceForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddServiceForm: React.FC<IAddServiceForm> = ({ setDialogOpen }) => {
-  const { handleSubmit, control } = useForm<categorySchemaType>({
+  const { handleSubmit, control } = useForm<serviceSchemaType>({
     mode: "all",
-    resolver: zodResolver(categorySchema),
+    resolver: zodResolver(serviceSchema),
   });
 
-  const addCategory = useAddService();
+  const addService = useAddService();
 
-  const onSubmit: SubmitHandler<categorySchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<serviceSchemaType> = async (data) => {
     const formData = new FormData();
 
     formData.append("name", data.name || "");
@@ -31,15 +31,14 @@ const AddServiceForm: React.FC<IAddServiceForm> = ({ setDialogOpen }) => {
     }
 
     try {
-      await addCategory.mutateAsync(formData);
+      await addService.mutateAsync(formData);
 
       toast("ایجاد شد", {
         icon: "✅",
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setDialogOpen(false);
-
-      queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-service-list"] });
     } catch (error) {
       console.log("🚀 ~ error:", error);
       setDialogOpen(false);
@@ -57,7 +56,7 @@ const AddServiceForm: React.FC<IAddServiceForm> = ({ setDialogOpen }) => {
       control={control}
       status="services"
       handleSubmit={handleSubmit(onSubmit)}
-      isPending={addCategory.isPending}
+      isPending={addService.isPending}
     />
   );
 };

@@ -19,14 +19,20 @@ const ProjectList = dynamic(
 const AddProjectForm = dynamic(
   () => import("@/components/admin/projects/add-project-form")
 );
-const CategoryList = dynamic(
-  () => import("@/components/admin/categories/category-list")
+// const CategoryList = dynamic(
+//   () => import("@/components/admin/categories/category-list")
+// );
+const ServiceList = dynamic(
+  () => import("@/components/admin/services/service-list")
 );
 const TicketList = dynamic(
   () => import("@/components/admin/tickets/ticket-list")
 );
-const AddCategoryForm = dynamic(
-  () => import("@/components/admin/categories/add-category-form")
+// const AddCategoryForm = dynamic(
+//   () => import("@/components/admin/categories/add-category-form")
+// );
+const AddServiceForm = dynamic(
+  () => import("@/components/admin/services/add-service-form")
 );
 const BlogList = dynamic(() => import("@/components/admin/blogs/blog-list"));
 const AddBlogForm = dynamic(
@@ -45,10 +51,15 @@ const TAB_CONFIG = {
     ListComponent: BlogList,
     FormComponent: AddBlogForm,
   },
-  categories: {
+  // categories: {
+  //   title: "خدمات",
+  //   ListComponent: ServiceList,
+  //   FormComponent: AddServiceForm,
+  // },
+  services: {
     title: "خدمات",
-    ListComponent: CategoryList,
-    FormComponent: AddCategoryForm,
+    ListComponent: ServiceList,
+    FormComponent: AddServiceForm,
   },
   tickets: {
     title: "تیکت",

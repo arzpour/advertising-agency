@@ -2,7 +2,6 @@
 import React from "react";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useCategoryList from "@/hooks/useGetCategories";
 import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addSchema, addSchemaType } from "@/validations/project";

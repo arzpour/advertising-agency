@@ -1,26 +1,26 @@
 "use client";
-import { useDeleteCategory } from "@/apis/mutations/category";
 import { queryClient } from "@/providers/tanstack.provider";
 import React from "react";
 import { toast } from "sonner";
 import SubmitBtn from "../global/submitBtn";
+import { useDeleteService } from "@/apis/mutations/service";
 
-interface IDeleteCategory {
+interface IDeleteService {
   _id: string;
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DeleteCategory: React.FC<IDeleteCategory> = ({ _id, setDialogOpen }) => {
-  const deleteCategory = useDeleteCategory();
+const DeleteService: React.FC<IDeleteService> = ({ _id, setDialogOpen }) => {
+  const deleteService = useDeleteService();
 
   const onSubmit = async () => {
-    await deleteCategory.mutateAsync(_id);
+    await deleteService.mutateAsync(_id);
     toast("پاک شد", {
       icon: "✅",
       className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
     });
     setDialogOpen(false);
-    queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+    queryClient.invalidateQueries({ queryKey: ["get-service-list"] });
     try {
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
@@ -37,4 +37,4 @@ const DeleteCategory: React.FC<IDeleteCategory> = ({ _id, setDialogOpen }) => {
   return <SubmitBtn onSubmit={onSubmit} />;
 };
 
-export default DeleteCategory;
+export default DeleteService;

@@ -143,12 +143,12 @@ const AddForm: React.FC<IAddForm> = ({
           {isPending ? (
             <>
               <span>
-                {!!defaultData ? "در حال ویرایش..." : "درحال افزودن..."}
+                {defaultData ? "در حال ویرایش..." : "درحال افزودن..."}
               </span>
               <LoaderCircle className="w-5 h-5 animate-spin" />
             </>
           ) : (
-            <>{!!defaultData ? "ویرایش" : "افزودن"}</>
+            <>{defaultData ? "ویرایش" : "افزودن"}</>
           )}
         </button>
       </div>
