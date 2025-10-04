@@ -23,8 +23,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
     categories.find((item) => item._id === category)?.name ?? "نامشخص";
 
   return (
-    <div className="rounded-lg bg-white shadow-lg w-72">
-      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
+    <div className="rounded-lg bg-white shadow-lg w-72 rounded-t-lg">
+      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer rounded-t-lg">
         <Image
           src={
             thumbnail
