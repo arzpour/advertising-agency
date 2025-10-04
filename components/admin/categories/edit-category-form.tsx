@@ -28,9 +28,9 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
     mode: "all",
     resolver: zodResolver(editCategorySchema),
     defaultValues: {
-      name: categoryData?.name,
-      type: categoryData?.type,
-      icon: categoryData?.icon,
+      name: categoryData?.name ?? "",
+      type: categoryData?.type ?? "",
+      icon: categoryData?.icon ?? "",
     },
   });
 
@@ -81,9 +81,9 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
   React.useEffect(() => {
     if (isSuccess && categoryData) {
       reset({
-        name: categoryData?.name,
-        type: categoryData?.type,
-        icon: categoryData?.icon,
+        name: categoryData?.name ?? "",
+        type: categoryData?.type ?? "",
+        icon: categoryData?.icon ?? "",
       });
     }
   }, [isSuccess, categoryData, reset]);

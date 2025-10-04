@@ -10,10 +10,11 @@ import { Edit } from "lucide-react";
 import EditProjectForm from "../projects/edit-project-form";
 import EditBlogForm from "../blogs/edit-blog-form";
 import EditServiceForm from "../services/edit-service-form";
-// import EditCategoryForm from "../categories/edit-category-form";
+import EditCategoryForm from "../categories/edit-category-form";
+import EditCustomerForm from "../customers/edit-customer-form";
 
 interface IEditDialog {
-  title: "خدمات" | "بلاگ" | "پروژه";
+  title: SubjectsType;
   _id: string;
 }
 
@@ -22,8 +23,10 @@ const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
 
   const renderEditComponent = () => {
     switch (title) {
-      // case "خدمات":
-      //   return <EditCategoryForm _id={_id} setDialogOpen={setDialogOpen} />;
+      case "دسته بندی":
+        return <EditCategoryForm _id={_id} setDialogOpen={setDialogOpen} />;
+      case "مشتریان":
+        return <EditCustomerForm _id={_id} setDialogOpen={setDialogOpen} />;
       case "خدمات":
         return <EditServiceForm _id={_id} setDialogOpen={setDialogOpen} />;
       case "بلاگ":

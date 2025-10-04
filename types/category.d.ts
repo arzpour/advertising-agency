@@ -32,3 +32,5 @@ interface ICategoryByIdResDto {
     categoryById: ICategory;
   };
 }
+
+type CategoryTabsType = "all" | "project" | "blog";

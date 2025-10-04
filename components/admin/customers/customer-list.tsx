@@ -6,7 +6,7 @@ import { useEditCategoryOrder } from "@/apis/mutations/category";
 import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
 import useGetCustomers from "@/hooks/customers/useGetCustomers";
 
-const CategoryList = () => {
+const CustomerList = () => {
   const {
     allCustomers,
     fetchNextPage,
@@ -78,4 +78,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default CustomerList;

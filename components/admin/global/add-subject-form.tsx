@@ -46,7 +46,10 @@ const AddForm: React.FC<IAddForm> = ({
   isPending,
 }) => {
   const isIncludes = ["services", "categories", "customers"].includes(status);
-  const typeOptions = ["blog", "project"];
+  const typeOptions = [
+    { nameFa: "بلاگ", nameEn: "blog" },
+    { nameFa: "پروژه", nameEn: "project" },
+  ];
 
   return (
     <form
@@ -76,6 +79,7 @@ const AddForm: React.FC<IAddForm> = ({
           name="category"
           render={({ field, fieldState }) => (
             <Select
+              dir="rtl"
               value={field.value}
               onValueChange={(value: string) => {
                 field.onChange(value);
@@ -110,7 +114,8 @@ const AddForm: React.FC<IAddForm> = ({
           name="type"
           render={({ field, fieldState }) => (
             <Select
-              value={field.value}
+              dir="rtl"
+              value={field.value || defaultData?.type || ""}
               onValueChange={(value: string) => {
                 field.onChange(value);
                 if (setSelectedType) {
@@ -127,8 +132,8 @@ const AddForm: React.FC<IAddForm> = ({
               </SelectTrigger>
               <SelectContent>
                 {(typeOptions || []).map((item) => (
-                  <SelectItem key={item} value={item}>
-                    {item}
+                  <SelectItem key={item.nameEn} value={item.nameEn}>
+                    {item.nameFa}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -137,7 +142,7 @@ const AddForm: React.FC<IAddForm> = ({
         />
       )}
 
-      {status !== "categories" && (
+      {!isIncludes && (
         <Controller
           control={control}
           defaultValue={defaultData?.description}
@@ -152,7 +157,7 @@ const AddForm: React.FC<IAddForm> = ({
         />
       )}
 
-      <div className="flex gap-4 mt-6">
+      <div className={`flex gap-4 ${isIncludes ? "" : "mt-6"}`}>
         <Thumbnail
           name={!isIncludes ? "thumbnail" : "icon"}
           defaultValue={defaultData?.thumbnail}

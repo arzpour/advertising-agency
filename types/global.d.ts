@@ -9,3 +9,5 @@ interface IParams {
   total_pages?: number;
   type?: string;
 }
+
+type SubjectsType = "دسته بندی" | "مشتریان" | "بلاگ" | "پروژه" | "خدمات";

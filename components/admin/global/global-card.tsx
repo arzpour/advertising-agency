@@ -12,13 +12,17 @@ interface IGlobalCard {
 
 const GlobalCard: React.FC<IGlobalCard> = ({ icon, name, _id, status }) => {
   let iconUrl;
+  let cardTitle;
 
   if (status === "category") {
     iconUrl = process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+    cardTitle = "دسته بندی";
   } else if (status === "customer") {
     iconUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+    cardTitle = "مشتریان";
   } else {
     iconUrl = "";
+    cardTitle = "";
   }
 
   return (
@@ -34,8 +38,8 @@ const GlobalCard: React.FC<IGlobalCard> = ({ icon, name, _id, status }) => {
       />
       <h3 className="text-gray-800 truncate line-clamp-1">{name}</h3>
       <div className="flex gap-3 mt-4 justify-end items-center">
-        <EditDialog title="خدمات" _id={_id} />
-        <DeleteDialog title="خدمات" _id={_id} />
+        <EditDialog title={cardTitle as SubjectsType} _id={_id} />
+        <DeleteDialog title={cardTitle as SubjectsType} _id={_id} />
       </div>
     </div>
   );

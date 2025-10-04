@@ -6,7 +6,11 @@ import { useEditCategoryOrder } from "@/apis/mutations/category";
 import useGetCategories from "@/hooks/useGetCategories";
 import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
 
-const CategoryList = () => {
+interface ICategoryList {
+  filterType?: CategoryTabsType;
+}
+
+const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
   const {
     allCategories,
     fetchNextPage,
@@ -24,9 +28,14 @@ const CategoryList = () => {
 
   const editCategoryOrder = useEditCategoryOrder();
 
+  const filteredCategories =
+    filterType === "all"
+      ? allCategories
+      : allCategories.filter((item) => item.type === filterType);
+
   const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<ICategory>({
-      getItems: allCategories,
+      getItems: filteredCategories,
       editOrder: editCategoryOrder,
     });
 
@@ -39,7 +48,7 @@ const CategoryList = () => {
         </div>
       )}
 
-      {isSuccess && allCategories.length > 0 && (
+      {isSuccess && filteredCategories.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div
@@ -71,8 +80,10 @@ const CategoryList = () => {
           {isFetchingNextPage ? "در حال بارگذاری..." : "بارگذاری بیشتر"}
         </div>
       )}
-      {!hasNextPage && !isLoading && allCategories.length === 0 && (
-        <p className="mt-6 text-gray-500">دسته بندی ای موجود نیست.</p>
+      {!hasNextPage && !isLoading && filteredCategories.length === 0 && (
+        <p className="mt-6 text-gray-500 text-right text-sm">
+          دسته بندی ای موجود نیست.
+        </p>
       )}
     </>
   );

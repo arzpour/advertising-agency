@@ -12,7 +12,7 @@ import DeleteProject from "../projects/delete-project";
 import DeleteService from "../services/delete.service";
 
 interface IDeleteDialog {
-  title: "خدمات" | "بلاگ" | "پروژه";
+  title: SubjectsType;
   _id: string;
 }
 

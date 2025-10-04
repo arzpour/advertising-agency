@@ -16,8 +16,8 @@ import dynamic from "next/dynamic";
 const ProjectList = dynamic(
   () => import("@/components/admin/projects/project-list")
 );
-const CategoryList = dynamic(
-  () => import("@/components/admin/categories/category-list")
+const CategoryTabs = dynamic(
+  () => import("@/components/admin/categories/category-tabs")
 );
 const ServiceList = dynamic(
   () => import("@/components/admin/services/service-list")
@@ -27,7 +27,7 @@ const TicketList = dynamic(
 );
 const BlogList = dynamic(() => import("@/components/admin/blogs/blog-list"));
 const CustomerList = dynamic(
-  () => import("@/components/admin/services/service-list")
+  () => import("@/components/admin/customers/customer-list")
 );
 
 const AddProjectForm = dynamic(
@@ -60,7 +60,7 @@ const TAB_CONFIG = {
   },
   categories: {
     title: "دسته بندی",
-    ListComponent: CategoryList,
+    ListComponent: CategoryTabs,
     FormComponent: AddCategoryForm,
   },
   services: {
