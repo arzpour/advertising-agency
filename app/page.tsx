@@ -1,11 +1,11 @@
-export const revalidate = 1800;
+export const revalidate = 3;
 
-import AboutUs from "@/components/about-us";
+import AboutUs from "@/containers/about-us";
 import Header from "@/components/header-footer/header";
 import ProjectContainer from "@/containers/projectContainer";
 import Services from "@/containers/services";
 import Blogs from "@/containers/blogs";
-import Brands from "@/components/brands";
+import Customers from "@/containers/customers";
 import Footer from "@/components/header-footer/footer";
 import { Suspense } from "react";
 import { ServiceCardSkeleton } from "@/components/services/service-card";
@@ -53,7 +53,7 @@ export default function Home() {
         <Blogs />
       </Suspense>
 
-      <Brands />
+      <Customers />
       <Footer />
     </>
   );

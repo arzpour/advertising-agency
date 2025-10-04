@@ -38,7 +38,7 @@ const AddCustomerForm: React.FC<IAddCustomerForm> = ({ setDialogOpen }) => {
       });
       setDialogOpen(false);
 
-      queryClient.invalidateQueries({ queryKey: ["get-customer-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-customers"] });
     } catch (error) {
       console.log("🚀 ~ error:", error);
       setDialogOpen(false);
