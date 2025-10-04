@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header
       id="header"
-      className="relative h-[33rem] w-full overflow-hidden font-Vazirmatn"
+      className="relative h-[33rem] w-full overflow-hidden font-Vazirmatn scroll-mt-20"
     >
       <video
         autoPlay

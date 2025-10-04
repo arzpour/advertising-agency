@@ -16,7 +16,11 @@ const Services = async () => {
   return (
     servicesData &&
     servicesData.data.categories.length > 0 && (
-      <section id="services" className="pt-10 sm:pt-14 sm:mt-16 md:mt-20" dir="rtl">
+      <section
+        id="services"
+        className="pt-10 sm:pt-14 sm:mt-16 md:mt-20 scroll-mt-20"
+        dir="rtl"
+      >
         <div className="container mx-auto">
           <h2 className="text-xl font-bold bg-gray-100 rounded-t-md inline-block py-4 px-16">
             خدمات

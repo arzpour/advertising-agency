@@ -38,11 +38,11 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
     try {
       const formData = new FormData();
 
-      if (!!data.name) {
+      if (data.name) {
         formData.append("name", data.name);
       }
 
-      if (!!data.description) {
+      if (data.description) {
         formData.append("description", data.description);
       }
 

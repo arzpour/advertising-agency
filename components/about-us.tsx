@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <section
       id="aboutUs"
-      className="max-w-6xl mx-auto my-6 mt-10 md:mt-16 lg:mt-28"
+      className="max-w-6xl mx-auto my-6 mt-10 md:mt-16 lg:mt-28 scroll-mt-20"
       dir="rtl"
     >
       <div className="flex flex-wrap lg:flex-nowrap xl:gap-5 items-center justify-center lg:justify-baseline xl:justify-center xl:mr-16 px-5 sm:px-10 xl:px-0">

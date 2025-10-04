@@ -7,8 +7,29 @@ import Image from "next/image";
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const menuRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    const clickOutSideHandler = (e: globalThis.MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", clickOutSideHandler);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", clickOutSideHandler);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="sm:hidden relative w-full flex justify-between items-center px-4 py-3">
+    <div
+      className="sm:hidden relative w-full flex justify-between items-center px-4 py-3"
+      ref={menuRef}
+    >
       <button
         aria-label="align-left"
         onClick={() => setIsOpen((prev) => !prev)}

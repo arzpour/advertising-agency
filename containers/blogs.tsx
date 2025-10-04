@@ -17,7 +17,7 @@ const Blogs = async () => {
   if (!blogData || blogs.length === 0) return null;
 
   return (
-    <section id="blogs">
+    <section id="blogs" className="scroll-mt-20">
       <div className="container mx-auto">
         <h2 className="text-xl font-bold text-white bg-black rounded-t-md inline-block py-4 px-16">
           وبلاگ
