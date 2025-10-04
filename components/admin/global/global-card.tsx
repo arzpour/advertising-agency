@@ -1,22 +1,31 @@
 import Image from "next/image";
 import React from "react";
-import DeleteDialog from "../global/delete-dialog";
-import EditDialog from "../global/edit-dialog";
+import DeleteDialog from "./delete-dialog";
+import EditDialog from "./edit-dialog";
 
-interface ICategoryCard {
+interface IGlobalCard {
   name: string;
   icon: string;
   _id: string;
+  status: "category" | "customer";
 }
 
-const CategoryCard: React.FC<ICategoryCard> = ({ icon, name, _id }) => {
+const GlobalCard: React.FC<IGlobalCard> = ({ icon, name, _id, status }) => {
+  let iconUrl;
+
+  if (status === "category") {
+    iconUrl = process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+  } else if (status === "customer") {
+    iconUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+  } else {
+    iconUrl = "";
+  }
+
   return (
     <div className="flex flex-col space-y-2 justify-center items-center cursor-pointer w-64 p-8 rounded-lg bg-white shadow-md hover:shadow-2xl">
       <Image
         src={
-          icon
-            ? `${process.env.NEXT_PUBLIC_CATEGORY_ICON_URL}/${icon}`
-            : "/gettyimages-2149038061-612x612.jpg"
+          icon ? `${iconUrl}/${icon}` : "/gettyimages-2149038061-612x612.jpg"
         }
         alt={`${name} image`}
         width={800}
@@ -32,9 +41,9 @@ const CategoryCard: React.FC<ICategoryCard> = ({ icon, name, _id }) => {
   );
 };
 
-export default CategoryCard;
+export default GlobalCard;
 
-export const CategoryCardSkeleton = () => {
+export const GlobalCardSkeleton = () => {
   return (
     <div className="flex flex-col space-y-2 justify-center items-center cursor-pointer w-64 p-8 rounded-lg bg-white shadow-md hover:shadow-2xl">
       <div className="h-20 w-20 object-cover rounded bg-gray-200 animate-pulse mb-6"></div>

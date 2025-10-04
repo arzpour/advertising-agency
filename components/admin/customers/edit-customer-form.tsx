@@ -9,28 +9,27 @@ import {
   editCategorySchemaType,
 } from "@/validations/category";
 import { useEditCategory } from "@/apis/mutations/category";
-import useGetCategoryById from "@/hooks/useGetCategoryById";
+import useGetCustomerById from "@/hooks/customers/useGetCustomerById";
 
-interface IEditCategoryForm {
+interface IEditCustomerForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   _id: string;
 }
 
-const EditCategoryForm: React.FC<IEditCategoryForm> = ({
+const EditCustomerForm: React.FC<IEditCustomerForm> = ({
   _id,
   setDialogOpen,
 }) => {
-  const { data: categoryData, isSuccess } = useGetCategoryById(_id);
+  const { data: customerData, isSuccess } = useGetCustomerById(_id);
 
-  const editCategory = useEditCategory();
+  const editCustomer = useEditCategory();
 
   const { control, handleSubmit, reset } = useForm<editCategorySchemaType>({
     mode: "all",
     resolver: zodResolver(editCategorySchema),
     defaultValues: {
-      name: categoryData?.name,
-      type: categoryData?.type,
-      icon: categoryData?.icon,
+      name: customerData?.name,
+      icon: customerData?.icon,
     },
   });
 
@@ -42,15 +41,11 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
         formData.append("name", data.name);
       }
 
-      if (data.type) {
-        formData.append("type", data.type);
-      }
-
       if (data.icon instanceof File) {
         formData.append("icon", data.icon);
       }
 
-      await editCategory.mutateAsync({
+      await editCustomer.mutateAsync({
         data: formData,
         id: _id,
       });
@@ -60,7 +55,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setDialogOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-customers"] });
     } catch {
       setDialogOpen(false);
 
@@ -73,30 +68,28 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
   };
 
   const defaultValue = {
-    name: categoryData?.name ?? "",
-    type: categoryData?.type ?? "",
-    icon: categoryData?.icon ?? "",
+    name: customerData?.name ?? "",
+    icon: customerData?.icon ?? "",
   };
 
   React.useEffect(() => {
-    if (isSuccess && categoryData) {
+    if (isSuccess && customerData) {
       reset({
-        name: categoryData?.name,
-        type: categoryData?.type,
-        icon: categoryData?.icon,
+        name: customerData?.name,
+        icon: customerData?.icon,
       });
     }
-  }, [isSuccess, categoryData, reset]);
+  }, [isSuccess, customerData, reset]);
 
   return (
     <AddForm
       control={control}
-      status="categories"
+      status="customers"
       handleSubmit={handleSubmit(onSubmit)}
       defaultData={defaultValue}
-      isPending={editCategory.isPending}
+      isPending={editCustomer.isPending}
     />
   );
 };
 
-export default EditCategoryForm;
+export default EditCustomerForm;

@@ -3,25 +3,25 @@ import { queryClient } from "@/providers/tanstack.provider";
 import React from "react";
 import { toast } from "sonner";
 import SubmitBtn from "../global/submitBtn";
-import { useDeleteService } from "@/apis/mutations/service";
+import { useDeleteCustomer } from "@/apis/mutations/customer";
 
-interface IDeleteService {
+interface IDeleteCustomer {
   _id: string;
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DeleteService: React.FC<IDeleteService> = ({ _id, setDialogOpen }) => {
-  const deleteService = useDeleteService();
+const DeleteCustomer: React.FC<IDeleteCustomer> = ({ _id, setDialogOpen }) => {
+  const deleteCustomer = useDeleteCustomer();
 
   const onSubmit = async () => {
     try {
-      await deleteService.mutateAsync(_id);
+      await deleteCustomer.mutateAsync(_id);
       toast("پاک شد", {
         icon: "✅",
         className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
       });
       setDialogOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["get-service-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-customers"] });
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
       setDialogOpen(false);
@@ -37,4 +37,4 @@ const DeleteService: React.FC<IDeleteService> = ({ _id, setDialogOpen }) => {
   return <SubmitBtn onSubmit={onSubmit} />;
 };
 
-export default DeleteService;
+export default DeleteCustomer;

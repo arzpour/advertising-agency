@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import CategoryCard, { CategoryCardSkeleton } from "./category-card";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
 import { useEditCategoryOrder } from "@/apis/mutations/category";
 import useGetCategories from "@/hooks/useGetCategories";
+import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
 
 const CategoryList = () => {
   const {
@@ -35,7 +35,7 @@ const CategoryList = () => {
       {isLoading && (
         <div className="flex flex-wrap gap-8 mt-16 mb-16 justify-center items-center gap-y-10">
           {isLoading &&
-            [1, 2, 3, 4].map((el) => <CategoryCardSkeleton key={el} />)}
+            [1, 2, 3, 4].map((el) => <GlobalCardSkeleton key={el} />)}
         </div>
       )}
 
@@ -52,7 +52,12 @@ const CategoryList = () => {
                 draggedId === el._id ? "scale-105 shadow-2xl z-50" : ""
               }`}
             >
-              <CategoryCard key={el._id} {...el} icon={el.icon ?? ""} />
+              <GlobalCard
+                key={el._id}
+                {...el}
+                icon={el.icon ?? ""}
+                status="category"
+              />
             </div>
           ))}
         </div>

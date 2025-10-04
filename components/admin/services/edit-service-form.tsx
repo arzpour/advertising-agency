@@ -76,7 +76,7 @@ const EditServiceForm: React.FC<IEditServiceForm> = ({
   const defaultValue = {
     name: serviceData?.name ?? "",
     description: serviceData?.description ?? "",
-    thumbnail: serviceData?.icon ?? "",
+    icon: serviceData?.icon ?? "",
   };
 
   React.useEffect(() => {

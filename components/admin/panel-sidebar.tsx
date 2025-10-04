@@ -11,6 +11,7 @@ import {
   User,
   Layers2,
   Server,
+  Building2,
 } from "lucide-react";
 import useLogout from "@/hooks/useLogout";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -186,12 +187,12 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
       </div>
       <div
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
-          adminPanelTab === "categories"
+          adminPanelTab === "customers"
             ? "bg-gray-100 w-full text-red-600"
             : ""
         }`}
       >
-        <Server className="w-5 h-5" />
+        <Building2 className="w-5 h-5" />
         <span className="tooltipText lg:hidden">مشتریان</span>
         <Link
           href="/admin"

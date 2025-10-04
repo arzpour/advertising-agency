@@ -14,14 +14,14 @@ const DeleteProject: React.FC<IDeleteProject> = ({ _id, setDialogOpen }) => {
   const deleteProject = useDeleteProject();
 
   const onSubmit = async () => {
-    await deleteProject.mutateAsync(_id);
-    toast("پاک شد", {
-      icon: "✅",
-      className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
-    });
-    setDialogOpen(false);
-    queryClient.invalidateQueries({ queryKey: ["get-projects"] });
     try {
+      await deleteProject.mutateAsync(_id);
+      toast("پاک شد", {
+        icon: "✅",
+        className: "!bg-green-100 !text-green-800 !shadow-md !h-[60px]",
+      });
+      setDialogOpen(false);
+      queryClient.invalidateQueries({ queryKey: ["get-projects"] });
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
       setDialogOpen(false);

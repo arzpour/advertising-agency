@@ -5,28 +5,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import AddForm from "../global/add-subject-form";
-import { categorySchema, categorySchemaType } from "@/validations/category";
 import { useAddCustomer } from "@/apis/mutations/customer";
+import { customerSchema, customerSchemaType } from "@/validations/custoer";
 
 interface IAddCustomerForm {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddCustomerForm: React.FC<IAddCustomerForm> = ({ setDialogOpen }) => {
-  const [selectedType, setSelectedType] = React.useState("");
-
   const { handleSubmit, control } = useForm<customerSchemaType>({
     mode: "all",
-    resolver: zodResolver(categorySchema),
+    resolver: zodResolver(customerSchema),
   });
 
   const addCustomer = useAddCustomer();
 
-  const onSubmit: SubmitHandler<categorySchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<customerSchemaType> = async (data) => {
     const formData = new FormData();
 
     formData.append("name", data.name || "");
-    formData.append("type", selectedType || "");
 
     if (data.icon instanceof File) {
       formData.append("icon", data.icon);
@@ -41,7 +38,7 @@ const AddCustomerForm: React.FC<IAddCustomerForm> = ({ setDialogOpen }) => {
       });
       setDialogOpen(false);
 
-      queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-customer-list"] });
     } catch (error) {
       console.log("🚀 ~ error:", error);
       setDialogOpen(false);
@@ -57,10 +54,9 @@ const AddCustomerForm: React.FC<IAddCustomerForm> = ({ setDialogOpen }) => {
   return (
     <AddForm
       control={control}
-      status="categories"
+      status="customers"
       handleSubmit={handleSubmit(onSubmit)}
-      isPending={addCategory.isPending}
-      setSelectedType={setSelectedType}
+      isPending={addCustomer.isPending}
     />
   );
 };

@@ -2,19 +2,19 @@
 import React from "react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
-import ServiceCard, { ServiceCardSkeleton } from "./service-card";
-import { useEditServiceOrder } from "@/apis/mutations/service";
-import useGetServiceList from "@/hooks/useGetServiceList";
+import { useEditCategoryOrder } from "@/apis/mutations/category";
+import GlobalCard, { GlobalCardSkeleton } from "../global/global-card";
+import useGetCustomers from "@/hooks/customers/useGetCustomers";
 
-const ServiceList = () => {
+const CategoryList = () => {
   const {
-    allServices,
+    allCustomers,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     isLoading,
     isSuccess,
-  } = useGetServiceList();
+  } = useGetCustomers();
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,
@@ -22,12 +22,12 @@ const ServiceList = () => {
     isFetchingNextPage,
   });
 
-  const editServiceOrder = useEditServiceOrder();
+  const editCategoryOrder = useEditCategoryOrder();
 
   const { handleDrop, setDraggedId, items, draggedId } =
-    useDragAndDrop<IService>({
-      getItems: allServices,
-      editOrder: editServiceOrder,
+    useDragAndDrop<ICustomer>({
+      getItems: allCustomers,
+      editOrder: editCategoryOrder,
     });
 
   return (
@@ -35,11 +35,11 @@ const ServiceList = () => {
       {isLoading && (
         <div className="flex flex-wrap gap-8 mt-16 mb-16 justify-center items-center gap-y-10">
           {isLoading &&
-            [1, 2, 3, 4].map((el) => <ServiceCardSkeleton key={el} />)}
+            [1, 2, 3, 4].map((el) => <GlobalCardSkeleton key={el} />)}
         </div>
       )}
 
-      {isSuccess && allServices.length > 0 && (
+      {isSuccess && allCustomers.length > 0 && (
         <div className="flex flex-wrap gap-8 mt-14 mb-10 justify-center items-center gap-y-10">
           {items.map((el) => (
             <div
@@ -52,7 +52,12 @@ const ServiceList = () => {
                 draggedId === el._id ? "scale-105 shadow-2xl z-50" : ""
               }`}
             >
-              <ServiceCard key={el._id} {...el} icon={el.icon ?? ""} />
+              <GlobalCard
+                key={el._id}
+                {...el}
+                icon={el.icon ?? ""}
+                status="customer"
+              />
             </div>
           ))}
         </div>
@@ -66,11 +71,11 @@ const ServiceList = () => {
           {isFetchingNextPage ? "در حال بارگذاری..." : "بارگذاری بیشتر"}
         </div>
       )}
-      {!hasNextPage && !isLoading && allServices.length === 0 && (
-        <p className="mt-6 text-gray-500">خدماتی موجود نیست.</p>
+      {!hasNextPage && !isLoading && allCustomers.length === 0 && (
+        <p className="mt-6 text-gray-500">مشتری ای موجود نیست.</p>
       )}
     </>
   );
 };
 
-export default ServiceList;
+export default CategoryList;

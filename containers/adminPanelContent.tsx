@@ -16,25 +16,32 @@ import dynamic from "next/dynamic";
 const ProjectList = dynamic(
   () => import("@/components/admin/projects/project-list")
 );
-const AddProjectForm = dynamic(
-  () => import("@/components/admin/projects/add-project-form")
+const CategoryList = dynamic(
+  () => import("@/components/admin/categories/category-list")
 );
-// const CategoryList = dynamic(
-//   () => import("@/components/admin/categories/category-list")
-// );
 const ServiceList = dynamic(
   () => import("@/components/admin/services/service-list")
 );
 const TicketList = dynamic(
   () => import("@/components/admin/tickets/ticket-list")
 );
-// const AddCategoryForm = dynamic(
-//   () => import("@/components/admin/categories/add-category-form")
-// );
+const BlogList = dynamic(() => import("@/components/admin/blogs/blog-list"));
+const CustomerList = dynamic(
+  () => import("@/components/admin/services/service-list")
+);
+
+const AddProjectForm = dynamic(
+  () => import("@/components/admin/projects/add-project-form")
+);
+const AddCategoryForm = dynamic(
+  () => import("@/components/admin/categories/add-category-form")
+);
 const AddServiceForm = dynamic(
   () => import("@/components/admin/services/add-service-form")
 );
-const BlogList = dynamic(() => import("@/components/admin/blogs/blog-list"));
+const AddCustomerForm = dynamic(
+  () => import("@/components/admin/customers/add-cusromer-form")
+);
 const AddBlogForm = dynamic(
   () => import("@/components/admin/blogs/add-blog-form")
 );
@@ -51,15 +58,20 @@ const TAB_CONFIG = {
     ListComponent: BlogList,
     FormComponent: AddBlogForm,
   },
-  // categories: {
-  //   title: "خدمات",
-  //   ListComponent: ServiceList,
-  //   FormComponent: AddServiceForm,
-  // },
+  categories: {
+    title: "دسته بندی",
+    ListComponent: CategoryList,
+    FormComponent: AddCategoryForm,
+  },
   services: {
     title: "خدمات",
     ListComponent: ServiceList,
     FormComponent: AddServiceForm,
+  },
+  customers: {
+    title: "مشتریان",
+    ListComponent: CustomerList,
+    FormComponent: AddCustomerForm,
   },
   tickets: {
     title: "تیکت",
