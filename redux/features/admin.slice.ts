@@ -5,7 +5,8 @@ export type adminPanelTabType =
   | "projects"
   | "blogs"
   | "adminInfo"
-  | "categories";
+  | "categories"
+  | "services";
 
 interface IAdminInfo {
   name: string;
@@ -29,7 +30,7 @@ export const adminPanelSlice = createSlice({
   name: "adminPanel",
   initialState,
   reducers: {
-    setadminPanelTab: (state, action: PayloadAction<adminPanelTabType>) => {
+    setAdminPanelTab: (state, action: PayloadAction<adminPanelTabType>) => {
       state.adminPanelTab = action.payload;
     },
     setAdminInfo: (state, action: PayloadAction<IAdminInfo>) => {

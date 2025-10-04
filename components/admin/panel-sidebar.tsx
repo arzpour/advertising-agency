@@ -10,6 +10,7 @@ import {
   House,
   User,
   Layers2,
+  Server,
 } from "lucide-react";
 import useLogout from "@/hooks/useLogout";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -56,7 +57,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
             if (setIsOpen) {
               setIsOpen(false);
             }
-            dispatch(adminPanelActions.setadminPanelTab("adminInfo"));
+            dispatch(adminPanelActions.setAdminPanelTab("adminInfo"));
           }}
           aria-label="user-info"
           className={`sm:hidden md:block ${
@@ -72,8 +73,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         }`}
       >
         <SquareChartGantt className="w-5 h-5" />
-        <span className="tooltipText">پروژه ها</span>
-
+        <span className="tooltipText lg:hidden">پروژه ها</span>
         <Link
           href="/admin"
           aria-label="projects"
@@ -81,7 +81,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
             if (setIsOpen) {
               setIsOpen(false);
             }
-            dispatch(adminPanelActions.setadminPanelTab("projects"));
+            dispatch(adminPanelActions.setAdminPanelTab("projects"));
           }}
           className={`sm:hidden md:block ${
             adminPanelTab === "projects" ? "font-medium" : ""
@@ -96,8 +96,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         }`}
       >
         <Newspaper className="w-5 h-5" />
-        <span className="tooltipText">بلاگ ها</span>
-
+        <span className="tooltipText lg:hidden">بلاگ ها</span>
         <Link
           href="/admin"
           aria-label="blogs"
@@ -105,7 +104,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
             if (setIsOpen) {
               setIsOpen(false);
             }
-            dispatch(adminPanelActions.setadminPanelTab("blogs"));
+            dispatch(adminPanelActions.setAdminPanelTab("blogs"));
           }}
           className={`sm:hidden md:block ${
             adminPanelTab === "blogs" ? "font-medium" : ""
@@ -116,14 +115,11 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
       </div>
       <div
         className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
-          adminPanelTab === "categories"
-            ? "bg-gray-100 w-full text-red-600"
-            : ""
+          adminPanelTab === "services" ? "bg-gray-100 w-full text-red-600" : ""
         }`}
       >
         <Layers2 className="w-5 h-5" />
-        <span className="tooltipText">خدمات</span>
-
+        <span className="tooltipText lg:hidden">خدمات</span>
         <Link
           href="/admin"
           aria-label="services"
@@ -131,10 +127,10 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
             if (setIsOpen) {
               setIsOpen(false);
             }
-            dispatch(adminPanelActions.setadminPanelTab("categories"));
+            dispatch(adminPanelActions.setAdminPanelTab("services"));
           }}
           className={`sm:hidden md:block ${
-            adminPanelTab === "categories" ? "font-medium" : ""
+            adminPanelTab === "services" ? "font-medium" : ""
           }`}
         >
           خدمات
@@ -146,8 +142,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
         }`}
       >
         <MessageSquareText className="w-5 h-5" />
-        <span className="tooltipText">تیکت ها</span>
-
+        <span className="tooltipText lg:hidden">تیکت ها</span>
         <Link
           href="/admin"
           aria-label="tickets"
@@ -155,7 +150,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
             if (setIsOpen) {
               setIsOpen(false);
             }
-            dispatch(adminPanelActions.setadminPanelTab("tickets"));
+            dispatch(adminPanelActions.setAdminPanelTab("tickets"));
           }}
           className={`sm:hidden md:block ${
             adminPanelTab === "tickets" ? "font-medium" : ""
@@ -164,10 +159,34 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
           تیکت ها
         </Link>
       </div>
+      <div
+        className={`w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip ${
+          adminPanelTab === "categories"
+            ? "bg-gray-100 w-full text-red-600"
+            : ""
+        }`}
+      >
+        <Server className="w-5 h-5" />
+        <span className="tooltipText lg:hidden">دسته بندی ها</span>
+        <Link
+          href="/admin"
+          aria-label="categories"
+          onClick={() => {
+            if (setIsOpen) {
+              setIsOpen(false);
+            }
+            dispatch(adminPanelActions.setAdminPanelTab("categories"));
+          }}
+          className={`sm:hidden md:block ${
+            adminPanelTab === "categories" ? "font-medium" : ""
+          }`}
+        >
+          دسته بندی ها
+        </Link>
+      </div>
       <div className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <Heart className="w-5 h-5" />
-        <span className="tooltipText">علاقه مندی ها</span>
-
+        <span className="tooltipText lg:hidden">علاقه مندی ها</span>
         <Link
           href="/admin"
           onClick={() => {
@@ -183,8 +202,7 @@ const PanelSideBar: React.FC<IPanelSideBar> = ({ setIsOpen }) => {
       </div>
       <li className="w-full flex items-center gap-4 p-2 pr-5 py-3 hover:text-red-500 cursor-pointer tooltip">
         <LogOut className="w-5 h-5" />
-        <span className="tooltipText">خروج</span>
-
+        <span className="tooltipText lg:hidden">خروج</span>
         <button
           aria-label="exit"
           onClick={logoutHandler}

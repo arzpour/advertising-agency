@@ -23,7 +23,7 @@ interface IDefaultValue {
 }
 
 interface IAddForm {
-  status: "projects" | "blogs" | "categories";
+  status: "projects" | "blogs" | "categories" | "services";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   setSelectedCategory?: (value: string) => void;

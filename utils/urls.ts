@@ -14,6 +14,11 @@ export const urls = {
     ById: (id: string) => `/categories/${id}`,
     editOrder: "/categories/editOrder",
   },
+  service: {
+    list: "/services",
+    ById: (id: string) => `/services/${id}`,
+    editOrder: "/services/editOrder",
+  },
   blog: {
     list: "/blogs",
     ById: (id: string) => `/blogs/${id}`,
