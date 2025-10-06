@@ -32,6 +32,7 @@ const CustomerList = () => {
 
   React.useEffect(() => {
     setItems(allCustomers);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -36,6 +36,7 @@ const BlogList: React.FC = () => {
 
   React.useEffect(() => {
     setItems(allBlogs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!isLoading && allBlogs.length === 0) {

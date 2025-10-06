@@ -41,6 +41,7 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
 
   React.useEffect(() => {
     setItems(filteredCategories);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -32,6 +32,7 @@ const ServiceList = () => {
 
   React.useEffect(() => {
     setItems(allServices);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
