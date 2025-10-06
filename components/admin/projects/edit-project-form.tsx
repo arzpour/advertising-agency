@@ -33,11 +33,11 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
     try {
       const formData = new FormData();
 
-      if (!!data.name) {
+      if (data.name) {
         formData.append("name", data.name);
       }
 
-      if (!!data.description) {
+      if (data.description) {
         formData.append("description", data.description);
       }
 
@@ -46,7 +46,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
           ? categoryId
           : projectData?.category ?? "";
 
-      if (!!category) {
+      if (category) {
         formData.append("category", category);
       }
 
@@ -101,7 +101,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
         images: projectData?.images,
       });
     }
-  }, [isSuccess, projectData, reset, categoryName]);
+  }, [isSuccess, projectData, reset]);
 
   return (
     <AddForm

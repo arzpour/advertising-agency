@@ -18,7 +18,7 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
     isFetchingNextPage,
     isLoading,
     isSuccess,
-  } = useGetCategories();
+  } = useGetCategories({ type: filterType });
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,
@@ -41,7 +41,7 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
 
   React.useEffect(() => {
     setItems(filteredCategories);
-  }, [filteredCategories, setItems]);
+  }, []);
 
   return (
     <>

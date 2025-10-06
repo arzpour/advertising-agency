@@ -36,7 +36,9 @@ const GlobalCard: React.FC<IGlobalCard> = ({ icon, name, _id, status }) => {
         height={800}
         className="h-20 w-20 object-cover rounded"
       />
-      <h3 className="text-gray-800 truncate line-clamp-1">{name}</h3>
+      <h3 className="text-gray-800 truncate line-clamp-1 whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
+        {name}
+      </h3>
       <div className="flex gap-3 mt-4 justify-end items-center">
         <EditDialog title={cardTitle as SubjectsType} _id={_id} />
         <DeleteDialog title={cardTitle as SubjectsType} _id={_id} />

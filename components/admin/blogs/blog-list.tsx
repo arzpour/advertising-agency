@@ -36,7 +36,7 @@ const BlogList: React.FC = () => {
 
   React.useEffect(() => {
     setItems(allBlogs);
-  }, [allBlogs, setItems]);
+  }, []);
 
   if (!isLoading && allBlogs.length === 0) {
     return <p className="mt-6 text-gray-500">بلاگی موجود نیست.</p>;

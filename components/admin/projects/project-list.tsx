@@ -34,7 +34,7 @@ const ProjectList = () => {
 
   React.useEffect(() => {
     setItems(allProjects);
-  }, [allProjects, setItems]);
+  }, []);
 
   return (
     <>

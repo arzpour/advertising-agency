@@ -17,14 +17,16 @@ const TicketCard: React.FC<ITicketCard> = ({
   return (
     <div className="flex flex-col justify-between p-4 leading-normal w-full bg-white rounded-lg">
       <div className="flex gap- justify-between items-center">
-        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
           {phoneNumber}
         </h5>
         <span className="text-gray-600 text-sm">
           {toPersianDate(updatedAt) ?? toPersianDate(createdAt)}
         </span>
       </div>
-      <p className="text-gray-700 dark:text-gray-400 text-sm mb-1">{message}</p>
+      <p className="text-gray-700 dark:text-gray-400 text-sm mb-1 whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
+        {message}
+      </p>
     </div>
   );
 };

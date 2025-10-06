@@ -2,7 +2,11 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getAllCategories } from "../../apis/client/categories";
 import { perPageLimit } from "../../utils/config";
 
-const useGetCategories = (limitCus?: number) => {
+interface IUseGetCategories {
+  limitCus?: number;
+  type: "project" | "blog" | "all";
+}
+const useGetCategories = ({ type, limitCus }: IUseGetCategories) => {
   const limit = limitCus ?? perPageLimit;
 
   const {
@@ -15,9 +19,9 @@ const useGetCategories = (limitCus?: number) => {
     error,
     isSuccess,
   } = useInfiniteQuery({
-    queryKey: ["get-categories"],
+    queryKey: ["get-categories", limit, type],
     queryFn: async ({ pageParam = 1 }) =>
-      await getAllCategories({ limit: limit, page: pageParam }),
+      await getAllCategories({ limit: limit, page: pageParam, type }),
 
     getNextPageParam: (lastPage, allPages) => {
       const categories = lastPage?.data?.categories;

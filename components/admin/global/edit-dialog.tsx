@@ -12,6 +12,7 @@ import EditBlogForm from "../blogs/edit-blog-form";
 import EditServiceForm from "../services/edit-service-form";
 import EditCategoryForm from "../categories/edit-category-form";
 import EditCustomerForm from "../customers/edit-customer-form";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface IEditDialog {
   title: SubjectsType;
@@ -21,7 +22,7 @@ interface IEditDialog {
 const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
-  const renderEditComponent = () => {
+  const renderEditComponent = React.useMemo(() => {
     switch (title) {
       case "دسته بندی":
         return <EditCategoryForm _id={_id} setDialogOpen={setDialogOpen} />;
@@ -36,7 +37,7 @@ const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
       default:
         return null;
     }
-  };
+  }, [title, _id]);
 
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -46,8 +47,9 @@ const EditDialog: React.FC<IEditDialog> = ({ title, _id }) => {
       <DialogContent className="max-w-lg" dir="rtl">
         <DialogHeader>
           <DialogTitle className="text-right mt-6">ویرایش {title}</DialogTitle>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
-        {renderEditComponent()}
+        {renderEditComponent}
       </DialogContent>
     </Dialog>
   );

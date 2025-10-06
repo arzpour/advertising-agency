@@ -30,9 +30,11 @@ const ServiceCard: React.FC<IServiceCard> = ({
         height={800}
         className="h-20 w-20 object-cover rounded"
       />
-      <h3 className="text-gray-800 truncate line-clamp-1">{name}</h3>
+      <h3 className="text-gray-800 truncate line-clamp-1 whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
+        {name}
+      </h3>
       <p
-        className="text-sm text-gray-500 text-center line-clamp-1"
+        className="text-sm text-gray-500 text-center line-clamp-1 whitespace-pre-wrap break-all [overflow-wrap:anywhere]"
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
       ></p>
       <div className="flex gap-3 mt-4 justify-end items-center">

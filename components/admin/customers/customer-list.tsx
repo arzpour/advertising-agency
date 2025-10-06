@@ -32,7 +32,7 @@ const CustomerList = () => {
 
   React.useEffect(() => {
     setItems(allCustomers);
-  }, [allCustomers, setItems]);
+  }, []);
 
   return (
     <>

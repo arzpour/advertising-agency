@@ -36,7 +36,7 @@ const BlogCard: React.FC<IBlogCard> = ({
       </div>
       <div className="flex flex-col justify-between p-4 leading-normal w-full">
         <div className="flex justify-between items-center">
-          <h5 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
             {name}
           </h5>
           <div className="flex gap-3 justify-end items-start mr-10">
@@ -45,14 +45,16 @@ const BlogCard: React.FC<IBlogCard> = ({
           </div>
         </div>
         <p
-          className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate"
+          className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate whitespace-pre-wrap break-all [overflow-wrap:anywhere]"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></p>
-        <div className="flex justify-end">
-          <span className="bg-[#EDF2F7] py-2 px-4 rounded-full text-xs truncate">
-            #{category}
-          </span>
-        </div>
+        {!!category && (
+          <div className="flex justify-end">
+            <span className="bg-[#EDF2F7] py-2 px-4 rounded-full text-xs truncate">
+              #{category}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

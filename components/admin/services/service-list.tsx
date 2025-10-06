@@ -32,7 +32,7 @@ const ServiceList = () => {
 
   React.useEffect(() => {
     setItems(allServices);
-  }, [allServices, setItems]);
+  }, []);
 
   return (
     <>
