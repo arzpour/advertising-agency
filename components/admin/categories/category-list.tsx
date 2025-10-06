@@ -33,16 +33,17 @@ const CategoryList: React.FC<ICategoryList> = ({ filterType = "all" }) => {
       ? allCategories
       : allCategories.filter((item) => item.type === filterType);
 
-  const { handleDrop, setDraggedId, items, draggedId, setItems } =
+  const memoizedCategories = React.useMemo(
+    () => filteredCategories,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [filteredCategories.length]
+  );
+
+  const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<ICategory>({
-      getItems: filteredCategories,
+      getItems: memoizedCategories,
       editOrder: editCategoryOrder,
     });
-
-  React.useEffect(() => {
-    setItems(filteredCategories);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>

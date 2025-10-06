@@ -33,7 +33,7 @@ const BlogCard: React.FC<IBlogCard> = ({
           height={500}
           loading="lazy"
         />
-        <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
+        <div className="absolute h-full w-full top-0 bg-black opacity-30 hover:opacity-20 transition-all duration-300 z-20"></div>
       </div>
 
       <div className="px-6 py-5 text-surface dark:text-white">

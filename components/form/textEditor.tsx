@@ -25,7 +25,9 @@ export const TextEditor: React.FC<ITextEditor> = ({
       readonly: false,
       placeholder: "توضیحات را وارد کنید",
       style: {
-        fontSize: "14px",
+        fontSize: "13px",
+        height: "150px",
+        overflowY: "auto",
       },
     }),
     []

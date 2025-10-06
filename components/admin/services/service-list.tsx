@@ -24,16 +24,17 @@ const ServiceList = () => {
 
   const editServiceOrder = useEditServiceOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId, setItems } =
+  const memoizedServices = React.useMemo(
+    () => allServices,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allServices.length]
+  );
+
+  const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<IService>({
-      getItems: allServices,
+      getItems: memoizedServices,
       editOrder: editServiceOrder,
     });
-
-  React.useEffect(() => {
-    setItems(allServices);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>

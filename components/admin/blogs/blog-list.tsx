@@ -28,16 +28,14 @@ const BlogList: React.FC = () => {
 
   const editBlogOrder = useEditBlogOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId, setItems } =
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const memoizedBlogs = React.useMemo(() => allBlogs, [allBlogs.length]);
+
+  const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<IBlogRes>({
-      getItems: allBlogs,
+      getItems: memoizedBlogs,
       editOrder: editBlogOrder,
     });
-
-  React.useEffect(() => {
-    setItems(allBlogs);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (!isLoading && allBlogs.length === 0) {
     return <p className="mt-6 text-gray-500">بلاگی موجود نیست.</p>;

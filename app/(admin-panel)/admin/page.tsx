@@ -11,7 +11,7 @@ const AdminPanel = () => {
       <div className="flex flex-col sm:flex-row h-svh">
         <div className="hidden sm:block w-20 md:w-72 sticky top-0 h-screen overflow-y-auto bg-white shadow-lg scrollbar-hide z-10">
           <Image
-            src="/IMG_20250717_163940_569.png"
+            src="/logohans.png"
             alt="logo panel"
             width={200}
             height={0}

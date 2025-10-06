@@ -14,7 +14,7 @@ const Customers = async () => {
   return (
     <section
       id="clients"
-      className="overflow-hidden relative w-full bg-white py-6 mt-10 sm:mt-14 scroll-mt-20"
+      className="overflow-hidden relative w-full bg-white mt-10 sm:mt-14 scroll-mt-20"
     >
       <div className="whitespace-nowrap brandScroll flex gap-10 items-center justify-center min-w-full">
         {customersData?.data.customers.map((el, index) => (
@@ -26,9 +26,9 @@ const Customers = async () => {
                 : "/gettyimages-2149038061-612x612.jpg"
             }
             alt={`brand-${index}`}
-            width={100}
-            height={100}
-            className="w-20 h-20 object-contain"
+            width={800}
+            height={800}
+            className="w-40 h-40 object-contain"
             loading="lazy"
           />
         ))}

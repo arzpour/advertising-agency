@@ -24,16 +24,17 @@ const CustomerList = () => {
 
   const editCustomerOrder = useEditCustomerOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId, setItems } =
+  const memoizedCustomers = React.useMemo(
+    () => allCustomers,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allCustomers.length]
+  );
+
+  const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<ICustomer>({
-      getItems: allCustomers,
+      getItems: memoizedCustomers,
       editOrder: editCustomerOrder,
     });
-
-  React.useEffect(() => {
-    setItems(allCustomers);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>

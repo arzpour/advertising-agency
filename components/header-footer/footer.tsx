@@ -6,17 +6,17 @@ import ContactUs from "../contact-us/contact-us";
 const Footer = () => {
   return (
     <footer className="relative h-full w-full p-10 mt-10 py-10 flex flex-col gap-y-4">
-      <div className="absolute top-0 left-0 w-full h-full bg-black/70 z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-10"></div>
       <Image
-        src="/istockphoto-1385970223-1024x1024.jpg"
+        src="/footer-img.jpg"
         alt="footer-image"
         className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
-        width={200}
-        height={200}
+        width={1500}
+        height={1500}
         loading="lazy"
       />
 
-      <div className="relative z-20 flex flex-wrap md:flex-nowrap gap-10 md:gap-7 lg:gap-10 justify-start xl:justify-center items-start px-0 2xl:px-40">
+      <div className="relative z-20 flex flex-wrap md:flex-nowrap gap-10 md:gap-7 lg:gap-16 xl:gap-24 justify-start xl:justify-center items-start px-0 2xl:px-40">
         {/* <nav className="space-y-6">
           <h6 className="text-white text-base text-start">خدمات</h6>
           <ul className="space-y-4 text-start">

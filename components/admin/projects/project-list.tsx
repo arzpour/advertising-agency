@@ -26,16 +26,17 @@ const ProjectList = () => {
   });
   const editProjectOrder = useEditProjectOrder();
 
-  const { handleDrop, setDraggedId, items, draggedId, setItems } =
+  const memoizedProjects = React.useMemo(
+    () => allProjects,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allProjects.length]
+  );
+
+  const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<IProjectRes>({
-      getItems: allProjects,
+      getItems: memoizedProjects,
       editOrder: editProjectOrder,
     });
-
-  React.useEffect(() => {
-    setItems(allProjects);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
