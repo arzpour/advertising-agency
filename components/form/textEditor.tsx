@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback, useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const JoditEditor = dynamic(() => import("jodit-react"), {
@@ -20,10 +20,17 @@ export const TextEditor: React.FC<ITextEditor> = ({
 }) => {
   const [content, setContent] = useState<string>(defaultValue || "");
 
+  useEffect(() => {
+    if (defaultValue !== undefined && defaultValue !== content) {
+      setContent(defaultValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultValue]);
+
   const config = useMemo(
     () => ({
       readonly: false,
-      placeholder: "توضیحات را وارد کنید",
+      placeholder: !defaultValue ? "" : "توضیحات را وارد کنید",
       style: {
         fontSize: "13px",
         height: "150px",
