@@ -61,12 +61,21 @@ export const Images: React.FC<IImages> = ({
 
   React.useEffect(() => {
     if (defaultValue && defaultValue.length > 0) {
-      const imageUrl =
-        status === "blogs"
-          ? process.env.NEXT_PUBLIC_BLOG_IMAGE_URL
-          : status === "projects"
-          ? process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL
-          : process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+      let imageUrl;
+      if (status === "blogs") {
+        imageUrl = process.env.NEXT_PUBLIC_BLOG_IMAGE_URL;
+      } else if (status === "projects") {
+        imageUrl = process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL;
+      } else if (status === "customers") {
+        imageUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+      } else if (status === "services") {
+        imageUrl = process.env.NEXT_PUBLIC_SERVICE_ICON_URL;
+      } else if (status === "categories") {
+        imageUrl = process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+      } else {
+        imageUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+      }
+
       const fullUrls = defaultValue.map((img) => `${imageUrl}/${img}`);
       setUrls(fullUrls);
       field.onChange([]);

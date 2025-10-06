@@ -29,13 +29,21 @@ export const Thumbnail: React.FC<IThumbnail> = ({
   } = useController({ name, control });
 
   React.useEffect(() => {
-    const thumbnailUrl =
-      status === "blogs"
-        ? process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL
-        : status === "projects"
-        ? process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL
-        : process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
-    if (!!defaultValue) {
+    let thumbnailUrl;
+    if (status === "blogs") {
+      thumbnailUrl = process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL;
+    } else if (status === "projects") {
+      thumbnailUrl = process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL;
+    } else if (status === "customers") {
+      thumbnailUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+    } else if (status === "services") {
+      thumbnailUrl = process.env.NEXT_PUBLIC_SERVICE_ICON_URL;
+    } else if (status === "categories") {
+      thumbnailUrl = process.env.NEXT_PUBLIC_CATEGORY_ICON_URL;
+    } else {
+      thumbnailUrl = process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL;
+    }
+    if (defaultValue) {
       setUrl(`${thumbnailUrl}/${defaultValue}`);
     }
   }, [defaultValue, status]);
