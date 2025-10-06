@@ -7,7 +7,6 @@ const Customers = async () => {
 
   try {
     customersData = await getAllCustomers({ page: 1, limit: Infinity });
-    console.log("🚀 ~ Brands ~ customersData:", customersData);
   } catch (err) {
     console.error("🚀 ~ customers ~ err:", err);
   }
@@ -28,7 +27,7 @@ const Customers = async () => {
             alt={`brand-${index}`}
             width={800}
             height={800}
-            className="w-40 h-40 object-contain"
+            className="w-36 h-36 object-contain"
             loading="lazy"
           />
         ))}

@@ -96,7 +96,6 @@ const EditBlogForm: React.FC<IEditBlogForm> = ({ _id, setDialogOpen }) => {
     thumbnail: blogData?.thumbnail ?? "",
     images: blogData?.images ?? [],
   };
-  console.log("🚀 ~ EditBlogForm ~ defaultValue:", defaultValue);
 
   React.useEffect(() => {
     if (isSuccess && blogData) {
