@@ -2,6 +2,8 @@ import { getAllCustomers } from "@/apis/client/customers";
 import Image from "next/image";
 import React from "react";
 
+export const revalidate = 1800;
+
 const Customers = async () => {
   let customersData: ICustomerResDto | null = null;
 
