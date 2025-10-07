@@ -17,19 +17,22 @@ const Customers = async () => {
     >
       <div className="whitespace-nowrap brandScroll flex gap-10 items-center justify-center min-w-full">
         {customersData?.data.customers.map((el, index) => (
-          <Image
+          <div
             key={el._id}
-            src={
-              el.icon
-                ? `${process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL}/${el.icon}`
-                : "/gettyimages-2149038061-612x612.jpg"
-            }
-            alt={`brand-${index}`}
-            width={800}
-            height={800}
-            className="w-36 h-36 object-contain"
-            loading="lazy"
-          />
+            className="w-36 h-36 object-contain flex items-center"
+          >
+            <Image
+              src={
+                el.icon
+                  ? `${process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL}/${el.icon}`
+                  : "/gettyimages-2149038061-612x612.jpg"
+              }
+              alt={`brand-${index}`}
+              width={800}
+              height={800}
+              loading="lazy"
+            />
+          </div>
         ))}
       </div>
     </section>
