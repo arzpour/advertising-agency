@@ -38,10 +38,10 @@ const BlogCard: React.FC<IBlogCard> = ({
 
       <div className="px-6 py-5 text-surface dark:text-white">
         <div className="flex justify-between items-center">
-          <h5 className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
+          <h5 className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 whitespace-normal break-words [overflow-wrap:anywhere]">
             {name}
           </h5>
-          <p className="mb-0.5 text-xs text-gray-600 whitespace-pre-wrap break-all [overflow-wrap:anywhere]">
+          <p className="mb-0.5 text-xs text-gray-600 whitespace-normal break-words [overflow-wrap:anywhere]">
             {" "}
             {toPersianDate(updatedAt) ?? toPersianDate(createdAt)}
           </p>
