@@ -136,17 +136,19 @@ html,
   --color-dark-1: #1c1c1a;
 }
 
-@keyframes brandScroll {
+@keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(-2000px);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(99999px);
   }
 }
 
-.brandScroll {
-  animation: brandScroll 20s linear infinite;
+.animate-marquee {
+  display: flex;
+  gap: 2.5rem;
+  animation: marquee 930s linear infinite;
 }
 
 .scrollWebkit::-webkit-scrollbar {
