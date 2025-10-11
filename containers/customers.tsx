@@ -8,7 +8,11 @@ const Customers = async () => {
   let customersData: ICustomerResDto | null = null;
 
   try {
-    customersData = await getAllCustomers({ page: 1, limit: Infinity });
+    customersData = await getAllCustomers({
+      page: 1,
+      limit: 9999,
+      type: "all",
+    });
   } catch (err) {
     console.error("🚀 ~ customers ~ err:", err);
   }

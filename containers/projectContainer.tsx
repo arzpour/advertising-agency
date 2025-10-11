@@ -10,15 +10,21 @@ const ProjectContainer = async () => {
   let categoryData: ICategoryResDto | null = null;
 
   try {
-    projectData = await getProjects({ page: 1, limit: 10 });
+    projectData = await getProjects({ page: 1, limit: 9999 });
   } catch (err) {
     console.error("🚀 ~ ProjectContainer ~ err:", err);
+    // projectData = [];
   }
 
   try {
-    categoryData = await getAllCategories({ page: 1, limit: 6 });
+    categoryData = await getAllCategories({
+      page: 1,
+      limit: 9999,
+      type: "all",
+    });
   } catch (err) {
     console.error("🚀 ~ ProjectContainer ~ err:", err);
+    // categoryData = [];
   }
 
   return (

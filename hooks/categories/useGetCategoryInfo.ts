@@ -8,7 +8,7 @@ export const useGetCategoryInfo = (type: "project" | "blog") => {
   const [selectedCategory, setSelectedCategory] = React.useState<string>("");
 
   const { data: categoryData } = useCategoryList({
-    limitCus: Infinity,
+    limitCus: 9999,
     enabled: adminPanelTab !== "categories",
     type,
   });

@@ -23,12 +23,12 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
         height={800}
         loading="lazy"
       />
-      <h3 className="text-gray-800 font-medium truncate line-clamp-1 whitespace-normal break-words [overflow-wrap:anywhere]">
+      <h3 className="text-gray-800 font-medium whitespace-normal break-words w-46">
         {name}
       </h3>
 
       <p
-        className="text-sm text-gray-500 text-right whitespace-normal break-words [overflow-wrap:anywhere]"
+        className="text-sm text-gray-500 text-right whitespace-normal break-words w-46"
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
       ></p>
     </div>

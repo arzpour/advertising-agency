@@ -27,7 +27,7 @@ const AddProjectForm: React.FC<IAddProjectForm> = ({ setDialogOpen }) => {
   const addProject = useAddProject();
   const { data: categoryData } = useCategoryList({
     enabled: adminPanelTab !== "services",
-    limitCus: Infinity,
+    limitCus: 9999,
     type: "project",
   });
 

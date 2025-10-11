@@ -36,13 +36,13 @@ const ProjectCard: React.FC<IProjectCard> = ({
       </div>
       <div className="h-1/2 p-4">
         <div className="flex justify-between items-center">
-          <h3 className="mb-2 font-semibold hover:underline cursor-pointer whitespace-normal break-words [overflow-wrap:anywhere]">
+          <h3 className="mb-2 font-semibold hover:underline cursor-pointer whitespace-normal break-words">
             {name}
           </h3>
           <p className="text-gray-600 text-xs">{category}</p>
         </div>
         <p
-          className="text-sm font-medium text-gray-700 my-3 line-clamp-2 whitespace-normal break-words [overflow-wrap:anywhere]"
+          className="text-sm font-medium text-gray-700 my-3 line-clamp-2 whitespace-normal break-words"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></p>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">

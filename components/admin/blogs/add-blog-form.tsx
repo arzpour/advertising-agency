@@ -27,7 +27,7 @@ const AddBlogForm: React.FC<IAddBlogForm> = ({ setDialogOpen }) => {
   const addBlog = useAddBlog();
   const { data: categoryData } = useCategoryList({
     enabled: adminPanelTab !== "categories",
-    limitCus: Infinity,
+    limitCus: 9999,
     type: "blog",
   });
 
