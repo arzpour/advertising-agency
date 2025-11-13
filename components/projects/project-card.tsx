@@ -10,6 +10,7 @@ interface IProjectCard {
   description: string;
   name: string;
   categories: ICategory[];
+  _id: string;
 }
 
 const ProjectCard: React.FC<IProjectCard> = ({
@@ -18,6 +19,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
   description,
   name,
   categories,
+  _id,
 }) => {
   const categoryName =
     categories.find((item) => item._id === category)?.name ?? "نامشخص";
@@ -37,11 +39,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
           height={200}
           loading="lazy"
         />
-        <div className="absolute h-full w-full top-0 bg-black opacity-40 hover:opacity-20 transition-all duration-300 z-20"></div>
 
-        <Link href="#" aria-label="project">
-          <div className="absolute inset-0 h-full w-full bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
-        </Link>
+        <Link href={`/projects/${_id}`} aria-label="project"></Link>
       </div>
 
       <div className="px-6 py-5 text-surface dark:text-white">
@@ -58,9 +57,9 @@ const ProjectCard: React.FC<IProjectCard> = ({
         ></p>
 
         <Link
-          href="#"
+          href={`/projects/${_id}`}
           aria-label="more"
-          className="flex gap-2 items-center justify-end pt-2 text-xs font-medium text-red-500"
+          className="flex gap-2 items-center justify-end pt-2 text-xs font-medium text-red-500 hover:text-red-600 transition-colors"
         >
           مشاهده بیشتر
           <ArrowLeft />

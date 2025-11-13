@@ -28,7 +28,7 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
       </h3>
 
       <p
-        className="text-sm text-gray-500 text-right whitespace-normal break-words w-46"
+        className="text-sm text-gray-500 text-right whitespace-normal break-words w-4/5 sm:w-46"
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
       ></p>
     </div>

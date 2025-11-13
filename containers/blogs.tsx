@@ -29,7 +29,15 @@ const Blogs = async () => {
           {blogs.length > 0 && (
             <div className="flex flex-wrap xl:flex-nowrap justify-center lg:justify-normal gap-4 md:gap-7 w-full">
               {blogs.slice(0, 4).map((el) => (
-                <BlogCard key={el._id} {...el} />
+                <BlogCard
+                  key={el._id}
+                  thumbnail={el.thumbnail}
+                  name={el.name}
+                  description={el.description}
+                  createdAt={el.createdAt}
+                  updatedAt={el.updatedAt}
+                  _id={el._id}
+                />
               ))}
             </div>
           )}
