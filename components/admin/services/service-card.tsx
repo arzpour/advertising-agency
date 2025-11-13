@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import DeleteDialog from "../global/delete-dialog";
 import EditDialog from "../global/edit-dialog";
+import { getImageSrc } from "@/utils/getImageSrc";
 
 interface IServiceCard {
   name: string;
@@ -20,11 +21,7 @@ const ServiceCard: React.FC<IServiceCard> = ({
   return (
     <div className="flex flex-col space-y-2 justify-center items-center cursor-pointer w-64 p-8 rounded-lg bg-white shadow-md hover:shadow-2xl">
       <Image
-        src={
-          icon
-            ? `${process.env.NEXT_PUBLIC_SERVICE_ICON_URL}/${icon}`
-            : "/gettyimages-2149038061-612x612.jpg"
-        }
+        src={getImageSrc(icon, process.env.NEXT_PUBLIC_SERVICE_ICON_URL ?? "")}
         alt={`${name} image`}
         width={800}
         height={800}

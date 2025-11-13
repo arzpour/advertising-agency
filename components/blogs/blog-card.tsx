@@ -1,3 +1,4 @@
+import { getImageSrc } from "@/utils/getImageSrc";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import { toPersianDate } from "@/utils/toPersianDate";
 import Image from "next/image";
@@ -26,11 +27,10 @@ const BlogCard: React.FC<IBlogCard> = ({
       <div className="rounded-lg bg-white shadow-lg w-full mx-5 sm:mx-0 sm:w-72 hover:shadow-xl transition-shadow">
         <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
           <Image
-            src={
-              thumbnail
-                ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`
-                : "/gettyimages-2149038061-612x612.jpg"
-            }
+            src={getImageSrc(
+              thumbnail,
+              process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL ?? ""
+            )}
             alt="project"
             className="rounded-t-lg h-48"
             width={500}

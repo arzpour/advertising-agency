@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
+import { getImageSrc } from "@/utils/getImageSrc";
 
 interface IProjectCard {
   category: string;
@@ -28,11 +29,10 @@ const ProjectCard: React.FC<IProjectCard> = ({
     <div className="rounded-lg bg-white shadow-lg w-72 rounded-t-lg">
       <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer rounded-t-lg">
         <Image
-          src={
-            thumbnail
-              ? `${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`
-              : "/gettyimages-2149038061-612x612.jpg"
-          }
+          src={getImageSrc(
+            thumbnail,
+            process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL ?? ""
+          )}
           alt="project"
           className="rounded-t-lg"
           width={300}

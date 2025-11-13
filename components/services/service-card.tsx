@@ -1,3 +1,4 @@
+import { getImageSrc } from "@/utils/getImageSrc";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
 import Image from "next/image";
 import React from "react";
@@ -12,11 +13,7 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
   return (
     <div className="flex flex-col space-y-2 justify-start items-center text-right">
       <Image
-        src={
-          icon
-            ? `${process.env.NEXT_PUBLIC_SERVICE_ICON_URL}/${icon}`
-            : "/gettyimages-2149038061-612x612.jpg"
-        }
+        src={getImageSrc(icon, process.env.NEXT_PUBLIC_SERVICE_ICON_URL ?? "")}
         alt={`${name} image`}
         className="w-24 h-24 object-cover rounded-full !mb-3"
         width={800}

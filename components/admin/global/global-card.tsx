@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import DeleteDialog from "./delete-dialog";
 import EditDialog from "./edit-dialog";
+import { getImageSrc } from "@/utils/getImageSrc";
 
 interface IGlobalCard {
   name: string;
@@ -28,9 +29,7 @@ const GlobalCard: React.FC<IGlobalCard> = ({ icon, name, _id, status }) => {
   return (
     <div className="flex flex-col space-y-2 justify-center items-center cursor-pointer w-64 p-8 rounded-lg bg-white shadow-md hover:shadow-2xl">
       <Image
-        src={
-          icon ? `${iconUrl}/${icon}` : "/gettyimages-2149038061-612x612.jpg"
-        }
+        src={getImageSrc(icon, iconUrl ?? "")}
         alt={`${name} image`}
         width={800}
         height={800}

@@ -1,4 +1,5 @@
 import { getAllCustomers } from "@/apis/client/customers";
+import { getImageSrc } from "@/utils/getImageSrc";
 import Image from "next/image";
 import React from "react";
 export const revalidate = 1800;
@@ -32,11 +33,10 @@ const Customers = async () => {
             className="w-36 h-36 flex items-center justify-center shrink-0"
           >
             <Image
-              src={
-                el?.icon
-                  ? `${process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL}/${el.icon}`
-                  : "/gettyimages-2149038061-612x612.jpg"
-              }
+              src={getImageSrc(
+                el?.icon ?? "",
+                process.env.NEXT_PUBLIC_CUSTOMER_ICON_URL ?? ""
+              )}
               alt={`brand-${index}`}
               width={800}
               height={800}
