@@ -36,6 +36,8 @@ const BlogCard: React.FC<IBlogCard> = ({
             width={500}
             height={500}
             loading="lazy"
+            quality={90}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 288px"
           />
           <div className="absolute h-full w-full top-0 bg-black opacity-30 hover:opacity-20 transition-all duration-300 z-20"></div>
         </div>
