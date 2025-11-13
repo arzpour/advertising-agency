@@ -20,7 +20,7 @@ const ProjectContainer = async () => {
     categoryData = await getAllCategories({
       page: 1,
       limit: 9999,
-      type: "all",
+      type: "project",
     });
   } catch (err) {
     console.error("🚀 ~ ProjectContainer ~ err:", err);
