@@ -22,6 +22,7 @@ const DeleteCategory: React.FC<IDeleteCategory> = ({ _id, setDialogOpen }) => {
       });
       setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-categories"] });
     } catch (error) {
       console.log("🚀 ~ onSubmit ~ error:", error);
       setDialogOpen(false);
