@@ -11,7 +11,7 @@ interface IServiceCard {
 
 const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
   return (
-    <div className="flex flex-col space-y-2 justify-start items-center text-right">
+    <div className="flex flex-col space-y-2 justify-start items-center text-center sm:text-right w-full">
       <Image
         src={getImageSrc(icon, process.env.NEXT_PUBLIC_SERVICE_ICON_URL ?? "")}
         alt={`${name} image`}
@@ -20,14 +20,14 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
         height={800}
         loading="lazy"
       />
-      <h3 className="text-gray-800 font-medium whitespace-normal break-words w-46">
+      <h3 className="text-gray-800 text-center sm:text-right font-medium whitespace-normal break-words w-46">
         {name}
       </h3>
 
-      <p
-        className="text-sm text-gray-500 text-right whitespace-normal break-words w-4/5 sm:w-46"
+      <div
+        className="text-sm text-gray-500 text-center sm:text-right whitespace-normal break-words w-4/5 sm:w-46"
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-      ></p>
+      ></div>
     </div>
   );
 };

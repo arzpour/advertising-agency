@@ -51,10 +51,10 @@ const ProjectCard: React.FC<IProjectCard> = ({
           <p className="mb-0.5 text-xs text-gray-600">{categoryName}</p>
         </div>
 
-        <p
-          className="mb-0.5 text-xs text-gray-600 whitespace-normal break-words"
+        <div
+          className="mb-0.5 text-xs text-gray-600 whitespace-normal break-words line-clamp-4"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-        ></p>
+        ></div>
 
         <Link
           href={`/projects/${_id}`}

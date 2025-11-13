@@ -44,10 +44,10 @@ const BlogCard: React.FC<IBlogCard> = ({
             <DeleteDialog title="بلاگ" _id={_id} />
           </div>
         </div>
-        <p
+        <div
           className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate whitespace-normal break-words"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-        ></p>
+        ></div>
         {!!category && (
           <div className="flex justify-end">
             <span className="bg-[#EDF2F7] py-2 px-4 rounded-full text-xs truncate">

@@ -30,10 +30,10 @@ const ServiceCard: React.FC<IServiceCard> = ({
       <h3 className="text-gray-800 truncate line-clamp-1 whitespace-normal break-words">
         {name}
       </h3>
-      <p
+      <div
         className="text-sm text-gray-500 text-center line-clamp-1 whitespace-normal break-words"
         dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-      ></p>
+      ></div>
       <div className="flex gap-3 mt-4 justify-end items-center">
         <EditDialog title="خدمات" _id={_id} />
         <DeleteDialog title="خدمات" _id={_id} />
