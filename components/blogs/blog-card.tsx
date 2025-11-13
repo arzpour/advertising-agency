@@ -38,7 +38,7 @@ const BlogCard: React.FC<IBlogCard> = ({
             height={1500}
             loading="lazy"
             quality={90}
-            sizes="(max-width: 768px) 100vw, 300px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 288px"
           />
         </div>
 

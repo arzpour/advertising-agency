@@ -2,6 +2,7 @@ import React from "react";
 import { getBlogById } from "@/apis/client/blogs";
 import Image from "next/image";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
+import { getImageSrc } from "@/utils/getImageSrc";
 import { toPersianDate } from "@/utils/toPersianDate";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -47,17 +48,18 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             {/* Thumbnail */}
-            <div className="relative w-full h-64 md:h-96 overflow-hidden">
+            <div className="relative w-full h-64 md:h-96 overflow-hidden bg-gray-100">
               <Image
-                src={
-                  blogData.thumbnail
-                    ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${blogData.thumbnail}`
-                    : "/gettyimages-2149038061-612x612.jpg"
-                }
+                src={getImageSrc(
+                  blogData.thumbnail,
+                  process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL ?? ""
+                )}
                 alt={blogData.name}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
+                quality={95}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
             </div>
 
@@ -96,14 +98,19 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
                     {blogData.images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-100"
                       >
                         <Image
-                          src={`${process.env.NEXT_PUBLIC_BLOG_IMAGE_URL}/${image}`}
+                          src={getImageSrc(
+                            image,
+                            process.env.NEXT_PUBLIC_BLOG_IMAGE_URL ?? ""
+                          )}
                           alt={`${blogData.name} - تصویر ${index + 1}`}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                           loading="lazy"
+                          quality={95}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
                     ))}

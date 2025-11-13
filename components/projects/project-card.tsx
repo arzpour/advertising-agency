@@ -38,6 +38,8 @@ const ProjectCard: React.FC<IProjectCard> = ({
           width={300}
           height={200}
           loading="lazy"
+          quality={90}
+          sizes="(max-width: 768px) 100vw, 300px"
         />
 
         <Link href={`/projects/${_id}`} aria-label="project"></Link>

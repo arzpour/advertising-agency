@@ -19,6 +19,8 @@ const ServiceCard: React.FC<IServiceCard> = ({ description, icon, name }) => {
         width={800}
         height={800}
         loading="lazy"
+        quality={90}
+        sizes="96px"
       />
       <h3 className="text-gray-800 text-center sm:text-right font-medium whitespace-normal break-words w-46">
         {name}

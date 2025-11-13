@@ -3,6 +3,7 @@ import { getProjectById } from "@/apis/client/projects";
 import { getAllCategories } from "@/apis/client/categories";
 import Image from "next/image";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
+import { getImageSrc } from "@/utils/getImageSrc";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Header from "@/components/header-footer/header";
@@ -62,17 +63,18 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             {/* Thumbnail */}
-            <div className="relative w-full h-64 md:h-96 overflow-hidden">
+            <div className="relative w-full h-64 md:h-96 overflow-hidden bg-gray-100">
               <Image
-                src={
-                  projectData.thumbnail
-                    ? `${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${projectData.thumbnail}`
-                    : "/gettyimages-2149038061-612x612.jpg"
-                }
+                src={getImageSrc(
+                  projectData.thumbnail,
+                  process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL ?? ""
+                )}
                 alt={projectData.name}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
+                quality={95}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
             </div>
 
@@ -112,14 +114,19 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                     {projectData.images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-100"
                       >
                         <Image
-                          src={`${process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL}/${image}`}
+                          src={getImageSrc(
+                            image,
+                            process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL ?? ""
+                          )}
                           alt={`${projectData.name} - تصویر ${index + 1}`}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                           loading="lazy"
+                          quality={95}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
                     ))}
