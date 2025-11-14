@@ -22,8 +22,10 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   let projectData: IProjectRes | null = null;
   let categoryData: ICategory | null = null;
 
+  const id = await params.id;
+
   try {
-    const response = await getProjectById(params.id);
+    const response = await getProjectById(id);
     projectData = response.data.projectById;
   } catch (err) {
     console.error("🚀 ~ ProjectDetailPage ~ err:", err);
@@ -61,9 +63,8 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
             بازگشت به پروژه‌ها
           </Link>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            {/* Thumbnail */}
-            <div className="relative w-full h-64 md:h-96 overflow-hidden bg-gray-100">
+          <div className="bg-white rounded-lg overflow-hidden">
+            <div className="relative h-60 md:h-72 rounded-lg overflow-hidden whitespace-nowrap mb-3">
               <Image
                 src={getImageSrc(
                   projectData.thumbnail,
@@ -71,14 +72,13 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                 )}
                 alt={projectData.name}
                 fill
-                className="object-contain"
+                className="object-contain rounded-lg overflow-hidden whitespace-nowrap"
                 priority
                 quality={95}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
             </div>
 
-            {/* Content */}
             <div className="p-6 md:p-10">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-0">
@@ -91,8 +91,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                 )}
               </div>
 
-              {/* Description */}
-              <div className="mb-8">
+              <div className="mb-10">
                 <h2 className="text-xl font-semibold text-gray-700 mb-4">
                   توضیحات
                 </h2>
@@ -104,17 +103,16 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                 />
               </div>
 
-              {/* Images Gallery */}
               {projectData.images && projectData.images.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="text-xl font-semibold text-gray-700 mb-6">
+                <div className="mt-16">
+                  <h2 className="text-xl font-semibold text-gray-700 mb-4">
                     تصاویر بیشتر
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {projectData.images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-100"
+                        className="relative w-full h-56 md:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
                       >
                         <Image
                           src={getImageSrc(
@@ -123,7 +121,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                           )}
                           alt={`${projectData.name} - تصویر ${index + 1}`}
                           fill
-                          className="object-contain"
+                          className="object-contain !h-full !w-full rounded-lg overflow-hidden whitespace-nowrap"
                           loading="lazy"
                           quality={95}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -45,7 +45,7 @@ const BlogCard: React.FC<IBlogCard> = ({
           </div>
         </div>
         <div
-          className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate whitespace-normal break-words"
+          className="mb-3 text-gray-700 dark:text-gray-400 text-sm truncate whitespace-normal break-words line-clamp-5"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
         ></div>
         {!!category && (

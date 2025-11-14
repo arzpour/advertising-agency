@@ -46,7 +46,7 @@ const ProjectCard: React.FC<IProjectCard> = ({
       </div>
 
       <div className="px-6 py-5 text-surface dark:text-white">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-baseline">
           <h5 className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 whitespace-normal break-words">
             {name}
           </h5>
@@ -84,7 +84,7 @@ export const ProjectCardSkeleton = () => {
       </div>
 
       <div className="px-6 py-5 text-surface dark:text-white">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-baseline">
           <h5 className="mb-2 text-sm h-4 w-16 font-medium truncate line-clamp-1 rounded-full bg-gray-300 animate-pulse"></h5>
           <p className="mb-0.5 text-xs text-gray-600 h-4 w-20 rounded-full bg-gray-300 animate-pulse"></p>
         </div>

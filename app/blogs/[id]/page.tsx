@@ -21,8 +21,10 @@ interface BlogDetailPageProps {
 const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
   let blogData: IBlogRes | null = null;
 
+  const id = await params.id;
+
   try {
-    const response = await getBlogById(params.id);
+    const response = await getBlogById(id);
     blogData = response.data.blogById;
   } catch (err) {
     console.error("🚀 ~ BlogDetailPage ~ err:", err);
@@ -46,9 +48,9 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
             بازگشت به وبلاگ
           </Link>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white rounded-lg overflow-hidden">
             {/* Thumbnail */}
-            <div className="relative w-full h-64 md:h-96 overflow-hidden bg-gray-100">
+            <div className="relative h-64 md:h-80 rounded-lg overflow-hidden whitespace-nowrap mb-3">
               <Image
                 src={getImageSrc(
                   blogData.thumbnail,
@@ -56,7 +58,7 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
                 )}
                 alt={blogData.name}
                 fill
-                className="object-contain"
+                className="object-contain rounded-lg overflow-hidden whitespace-nowrap"
                 priority
                 quality={95}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
@@ -76,7 +78,7 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
               </div>
 
               {/* Description */}
-              <div className="mb-8">
+              <div className="mb-10">
                 <h2 className="text-xl font-semibold text-gray-700 mb-4">
                   محتوا
                 </h2>
@@ -90,7 +92,7 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
 
               {/* Images Gallery */}
               {blogData.images && blogData.images.length > 0 && (
-                <div className="mt-10">
+                <div className="mt-16">
                   <h2 className="text-xl font-semibold text-gray-700 mb-6">
                     تصاویر بیشتر
                   </h2>
@@ -98,7 +100,7 @@ const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
                     {blogData.images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-100"
+                        className="relative w-full h-56 md:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-100"
                       >
                         <Image
                           src={getImageSrc(
