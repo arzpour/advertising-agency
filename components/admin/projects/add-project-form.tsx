@@ -7,7 +7,6 @@ import { queryClient } from "@/providers/tanstack.provider";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addSchema, addSchemaType } from "@/validations/project";
 import AddForm from "../global/add-subject-form";
-import { useAppSelector } from "@/redux/hooks";
 import useCategoryList from "@/hooks/categories/useGetCategoryList";
 
 interface IAddProjectForm {
@@ -17,20 +16,17 @@ interface IAddProjectForm {
 const AddProjectForm: React.FC<IAddProjectForm> = ({ setDialogOpen }) => {
   const [selectedCategory, setSelectedCategory] = React.useState("");
 
-  const { adminPanelTab } = useAppSelector((state) => state.admin);
-
   const { handleSubmit, control } = useForm<addSchemaType>({
     mode: "all",
     resolver: zodResolver(addSchema),
   });
 
   const addProject = useAddProject();
-  const { data: categoryData, isLoading: isLoadingCategories } =
-    useCategoryList({
-      enabled: true,
-      limitCus: 9999,
-      type: "project",
-    });
+  const { data: categoryData } = useCategoryList({
+    enabled: true,
+    limitCus: 9999,
+    type: "project",
+  });
 
   const categoryId =
     categoryData?.data?.categories.find(

@@ -37,7 +37,7 @@ export const TextEditor: React.FC<ITextEditor> = ({
         overflowY: "auto",
       },
     }),
-    []
+    [defaultValue]
   );
 
   const handleBlur = useCallback(

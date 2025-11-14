@@ -21,10 +21,8 @@ interface BlogDetailPageProps {
 const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
   let blogData: IBlogRes | null = null;
 
-  const id = await params.id;
-
   try {
-    const response = await getBlogById(id);
+    const response = await getBlogById(params.id);
     blogData = response.data.blogById;
   } catch (err) {
     console.error("🚀 ~ BlogDetailPage ~ err:", err);

@@ -22,10 +22,8 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   let projectData: IProjectRes | null = null;
   let categoryData: ICategory | null = null;
 
-  const id = await params.id;
-
   try {
-    const response = await getProjectById(id);
+    const response = await getProjectById(params.id);
     projectData = response.data.projectById;
   } catch (err) {
     console.error("🚀 ~ ProjectDetailPage ~ err:", err);
