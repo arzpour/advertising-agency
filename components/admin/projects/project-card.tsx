@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import DeleteDialog from "../global/delete-dialog";
 import EditDialog from "../global/edit-dialog";
+import { getImageSrc } from "@/utils/getImageSrc";
 
 interface IProjectCard {
   name: string;
@@ -23,11 +24,10 @@ const ProjectCard: React.FC<IProjectCard> = ({
     <div className="w-80 rounded-lg overflow-hidden bg-white hover:shadow-2xl cursor-pointer">
       <div className="h-40">
         <Image
-          src={
-            thumbnail
-              ? `${process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL}/${thumbnail}`
-              : "/gettyimages-2149038061-612x612.jpg"
-          }
+          src={getImageSrc(
+            thumbnail,
+            process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL ?? ""
+          )}
           alt={`project-${name}`}
           width={800}
           height={800}
@@ -41,10 +41,10 @@ const ProjectCard: React.FC<IProjectCard> = ({
           </h3>
           <p className="text-gray-600 text-xs">{category}</p>
         </div>
-        <p
+        <div
           className="text-sm font-medium text-gray-700 my-3 line-clamp-2 whitespace-normal break-words"
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-        ></p>
+        ></div>
         <div className="flex gap-3 mt-6 mb-2 justify-end items-center">
           <EditDialog title="پروژه" _id={_id} />
           <DeleteDialog title="پروژه" _id={_id} />

@@ -61,6 +61,7 @@ const EditCategoryForm: React.FC<IEditCategoryForm> = ({
       });
       setDialogOpen(false);
       queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-categories"] });
     } catch {
       setDialogOpen(false);
 

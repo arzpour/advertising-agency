@@ -32,7 +32,7 @@ const ProjectCategoryList: React.FC<IProjectCategoryList> = ({
     <>
       <div className="w-full flex flex-wrap justify-center">
         <div className="w-full md:px-4 overflow-auto scrollbar-hide whitespace-nowrap cursor-grab">
-          <ul className="flex gap-2 sm:gap-4 justify-center mb-8 sm:mb-12 space-x-1">
+          <ul className="flex gap-2 sm:gap-4 mb-8 sm:mb-12 space-x-1 overflow-auto scrollbar-hide mx-6">
             <li className="mb-1">
               <button
                 onClick={() => handleProject("all")}

@@ -96,11 +96,18 @@ const AddForm: React.FC<IAddForm> = ({
                 <SelectValue placeholder="دسته‌بندی را انتخاب کنید" />
               </SelectTrigger>
               <SelectContent>
-                {(categoryData?.data?.categories || []).map((item) => (
-                  <SelectItem key={item._id} value={item.name}>
-                    {item.name}
-                  </SelectItem>
-                ))}
+                {categoryData?.data?.categories &&
+                categoryData.data.categories.length > 0 ? (
+                  categoryData.data.categories.map((item) => (
+                    <SelectItem key={item._id} value={item.name}>
+                      {item.name}
+                    </SelectItem>
+                  ))
+                ) : (
+                  <div className="px-2 py-1.5 text-sm text-gray-500 text-center">
+                    دسته‌بندی موجود نیست. لطفا ابتدا دسته‌بندی ایجاد کنید.
+                  </div>
+                )}
               </SelectContent>
             </Select>
           )}

@@ -1,6 +1,9 @@
+import { getImageSrc } from "@/utils/getImageSrc";
 import { sanitizeHTML } from "@/utils/sanitizeHtml";
-import { toPersianDate } from "@/utils/toPersianDate";
+// import { toPersianDate } from "@/utils/toPersianDate";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface IBlogCard {
@@ -9,50 +12,63 @@ interface IBlogCard {
   description: string;
   createdAt: string;
   updatedAt: string;
+  _id: string;
 }
 
 const BlogCard: React.FC<IBlogCard> = ({
   thumbnail,
   description,
-  createdAt,
-  updatedAt,
+  // createdAt,
+  // updatedAt,
   name,
+  _id,
 }) => {
   return (
-    <div className="rounded-lg bg-white shadow-lg w-full mx-5 sm:mx-0 sm:w-72">
-      <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
-        <Image
-          src={
-            thumbnail
-              ? `${process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL}/${thumbnail}`
-              : "/gettyimages-2149038061-612x612.jpg"
-          }
-          alt="project"
-          className="rounded-t-lg h-48"
-          width={500}
-          height={500}
-          loading="lazy"
-        />
-        <div className="absolute h-full w-full top-0 bg-black opacity-30 hover:opacity-20 transition-all duration-300 z-20"></div>
-      </div>
-
-      <div className="px-6 py-5 text-surface dark:text-white">
-        <div className="flex justify-between items-center">
-          <h5 className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 whitespace-normal">
-            {name}
-          </h5>
-          <p className="mb-0.5 text-xs text-gray-600 whitespace-normal break-words">
-            {" "}
-            {toPersianDate(updatedAt) ?? toPersianDate(createdAt)}
-          </p>
+    <Link href={`/blogs/${_id}`} className="block">
+      <div className="rounded-lg bg-white shadow-lg mx-15 sm:mx-0 sm:w-72 hover:shadow-xl transition-shadow">
+        <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
+          <Image
+            src={getImageSrc(
+              thumbnail,
+              process.env.NEXT_PUBLIC_BLOG_THUMBNAIL_URL ?? ""
+            )}
+            alt="project"
+            className="rounded-t-lg h-48"
+            width={1500}
+            height={1500}
+            loading="lazy"
+            quality={90}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 288px"
+          />
         </div>
 
-        <p
-          className="mb-0.5 text-xs text-gray-600"
-          dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
-        ></p>
+        <div className="px-6 py-5 text-surface dark:text-white">
+          <div className="flex justify-between items-center">
+            <h5 className="mb-2 text-sm text-gray-800 font-medium truncate line-clamp-1 whitespace-normal">
+              {name}
+            </h5>
+            {/* <p className="mb-0.5 text-xs text-gray-600 whitespace-normal break-words">
+              {" "}
+              {toPersianDate(updatedAt) ?? toPersianDate(createdAt)}
+            </p> */}
+          </div>
+
+          <div
+            className="mb-0.5 text-xs text-gray-600 line-clamp-4"
+            dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
+          ></div>
+
+          <Link
+            href={`/blogs/${_id}`}
+            aria-label="more"
+            className="flex gap-2 items-center justify-end pt-2 text-xs font-medium text-red-500 hover:text-red-600 transition-colors"
+          >
+            مشاهده بیشتر
+            <ArrowLeft />
+          </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -42,6 +42,7 @@ const AddCategoryForm: React.FC<IAddCategoryForm> = ({ setDialogOpen }) => {
       setDialogOpen(false);
 
       queryClient.invalidateQueries({ queryKey: ["get-category-list"] });
+      queryClient.invalidateQueries({ queryKey: ["get-categories"] });
     } catch (error) {
       console.log("🚀 ~ error:", error);
       setDialogOpen(false);

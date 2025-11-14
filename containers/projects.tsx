@@ -28,6 +28,7 @@ const Projects: React.FC<IProjectList> = ({
             description={item.description}
             name={item.name}
             categories={categories}
+            _id={item._id}
           />
         ))
       ) : (
