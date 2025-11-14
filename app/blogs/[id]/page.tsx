@@ -13,16 +13,17 @@ import { notFound } from "next/navigation";
 export const revalidate = 1800;
 
 interface BlogDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
+  const { id } = await params;
   let blogData: IBlogRes | null = null;
 
   try {
-    const response = await getBlogById(params.id);
+    const response = await getBlogById(id);
     blogData = response.data.blogById;
   } catch (err) {
     console.error("🚀 ~ BlogDetailPage ~ err:", err);

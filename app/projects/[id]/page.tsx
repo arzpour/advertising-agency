@@ -13,17 +13,18 @@ import { notFound } from "next/navigation";
 export const revalidate = 1800;
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
+  const { id } = await params;
   let projectData: IProjectRes | null = null;
   let categoryData: ICategory | null = null;
 
   try {
-    const response = await getProjectById(params.id);
+    const response = await getProjectById(id);
     projectData = response.data.projectById;
   } catch (err) {
     console.error("🚀 ~ ProjectDetailPage ~ err:", err);
