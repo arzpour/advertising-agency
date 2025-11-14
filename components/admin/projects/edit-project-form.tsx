@@ -101,7 +101,7 @@ const EditProjectForm: React.FC<IEditProjectForm> = ({
         images: projectData?.images,
       });
     }
-  }, [isSuccess, projectData, reset]);
+  }, [isSuccess, projectData, reset, categoryName]);
 
   return (
     <AddForm
