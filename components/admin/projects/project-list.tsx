@@ -6,8 +6,12 @@ import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useGetCategoryInfo } from "@/hooks/categories/useGetCategoryInfo";
 import { useEditProjectOrder } from "@/apis/mutations/projects";
 import useDragAndDrop from "@/hooks/useDragAndDrop";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import useCategoryList from "@/hooks/categories/useGetCategoryList";
 
 const ProjectList = () => {
+  const [categoryFilter, setCategoryFilter] = React.useState<string>("all");
+
   const {
     allProjects,
     fetchNextPage,
@@ -18,6 +22,13 @@ const ProjectList = () => {
   } = useGetProjects();
 
   const { categoryMap } = useGetCategoryInfo("project");
+  const { data: categoryData } = useCategoryList({
+    enabled: true,
+    limitCus: 9999,
+    type: "project",
+  });
+
+  const categories = categoryData?.data?.categories || [];
 
   const { observerRef } = useInfiniteScroll({
     fetchNextPage,
@@ -32,14 +43,52 @@ const ProjectList = () => {
     [allProjects.length]
   );
 
+  const filteredProjects = React.useMemo(() => {
+    if (categoryFilter === "all") {
+      return memoizedProjects;
+    }
+    return memoizedProjects.filter(
+      (project) => project.category === categoryFilter
+    );
+  }, [memoizedProjects, categoryFilter]);
+
   const { handleDrop, setDraggedId, items, draggedId } =
     useDragAndDrop<IProjectRes>({
-      getItems: memoizedProjects,
+      getItems: filteredProjects,
       editOrder: editProjectOrder,
     });
 
   return (
     <>
+      {categories.length > 0 && (
+        <div className="w-full flex flex-col items-center my-6">
+          <Tabs
+            value={categoryFilter}
+            onValueChange={(value: string) => setCategoryFilter(value)}
+            className="w-full flex flex-col items-center"
+            dir="rtl"
+          >
+            <TabsList className="flex justify-center bg-gray-100 rounded-xl p-1 flex-wrap">
+              <TabsTrigger
+                value="all"
+                className="px-4 py-2 rounded-lg text-sm data-[state=active]:bg-red-600 data-[state=active]:text-white cursor-pointer"
+              >
+                همه
+              </TabsTrigger>
+              {categories.map((category) => (
+                <TabsTrigger
+                  key={category._id}
+                  value={category._id}
+                  className="px-4 py-2 rounded-lg text-sm data-[state=active]:bg-red-600 data-[state=active]:text-white cursor-pointer"
+                >
+                  {category.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        </div>
+      )}
+
       {isLoading && (
         <div className="flex flex-wrap gap-8 mt-14 mb-14 justify-center items-center gap-y-10">
           {isLoading &&
@@ -73,8 +122,12 @@ const ProjectList = () => {
           {isFetchingNextPage ? "در حال بارگذاری..." : "بارگذاری بیشتر"}
         </div>
       )}
-      {!hasNextPage && !isLoading && allProjects.length === 0 && (
-        <p className="mt-6 text-gray-500">پروژه‌ای موجود نیست.</p>
+      {!hasNextPage && !isLoading && filteredProjects.length === 0 && (
+        <p className="mt-6 text-gray-500">
+          {categoryFilter === "all"
+            ? "پروژه‌ای موجود نیست."
+            : "پروژه‌ای در این دسته‌بندی موجود نیست."}
+        </p>
       )}
     </>
   );
