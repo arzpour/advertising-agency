@@ -24,7 +24,7 @@ const BlogCard: React.FC<IBlogCard> = ({
   _id,
 }) => {
   return (
-    <Link href={`/blogs/${_id}`} className="block">
+    <Link href={`/blogs/${_id}`} className="block w-full">
       <div className="rounded-lg bg-white shadow-lg mx-15 sm:mx-0 sm:w-72 hover:shadow-xl transition-shadow">
         <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
           <Image
