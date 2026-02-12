@@ -43,7 +43,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
     });
     categoryData =
       categoriesResponse.data.categories.find(
-        (cat) => cat._id === projectData?.category
+        (cat) => cat._id === projectData?.category,
       ) || null;
   } catch (err) {
     console.error("🚀 ~ ProjectDetailPage ~ err:", err);
@@ -67,7 +67,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
               <Image
                 src={getImageSrc(
                   projectData.thumbnail,
-                  process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL ?? ""
+                  process.env.NEXT_PUBLIC_PROJECT_THUMBNAIL_URL ?? "",
                 )}
                 alt={projectData.name}
                 fill
@@ -116,7 +116,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                         <Image
                           src={getImageSrc(
                             image,
-                            process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL ?? ""
+                            process.env.NEXT_PUBLIC_PROJECT_IMAGE_URL ?? "",
                           )}
                           alt={`${projectData.name} - تصویر ${index + 1}`}
                           fill
